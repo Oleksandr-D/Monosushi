@@ -11,11 +11,11 @@ app/
         delivery.component
         payment.component
         about.component
-        news.component
+        news.component---
         offerta.component
-        partners.component
-        contact.component
-        checkout.component
+        partners.component---
+        contact.component---
+        checkout.component---
     shared/
         styles/
             _variables.scss
@@ -29,5 +29,5 @@ app/
         admin-category.component
         admin-product.component
         admin-discount.component
-        admin-news.component
+        admin-news.component--
         admin-orders.component

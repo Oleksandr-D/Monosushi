@@ -6,8 +6,8 @@
     height: 40px;
     padding: 5px;
     border-radius: 5px;
-    border-color: $primary;
-    background-color: $primary;
+    border-color: $main;
+    background-color: $main;
     img {
         width: 100%;
         height: 100%;
@@ -20,7 +20,7 @@
 }
 
 .navbar-nav .nav-item .route-active {
-    border: 2px solid $primary;
+    border: 2px solid $main;
     border-radius: 5px;
 }
 
