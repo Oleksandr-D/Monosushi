@@ -1,19 +1,22 @@
 <div class="row">
-    <div class="col-4">
+    <div class="col-12 col-lg-8 col-xl-4">
         <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
             <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input formControlName="name" name="name" type="text" class="form-control" id="name">
+                <label for="name" class="form-label">Назва</label>
+                <input formControlName="name" name="name" type="text" 
+                       class="form-control" id="name">
               </div>
             <div class="mb-3">
-                <label for="path" class="form-label">Path</label>
-                <input formControlName="path" name="path" type="text" class="form-control" id="path">
+                <label for="path" class="form-label">Шлях</label>
+                <input formControlName="path" name="path" type="text" 
+                       class="form-control" id="path">
                 <div class="invalid-feedback">Path is required</div>
               </div>
             <ng-container *ngIf="!isUploaded">
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                    <label for="formFile" class="form-label"></label>
+                    <input class="form-control" type="file" id="formFile"
+                           (change)="upload($event)">
                 </div>
                 <div class="progress mb-3">
                     <div class="progress-bar progress-bar-striped" role="progressbar" 
@@ -21,24 +24,30 @@
                     aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </ng-container>
-            <ng-container *ngIf="isUploaded">
-                <img [src]="valueByControl('imagePath')" alt="">
-                <button type="button" class="btn btn-danger" (click)="deleteImage()">delete</button>
+            <ng-container *ngIf="isUploaded" >
+             <div class="d-flex flex-wrap justify-content-center">
+                <img [src]="valueByControl('imagePath')" class="p-3 col-12" height= "200px" alt="">
+                <button type="button" class="btn  btn-danger w-50 ms-3"
+                        (click)="deleteImage()">
+                        Видалити
+                </button>
+              </div>
             </ng-container>
-            <button [disabled]="categoryForm.invalid"  type="submit" class="btn btn-success w-100">
-                {{ editStatus ? 'Save' : 'Add' }}
+            <button [disabled]="categoryForm.invalid"  type="submit" 
+                    class="btn w-100"> 
+                {{ editStatus ? 'ЗБЕРІГТИ' : 'ДОДАТИ КАТЕГОРІЮ' }}
             </button>
         </form>
     </div>
-    <div class="col-8">
+    <div class="col-12 col-xl-8">
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Path</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Назва</th>
+                    <th scope="col">Шлях</th>
+                    <th scope="col">Зображення</th>
+                    <th scope="col">Дії</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,8 +59,14 @@
                         <img [src]="category.imagePath" alt="" height="50px">
                     </td>
                     <td>
-                        <button (click)="editCategory(category)" type="button" class="btn btn-secondary me-2">Edit</button>
-                        <button [disabled]="editStatus" (click)="deleteCategory(category)" type="button" class="btn btn-danger">Delete</button>
+                        <button (click)="editCategory(category)" type="button" 
+                                class="btn me-2">
+                                Редагувати
+                        </button>
+                        <button [disabled]="editStatus" (click)="deleteCategory(category)"
+                                 type="button" class="btn">
+                                 Видалити
+                        </button>
                     </td>
                 </tr>
             </tbody>

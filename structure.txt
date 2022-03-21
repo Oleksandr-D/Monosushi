@@ -11,11 +11,8 @@ app/
         delivery.component
         payment.component
         about.component
-        news.component---
         offerta.component
-        partners.component---
-        contact.component---
-        checkout.component---
+        checkout.component
     shared/
         styles/
             _variables.scss

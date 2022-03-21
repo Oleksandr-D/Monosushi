@@ -1,57 +1,80 @@
 <div class="row">
-    <div class="col-4">
-        <form>
-            <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              <textarea [(ngModel)]="description" name="description" id="description" class="form-control" placeholder="Description here.."></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="imagePath" class="form-label">Image</label>
-              <input [(ngModel)]="imagePath" name="imagePath"
-               type="text" class="form-control" id="imagePath">
-            </div>
-            <button 
-                *ngIf="!editStatus" 
-                [disabled]="!description" 
-                type="button" class="btn btn-success w-100" 
-                (click)="addDiscount()"
-            >Add</button>
-            <button 
-                *ngIf="editStatus" 
-                [disabled]="!description" 
-                type="button" 
-                class="btn btn-info w-100" 
-                (click)="saveDiscount()"
-            >Save</button>
-          </form>
-    </div>
-    <div class="col-8">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let discount of adminDiscounts">
-                    <td>{{ discount.id }}</td>
-                    <td>
-                        {{ discount.description | slice:0:60 }} 
-                        <span *ngIf="discount.description.length > 60">...</span> 
-                    </td>
-                    <td>
-                        <img [src]="discount.imagePath" alt="" height="50px">
-                    </td>
-                    <td>
-                        <button (click)="editDiscount(discount)" type="button" class="btn btn-secondary me-2">Edit</button>
-                        <button [disabled]="editStatus" (click)="deleteDiscount(discount)"
-                         type="button" class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="col-12 col-lg-8 col-xl-4">
+    <form [formGroup]="discountForm" class="was-validated" (ngSubmit)="addDiscount()">
+      <div class="mb-3">
+        <label for="name" class="form-label is-invalid">Назва</label>
+        <input formControlName="name" name="name" type="text"
+               class="form-control" id="name" placeholder="Назва..."
+                required="">
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Заголовок</label>
+        <input formControlName="title" name="title" type="text" class="form-control"
+                id="title"
+                placeholder="Заголовок..." required>
+      </div>
+      <div class="mb-3">
+        <div class="mb-3">
+          <label for="description" class="form-label">Опис</label>
+          <textarea formControlName="description" name="description"
+                    id="description" class="form-control"
+                    placeholder="Опис..." required>
+          </textarea>
+        </div>
+        <label for="formFile" class="form-label">Завантажити зображення</label>
+        <input name="formFil" type="file" (change)="upload($event)"
+                class="form-control" id="formFile" required>
+        <div class="progress mb-3 mt-2">
+          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                role="progressbar"
+                [style.width.%]="uploadPercent" aria-valuemin="0"
+                 aria-valuemax="100">
+          </div>
+        </div>
+        <img [src]="valueByControl('imagePath')" alt="" height="200px">
+      </div>
+      <button type="submit" [disabled]="discountForm.invalid" class="btn w-100">
+        {{ editStatus?'ЗБЕРЕГТИ':'ДOДАТИ АКЦІЮ' }}
+      </button>
+
+    </form>
+  </div>
+  <div class="col-12 col-xl-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Дата</th>
+          <th scope="col">Назва</th>
+          <th scope="col">Заголовок</th>
+          <th scope="col">Опис</th>
+          <th scope="col">Зображення</th>
+          <th scope="col">Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let discount of adminDiscounts">
+          <td>{{ currentDate | date:'dd.MM.YY' }}</td>
+          <td>{{ discount.name }}</td>
+          <td>{{ discount.title }}</td>
+          <td>
+            {{ discount.description | slice:0:100 }}
+            <span *ngIf="discount.description.length > 101">...</span>
+          </td>
+          <td>
+            <img [src]="discount.imagePath" alt="" height="50px">
+          </td>
+          <td>
+            <button (click)="editDiscount(discount)" type="button" 
+                    class="btn me-2">
+                    Редагувати
+            </button>
+            <button [disabled]="editStatus" (click)="deleteDiscount(discount)"
+                     type="button" class="btn">
+                     Видалити
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

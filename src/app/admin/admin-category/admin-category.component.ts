@@ -71,9 +71,11 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   deleteCategory(category: ICategoryResponse): void {
-    this.categoryService.delete(category.id).subscribe(() => {
-      this.loadCategories();
-    })
+     if (confirm('Видалити цю катигорію?')){
+      this.categoryService.delete(category.id).subscribe(() => {
+        this.loadCategories();
+      })
+     }
   }
 
   upload(event: any): void {

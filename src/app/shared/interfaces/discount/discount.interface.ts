@@ -1,10 +1,6 @@
-export interface IDiscount {
-    id: number;
-    description: string;
-    imagePath: string;
-}
-
 export interface IDiscountRequest {
+    name:string;
+    title:string;
     description: string;
     imagePath: string;
 }

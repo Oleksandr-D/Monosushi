@@ -1,11 +1,14 @@
 @import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
 
-.la-brand {
+.navbar{
+    height: 95px;
+    font-family: $main_font_Bold;
+}
+.brand {
     display: inline-flex;
     width: 72px;
     height: 40px;
-    padding: 5px;
-    border-radius: 5px;
     border-color: $main;
     background-color: $main;
     img {
