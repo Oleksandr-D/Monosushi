@@ -1,0 +1,32 @@
+@import '../shared/styles/variables';
+@import '../shared/styles/fonts';
+
+.container-fluid {
+  font-family: $main_font;
+}
+
+.nav-link {
+  border: 2px solid transparent;
+  color: black;
+  outline: none;
+}
+
+.btn {
+  background-color: $main;
+  border: $border;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  transition: 0.35s;
+}
+
+.btn:hover {
+  background-color: white;
+}
+
+.spacer-40 {
+  height: 40px;
+}
+.spacer-400{
+  height: 400px;
+}

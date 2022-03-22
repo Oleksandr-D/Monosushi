@@ -1,0 +1,8 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+
+footer{
+    font-family: $main_font;
+    color: $text_main;
+    border-top: 4px solid #b5d8f7;
+}
