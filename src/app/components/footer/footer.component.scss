@@ -1,8 +1,167 @@
 @import '../../shared/styles/variables';
 @import '../../shared/styles/fonts';
 
-footer{
-    font-family: $main_font;
-    color: $text_main;
-    border-top: 4px solid #b5d8f7;
+footer {
+  font-family: $main_font;
+  color: $text_main;
+  border-top: 4px solid #b5d8f7;
+}
+
+.footer-top {
+  margin: 0 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.footer-logo {
+  max-width: 136px;
+  cursor: pointer;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.menu-footer-list {
+  display: flex;
+}
+
+.menu-item {
+  cursor: pointer;
+  transition: 0.35s;
+}
+
+.menu-item:hover {
+  color: $main;
+}
+
+ul,
+ol,
+a {
+  list-style: none;
+  color: inherit;
+  text-decoration: none;
+  transition: .35s;
+}
+
+.menu-footer-list li+li {
+  margin-left: 55px;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.25em;
+}
+
+.footer-info-item {
+  font-size: 14px;
+  color: $secondary_text;
+  text-align: center;
+  p{
+      margin-bottom: 5px;
+  }
+  ul{
+      margin-bottom: 0px;
+  }
+}
+
+.footer-bottom {
+  margin: 0 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.copyright {
+  font-size: 14px;
+  color: $secondary_text;
+  white-space: nowrap;
+}
+
+.pay-cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pay-card-item {
+  position: relative;
+  width: 69px;
+  height: 39px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  display: inline-block;
+
+  img {
+    max-width: 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.pay-cards .pay-card-item+.pay-card-item {
+  margin-left: 5px;
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    margin-right: 20px;
+    font-size: 14px;
+    color: #252525;
+  }
+
+  ul {
+    display: flex;
+    padding: 0px;
+  }
+}
+
+.icon-btn {
+  display: block;
+  width: 49px;
+  height: 49px;
+  background: #b5d8f7;
+  border: 2px solid #b5d8f7;
+  border-radius: 10px;
+  position: relative;
+  transition: 0.35s;
+
+  img {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.social ul li+li {
+  margin-left: 5px;
+}
+
+.footer-dev-logo{
+    margin-right: 12px;
+    font-size: 12px;
+    transition: 0.35s;
+    color: $secondary_text;
+}
+.footer-dev-logo:hover{
+    color: $main;
+}
+.footer-dev-logo+span{
+    font-family:'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
 }

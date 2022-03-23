@@ -1,8 +1,70 @@
 <footer>
-   <p>footer works!</p> 
-   
-   
-   
-   
+  <div class="footer-top">
+    <div class="footer-logo" [routerLink]="[ '/' ]">
+      <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="">
+    </div>
+    <ul class="menu-footer-list">
+      <li class="menu-item" [routerLink]="[ '/discount' ]">Акції</li>
+      <li class="menu-item" [routerLink]="[ '/about' ]">Про нас</li>
+      <li class="menu-item" [routerLink]="[ '/offerta' ]">Оферта</li>
+    </ul>
+    <div class="footer-info">
+      <div class="footer-info-item">
+        <p><strong>Точки самовивозу</strong></p>
+        <ul>
+          <li>вул. Володимира Великого, 10в</li>
+          <li>вул. Чорновола, 95</li>
+        </ul>
+      </div>
+      <div class="footer-info-item">
+        <p><strong>Оформити замовлення</strong></p>
+        <a href="tel:0978780837">(097) 878 08 37</a>
+      </div>
+      <div class="footer-info-item">
+        <p><strong>Графік роботи</strong></p>
+        <p>працюємо з <b>11:00</b> до <b>20:30</b> </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="copyright">
+      <p>© 2022 Monosushi</p>
+    </div>
+    <div class="pay-cards">
+      <div class="pay-card-item">
+        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/pay-card-img-1.svg" alt="">
+      </div>
+      <div class="pay-card-item">
+        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/pay-card-img-2.svg" alt="">
+      </div>
+      <div class="pay-card-item">
+        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/pay-card-img-3.svg" alt="">
+      </div>
+    </div>
+    <div class="social">
+         <span>Слідкуйте за нами</span>
+         <ul>
+           <li>
+             <a class="icon-btn" href="https://www.facebook.com/monosushi.com.ua"
+                target="_blank">
+               <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/facebook-icon.svg"
+                alt="">
+             </a>
+           </li>
+           <li>
+             <a class="icon-btn" href="https://www.instagram.com/monosushi.com.ua"
+                target="_blank">
+               <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/instagram-icon.svg"
+                alt="">
+             </a>
+           </li>
+         </ul>
+     </div>
+     <div>
+      <a target="_blank" href="https://www.linkedin.com/in/oleksandr-dolbnia/">
+         <span  class="footer-dev-logo">Створення сайтів</span>
+         <span>Oleksandr Dolbnia</span>
+      </a>
+     </div>
+  </div>
 </footer>
-
