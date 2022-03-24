@@ -1,0 +1,34 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+
+.spacer-60 {
+  height: 60px;
+}
+
+.spacer-120 {
+  height: 120px;
+}
+
+.container {
+  font-family: $main_font;
+  color: $text_main;
+}
+
+.card {
+  border: none;
+}
+
+.card-img-top {
+  border-radius: 10px;
+}
+
+.title {
+  font-family: $main_font_Bold;
+  font-size: 24px;
+  text-align: center;
+  margin: 20px 0px;
+}
+
+.discount-description {
+  padding: 0px 20px;
+}
