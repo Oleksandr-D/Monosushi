@@ -1,6 +1,4 @@
-
-<div class="spacer-40"></div>
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-12 col-lg-8 col-xl-4">
     <form [formGroup]="discountForm" class="was-validated" (ngSubmit)="addDiscount()">
       <div class="mb-3">
@@ -35,8 +33,8 @@
         </div>
         <img [src]="valueByControl('imagePath')" alt="" height="200px">
       </div>
-      <button type="submit" [disabled]="discountForm.invalid" class="btn w-100">
-        {{ editStatus?'ЗБЕРЕГТИ':'ДOДАТИ АКЦІЮ' }}
+      <button type="submit" [disabled]="discountForm.invalid" class="btns">
+               {{ editStatus?'ЗБЕРЕГТИ':'ДOДАТИ АКЦІЮ' }}
       </button>
 
     </form>
@@ -67,11 +65,11 @@
           </td>
           <td>
             <button (click)="editDiscount(discount)" type="button" 
-                    class="btn me-2">
+                    class="btn">
                     Редагувати
             </button>
             <button [disabled]="editStatus" (click)="deleteDiscount(discount)"
-                     type="button" class="btns">
+                     type="button" class="btn">
                      Видалити
             </button>
           </td>

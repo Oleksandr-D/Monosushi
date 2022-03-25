@@ -1,42 +1,56 @@
 @import '../../shared/styles/variables';
 @import '../../shared/styles/fonts';
 
-
-
-.spacer-40{
-   height: 40px;
- }
-
-.spacer-60 {
-  height: 60px;
-}
-
-.spacer-120 {
-  height: 120px;
+input::placeholder,
+textarea::placeholder {
+  color: rgb(189, 189, 189);
 }
 
 
-input::placeholder, 
-textarea::placeholder{
-   color: rgb(189, 189, 189);
-}
-
+// ---btns----
 .btns {
-   border-radius: 10px;
-   border: $border;
-   background-color: $main;
-   transition: 0.35s;
-   font-family: $main_font_Bold;
-   text-transform: uppercase;
-   padding: 14px 16px;
-   font-size: 14px;
-   line-height: 14px;
-   cursor: pointer;
-   max-width: 257px;
-   width: 100%;
- }
- 
- .btns:hover {
-   background-color: initial;
-   color: rgb(0, 0, 0);
- }
+  width: 100%;
+  border-radius: 10px;
+  border: $border;
+  background-color: $main;
+  transition: 0.35s;
+  font-family: $main_font_Bold;
+  cursor: pointer;
+
+  text-transform: uppercase;
+  padding: 14px 16px;
+  font-size: 15px;
+}
+
+.btns:hover {
+  background-color: initial;
+  color: rgb(0, 0, 0);
+}
+
+.btns:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btns:disabled {
+  cursor: not-allowed;
+  background-color: rgb(233, 233, 233);
+  color: rgb(150, 150, 150);
+  border: 2px solid  rgb(233, 233, 233);
+}
+// -----btn----
+.btn {
+  width: 100%;
+  color: $main;
+  transition: 0.35s;
+  font-family: $main_font_Bold;
+}
+
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+.btn:disabled {
+  pointer-events:all;
+  cursor: not-allowed;
+}

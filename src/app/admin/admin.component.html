@@ -1,35 +1,35 @@
+<div class="spacer-40"></div>
 <div class="container-fluid">
-   
     <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab"
              role="tablist" aria-orientation="vertical">
             <button class="nav-link" [routerLink]="[ 'discount' ]" 
-                    routerLinkActive="btn"
+                    routerLinkActive="btna"
                     type="button">
                     Акції
             </button>
             <button class="nav-link" [routerLink]="[ 'category'  ]" 
-                    routerLinkActive="btn"
+                    routerLinkActive="btna"
                     type="button">
                     Категорії
             </button>
             <button class="nav-link" [routerLink]="[ 'product' ]"
-                     routerLinkActive="btn"
+                     routerLinkActive="btna"
                      type="button">
                      Товари
             </button>
             <button class="nav-link" [routerLink]="[ 'order' ]"
-                     routerLinkActive="btn" type="button">
+                     routerLinkActive="btna" type="button">
                      Замовлення
            </button>
-             <button class="btn mt-5" [routerLink]="[ '/' ]"
-                 routerLinkActive="btn">
+           <div class="spacer-200"></div>
+           <button class="btns" [routerLink]="[ '/' ]">
                  ВИХІД
-             </button>
-             <div class="spacer-400" ></div>
+           </button>
         </div>
         <div class="tab-content w-100" id="v-pills-tabContent">
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
+<div class="spacer-200" ></div>

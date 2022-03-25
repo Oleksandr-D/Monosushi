@@ -5,28 +5,50 @@
   font-family: $main_font;
 }
 
-.nav-link {
-  border: 2px solid transparent;
-  color: black;
-  outline: none;
-}
-
-.btn {
-  background-color: $main;
-  border: $border;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-  transition: 0.35s;
-}
-
-.btn:hover {
-  background-color: white;
-}
-
 .spacer-40 {
   height: 40px;
 }
-.spacer-400{
-  height: 400px;
+
+.spacer-200 {
+  height: 200px;
+}
+
+.nav-pills {
+  width: 155px;
+}
+
+.nav-link {
+  color: black;
+  outline: none;
+  padding: 14px 16px;
+}
+
+.btna {
+  padding: 14px 16px;
+  color: black;
+  font-family: $main_font_Bold;
+  transition: 0.35s;
+}
+
+.nav-link:hover {
+  color: $main;
+}
+
+// ---btns----
+.btns {
+  width: 100%;
+  border-radius: 10px;
+  border: $border;
+  background-color: $main;
+  transition: 0.35s;
+  font-family: $main_font_Bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  font-size: 17px;
+}
+
+.btns:hover {
+  background-color: initial;
+  color: rgb(0, 0, 0);
 }
