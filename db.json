@@ -23,10 +23,11 @@
       "id": 7
     },
     {
-      "name": "rols",
+      "name": "Роли",
       "path": "http",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=976f3027-8494-4a55-969b-6464ca0fe060",
       "id": 8
     }
-  ]
+  ],
+  "products": []
 }
