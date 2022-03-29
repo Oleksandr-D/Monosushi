@@ -5,6 +5,7 @@ import { IProductResponse } from 'src/app/shared/interfaces/products/products.in
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { ImageService } from 'src/app/shared/services/image/image.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class AdminProductComponent implements OnInit {
     private fb:FormBuilder,
     private categoryService: CategoryService,
     private productService:ProductService,
-    private imageService:ImageService
+    private imageService:ImageService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -65,10 +67,25 @@ export class AdminProductComponent implements OnInit {
     });
   }
 
-  addProduct(){
-
-
-   this.isOpen = false;
+  addProduct():void{
+    if(this.editStatus){
+      this.productService.update(this.productForm.value, this.currentProductId).subscribe(() => {
+        this.loadCategories();
+        this.loadProducts();
+        this.toastr.success('Товар успішно оновлено!');
+      })
+    } else {
+      this.productService.create(this.productForm.value).subscribe(() => {
+        this.loadCategories();
+        this.loadProducts();
+        this.toastr.success('Товар успішно додано!');
+      })
+    }
+    this.editStatus = false;
+    this.productForm.reset();
+    this.isUploaded = false;
+    this.uploadPercent = 0;
+    this.isOpen = false;
   }
 
   upload(event: any): void {
@@ -85,16 +102,37 @@ export class AdminProductComponent implements OnInit {
       })
   }
 
-
   valueByControl(control: string): string {
     return this.productForm.get(control)?.value;
   }
 
-  editProduct(product: IProductResponse){}
+  editProduct(product: IProductResponse){
+    this.productForm.patchValue({
+      category:product.category,
+      name: product.name,
+      path: product.path,
+      description:product.description,
+      weight:product.weight,
+      price:product.price,
+      imagePath: product.imagePath
+    });
+    this.editStatus = true;
+    this.currentProductId = product.id;
+    this.isUploaded = true;
+    this.isOpen = true;
+    window.scroll({
+      top:0,
+      behavior:'smooth'
+    })
+  }
 
-
-  deleteProduct(product: IProductResponse){}
-
+  deleteProduct(product: IProductResponse):void{
+    if (confirm('Видалити цей продукт?')){
+    this.productService.delete(product.id).subscribe(()=>{
+      this.loadProducts();
+      this.toastr.success('Товар успішно видалено!');
+    })}
+  }
 
   deleteImage():void{
     this.imageService.deleteUploadFile(this.valueByControl(
@@ -104,6 +142,7 @@ export class AdminProductComponent implements OnInit {
         this.productForm.patchValue({imagepath:null});
       }).catch(err => {console.log(err);})
   }
+
   toggleOpenForm():void{
     this.isOpen=!this.isOpen;
   }

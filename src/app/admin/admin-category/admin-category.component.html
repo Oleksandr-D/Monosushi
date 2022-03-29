@@ -1,22 +1,22 @@
 <div class="row justify-content-center">
     <div class="col-12 col-lg-8 col-xl-4">
-        <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+        <form [formGroup]="categoryForm" class="was-validated" 
+               (ngSubmit)="addCategory()">
             <div class="mb-3">
-                <label for="name" class="form-label">Назва</label>
+                <label for="name" class="form-label is-invalid">Назва</label>
                 <input formControlName="name" name="name" type="text" 
-                       class="form-control" id="name">
+                       class="form-control" id="name" required>
               </div>
             <div class="mb-3">
-                <label for="path" class="form-label">Шлях</label>
+                <label for="path" class="form-label is-invalid">Шлях</label>
                 <input formControlName="path" name="path" type="text" 
-                       class="form-control" id="path">
-                <div class="invalid-feedback">Path is required</div>
-              </div>
+                       class="form-control" id="path" required>
+            </div>
             <ng-container *ngIf="!isUploaded || editStatus">
                 <div class="mb-3">
                     <label for="formFile" class="form-label"></label>
                     <input class="form-control" type="file" id="formFile"
-                           (change)="upload($event)">
+                           (change)="upload($event)" required>
                 </div>
                 <div class="progress mb-3">
                     <div class="progress-bar progress-bar-striped" role="progressbar" 

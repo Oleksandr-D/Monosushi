@@ -1,12 +1,6 @@
 @import '../../shared/styles/variables';
 @import '../../shared/styles/fonts';
 
-input::placeholder,
-textarea::placeholder {
-  color: rgb(189, 189, 189);
-}
-
-
 // ---btns----
 .btns {
   width: 100%;
@@ -16,7 +10,6 @@ textarea::placeholder {
   transition: 0.35s;
   font-family: $main_font_Bold;
   cursor: pointer;
-
   text-transform: uppercase;
   padding: 14px 16px;
   font-size: 15px;
@@ -36,8 +29,9 @@ textarea::placeholder {
   cursor: not-allowed;
   background-color: rgb(233, 233, 233);
   color: rgb(150, 150, 150);
-  border: 2px solid  rgb(233, 233, 233);
+  border: 2px solid rgb(233, 233, 233);
 }
+
 // -----btn----
 .btn {
   width: 100%;
@@ -50,7 +44,12 @@ textarea::placeholder {
   outline: 0;
   box-shadow: none;
 }
+
 .btn:disabled {
-  pointer-events:all;
+  pointer-events: all;
   cursor: not-allowed;
+}
+
+.btn:hover {
+  color: $text_main;
 }

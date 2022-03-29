@@ -18,16 +18,99 @@
   "categories": [
     {
       "name": "Акції",
-      "path": "https//www",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-gift.svg?alt=media&token=c06130aa-9d1e-4a42-ae59-8a945e15d3c1",
+      "path": "акції",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-gift.svg?alt=media&token=2c0701cd-494b-401b-af62-d9682a6b5cf6",
       "id": 7
     },
     {
       "name": "Роли",
-      "path": "http",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=976f3027-8494-4a55-969b-6464ca0fe060",
+      "path": "роли",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=206bb9bb-953a-4d17-8cb7-72f9412cb492",
       "id": 8
+    },
+    {
+      "name": "Сети",
+      "path": "сети",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=62e94f61-dc2d-4cd2-9205-97378139b306",
+      "id": 9
+    },
+    {
+      "name": "Напої",
+      "path": "напої",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=5f06e6fa-1880-456e-a47d-fa63b9714d02",
+      "id": 10
+    },
+    {
+      "name": "Соуси",
+      "path": "соуси",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Ficon%20(1).svg?alt=media&token=77836c4f-84f5-45a7-918a-822d847b64e0",
+      "id": 11
     }
   ],
-  "products": []
+  "products": [
+    {
+      "name": "Філадельфія з лососем",
+      "category": {
+        "name": "Роли",
+        "path": "http",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=976f3027-8494-4a55-969b-6464ca0fe060",
+        "id": 8
+      },
+      "path": "моносуші",
+      "description": "Риc, крем сир, огірок, лосось",
+      "weight": "280",
+      "price": 184,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg.pagespeed.ce.axvTz8qDqj.jpg?alt=media&token=76abfe34-739e-4d1a-9d24-7993e67babc8",
+      "count": null,
+      "id": 1
+    },
+    {
+      "name": "Філадельфія грін з креветкою",
+      "category": {
+        "name": "Роли",
+        "path": "http",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=206bb9bb-953a-4d17-8cb7-72f9412cb492",
+        "id": 8
+      },
+      "path": "моносуші",
+      "description": "Рис, крем сир, огірок, креветка, авокадо, унагі соус",
+      "weight": "270",
+      "price": 224,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F7.-filadelfiya-grin-z-krevetkoyu.jpg.pagespeed.ce.1HZXmXbE4G.jpg?alt=media&token=11ff7cf4-f165-4d60-8605-64ecf96bbe89",
+      "count": null,
+      "id": 2
+    },
+    {
+      "name": "Філадельфія в кунжуті",
+      "category": {
+        "name": "Роли",
+        "path": "http",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=206bb9bb-953a-4d17-8cb7-72f9412cb492",
+        "id": 8
+      },
+      "path": "моносуші",
+      "description": "Рис, крем сир, огірок, лосось, кунжут",
+      "weight": "240",
+      "price": 164,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F2.-filadelfiya-v-kunzhuti.jpg.pagespeed.ce.OnHk5blNMI.jpg?alt=media&token=06228a10-ce4b-4d5a-98da-839c60408c6b",
+      "count": null,
+      "id": 3
+    },
+    {
+      "name": "Філадельфія з тунцем",
+      "category": {
+        "name": "Роли",
+        "path": "http",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=206bb9bb-953a-4d17-8cb7-72f9412cb492",
+        "id": 8
+      },
+      "path": "роли",
+      "description": "Риc, крем сир, авокадо, манго, тунець, манго-чилі соус",
+      "weight": "270",
+      "price": 237,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F3.-filadelfiya-z-tunczem.jpg.pagespeed.ce.udvAUadVVS.jpg?alt=media&token=ae9cd689-5ffa-4e39-b4a9-a14d18cdb861",
+      "count": 1,
+      "id": 4
+    }
+  ]
 }

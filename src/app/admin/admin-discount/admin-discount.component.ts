@@ -2,18 +2,19 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import {
   FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import {
   IDiscountResponse
 } from 'src/app/shared/interfaces/discount/discount.interface';
 import {
   DiscountService
 } from 'src/app/shared/services/discount/discount.service';
+import { ImageService } from 'src/app/shared/services/image/image.service';
 
 @Component({
   selector: 'app-admin-discount',
@@ -31,9 +32,10 @@ export class AdminDiscountComponent implements OnInit {
   public currentDate = new Date();
 
   constructor(
-    private storage:Storage,
     private fb: FormBuilder,
-    private discountService: DiscountService
+    private discountService: DiscountService,
+    private imageService:ImageService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +48,7 @@ export class AdminDiscountComponent implements OnInit {
       name: [null, Validators.required],
       title: [null, Validators.required],
       description: [null, Validators.required],
-      imagePath: ['']
+      imagePath: [null, Validators.required]
     });
   }
 
@@ -63,10 +65,12 @@ export class AdminDiscountComponent implements OnInit {
       this.discountService.update(this.discountForm.value,
         this.currentDiscountId).subscribe(() => {
         this.loadDiscounts();
+        this.toastr.success('Акцію успішно оновлено!');
       })
     } else {
       this.discountService.create(this.discountForm.value).subscribe(() => {
         this.loadDiscounts();
+        this.toastr.success('Акцію успішно додано!');
       })
     }
     this.editStatus = false;
@@ -74,6 +78,10 @@ export class AdminDiscountComponent implements OnInit {
     // this.isUploaded = false;
     this.uploadPercent = 0;
     this.discountForm.reset;
+    window.scroll({
+      top:0,
+      behavior:'smooth'
+    })
   }
 
   //button 'edit'
@@ -97,35 +105,15 @@ export class AdminDiscountComponent implements OnInit {
     if(confirm('Відновити акцію буде неможливо. Видалити акцію?')){
       this.discountService.delete(discount.id).subscribe(() => {
         this.loadDiscounts();
+        this.toastr.success('Акцію успішно видалено!');
       })
     }
   }
 
-  //loading image in firebase
-  async uploadFile(folder: string, name: string, file: File | null): Promise<string> {
-    const path = `${folder}/${name}`;
-    let url = '';
-    if(file) {
-      try {
-        const storageRef = ref(this.storage, path);
-        const task = uploadBytesResumable(storageRef, file);
-        percentage(task).subscribe(data => {
-          this.uploadPercent = data.progress
-        });
-        await task;
-        url = await getDownloadURL(storageRef);
-      } catch (e: any) {
-        console.error(e);
-      }
-    } else {
-      console.log('wrong format');
-    }
-    return Promise.resolve(url);
-  }
- //loading image
+ //loading image in image service
   upload(event: any): void {
     const file = event.target.files[0];
-    this.uploadFile('images', file.name, file)
+    this.imageService.uploadFile('images', file.name, file)
       .then(data => {
         this.discountForm.patchValue({
           imagePath: data
@@ -139,6 +127,5 @@ export class AdminDiscountComponent implements OnInit {
   valueByControl(control: string): string {
     return this.discountForm.get(control)?.value;
   }
-
 
 }

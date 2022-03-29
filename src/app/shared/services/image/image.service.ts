@@ -22,7 +22,7 @@ export class ImageService {
     private storage: Storage
   ) {}
 
-
+  //loading image in firebase
   async uploadFile(folder: string, name: string, file: File | null): Promise < string > {
     const path = `${folder}/${name}`;
     let url = '';
