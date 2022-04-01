@@ -14,7 +14,6 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-
   getAll(): Observable<IProductResponse[]> {
   return this.http.get<IProductResponse[]>(this.api.products);
   }
@@ -34,17 +33,11 @@ export class ProductService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api.products}/${id}`);
   }
+
   getAllByCategory(name:string):Observable <IProductResponse[]>{
     return this.http.get<IProductResponse[]>
     (`${this.api.products}?category.path=${name}`);
   }
-
-
-
-
-
-
-
 
 
 }
