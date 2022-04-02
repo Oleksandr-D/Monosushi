@@ -106,19 +106,19 @@
                     </div>
                 </div>
             </div>
-            <div class="navbar-brand bascet-item">
+            <div class="navbar-brand bascet-item"
+                 [routerLink]="[ '/checkout' ]" routerLinkActive="route-active" >
                 <div class="bascet-wrapper">
                     <div class="nav-item header-basket">
-                        <a [routerLink]="[ '/checkout' ]" routerLinkActive="route-active"
-                         class="nav-link basket" aria-current="page">
-                         <i>
+                        <a class="nav-link basket" aria-current="page">
+                         <span>
                             <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="basket">
-                            <span id="check-basket">0</span>
-                        </i>
+                            <i id="check-basket">{{count}}</i>
+                        </span>
                         </a>
                     </div>
                     <div class="nav-item basket-price">
-                        <b id="basket-total-price" class="card-total-price">0</b>
+                        <b id="basket-total-price" class="card-total-price">{{total}}</b>
                         <span>грн</span>
                     </div>
                 </div> 

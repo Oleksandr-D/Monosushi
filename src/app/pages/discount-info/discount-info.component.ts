@@ -18,14 +18,17 @@ export class DiscountInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getOneDiscount();
+    this.activatedRoute.data.subscribe(response => {
+      this.discount = response.discountInfo;
+    })
+     // this.getOneDiscount();
   }
 
-  getOneDiscount(): void {
-    const DISCOUNT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.discountService.getOne(DISCOUNT_ID).subscribe(data => {
-      this.discount = data;
-    })
-  }
+  // getOneDiscount(): void {
+  //   const DISCOUNT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  //   this.discountService.getOne(DISCOUNT_ID).subscribe(data => {
+  //     this.discount = data;
+  //   })
+  // }
 
 }

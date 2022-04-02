@@ -8,6 +8,7 @@ export interface IProductRequest {
    price:number;
    imagePath:string;
    category:ICategoryResponse;
+   count:number;
 }
 export interface IProductResponse extends IProductRequest {
    id:number;

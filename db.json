@@ -77,7 +77,7 @@
       "weight": "270",
       "price": 224,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F7.-filadelfiya-grin-z-krevetkoyu.jpg.pagespeed.ce.1HZXmXbE4G.jpg?alt=media&token=11ff7cf4-f165-4d60-8605-64ecf96bbe89",
-      "count": null,
+      "count": 1,
       "id": 2
     },
     {
@@ -109,7 +109,7 @@
       "weight": "270",
       "price": 237,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F3.-filadelfiya-z-tunczem.jpg.pagespeed.ce.udvAUadVVS.jpg?alt=media&token=ae9cd689-5ffa-4e39-b4a9-a14d18cdb861",
-      "count": null,
+      "count": 1,
       "id": 4
     },
     {
@@ -125,7 +125,7 @@
       "weight": "250",
       "price": 164,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F3.1-kaliforniya-z-krabom-v-kunzhuti.jpg.pagespeed.ce.bvIx-bv6N4.jpg?alt=media&token=929fa410-bb44-46ef-9c94-b6bf5bf73746",
-      "count": null,
+      "count": 1,
       "id": 5
     },
     {
@@ -157,7 +157,7 @@
       "weight": "1",
       "price": 47,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Frich3.jpg.pagespeed.ce.yLyznlBC2-.jpg?alt=media&token=206d0ae4-cf0c-461f-a629-8af2a03840dc",
-      "count": null,
+      "count": 1,
       "id": 7
     },
     {
