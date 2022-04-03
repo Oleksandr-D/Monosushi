@@ -34,7 +34,6 @@ export class ProductInfoComponent implements OnInit {
     })
   }
 
-
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {
       ++product.count;
@@ -42,7 +41,6 @@ export class ProductInfoComponent implements OnInit {
       --product.count;
     }
   }
-
 
   //check if there is something in the basket add to local storage
   addToBasket(product: IProductResponse): void {
