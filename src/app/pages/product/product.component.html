@@ -1,48 +1,50 @@
 <div class="spacer-60"></div>
 <div class="center-info">
-  <h2 class="title-center">Продукти</h2>
+  <h2 class="title-center"> {{userProducts[0]?.category?.name}} </h2>
 </div>
-<div class="spacer-60"></div>
+<div class="spacer-40"></div>
 <div class="container">
-  <div class="categories-menu">
-    <ul class="categories-list">
-      <li class="categories-list-item active">
-        <a>Всі</a>
-      </li>
-      <li class="categories-list-item ">
-        <a> Філадельфія</a>
-      </li>
-      <li class="categories-list-item ">
-        <a>Каліфорнія</a>
-      </li>
-      <li class="categories-list-item ">
-        <a>Запечені</a>
-      </li>
-      <li class="categories-list-item ">
-        <a>Фірмові</a>
-      </li>
-      <li class="categories-list-item ">
-        <a>Преміум</a>
-      </li>
-      <li class="categories-list-item ">
-        <a>Макі</a>
-      </li>
-    </ul>
-  </div>
+  <ng-container *ngIf="userProducts[0]?.category?.path === 'роли' ">
+    <div class="categories-menu">
+      <ul class="categories-list">
+        <li class="categories-list-item active">
+          <a>Всі</a>
+        </li>
+        <li class="categories-list-item ">
+          <a> Філадельфія</a>
+        </li>
+        <li class="categories-list-item ">
+          <a>Каліфорнія</a>
+        </li>
+        <li class="categories-list-item ">
+          <a>Запечені</a>
+        </li>
+        <li class="categories-list-item ">
+          <a>Фірмові</a>
+        </li>
+        <li class="categories-list-item ">
+          <a>Преміум</a>
+        </li>
+        <li class="categories-list-item ">
+          <a>Макі</a>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
   <div class="product-wraper">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of userProducts">
         <div class="product mb-3">
           <div class="product-image-wrap">
             <a class="product-image">
               <img class="img" [src]="product.imagePath" [alt]="product.name"
-                   [routerLink]="['/product/' + product.category.path, product.id ]" >
+                [routerLink]="['/product/' + product.category.path, product.id ]">
             </a>
           </div>
           <div class="product-title-wrap">
             <div class="product-title m-auto">
               <a [routerLink]="['/product/' + product.category.path, product.id ]">
-                 {{product.name}}
+                {{product.name}}
               </a>
             </div>
           </div>
@@ -57,7 +59,7 @@
             </div>
             <div class="thumb-input-number">
               <button type="button">-</button>
-              <input type="text"  value="1" readonly="" tabindex="-1" max="999">
+              <input type="text" value="1" readonly="" tabindex="-1" max="999">
               <button type="button">+</button>
             </div>
             <button class="btn-order">
@@ -68,3 +70,4 @@
       </div>
     </div>
   </div>
+  <div class="spacer-60"></div>

@@ -145,8 +145,8 @@ export class AdminProductComponent implements OnInit {
 
   toggleOpenForm():void{
     this.isOpen=!this.isOpen;
+    this.isUploaded = false;
+    this.editStatus = false;
   }
-
-
 
 }

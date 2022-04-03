@@ -1,12 +1,13 @@
 <div class="row justify-content-center">
   <p class="coll ">
-    <button class="btns ms-2 " style="width: 250px;" data-bs-toggle="collapse"
+    <button *ngIf="!editStatus"  class="btns ms-2 " style="width: 250px;" data-bs-toggle="collapse"
             href="#collapseExample" role="button" (click)="toggleOpenForm()"
             aria-expanded="false" aria-controls="collapseExample">
             {{isOpen ? 'Закрити' : 'Додати товар'}}
     </button>
   </p>
-  <div class="collapse row justify-content-center" [ngClass]="{'show':isOpen}" id="collapseExample">
+  <div class="collapse row justify-content-center" [ngClass]="{'show':isOpen}"
+   id="collapseExample">
     <div class="col-11 ">
       <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="was-validated">
         <div class="row">
