@@ -93,7 +93,7 @@
       "weight": "240",
       "price": 164,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F2.-filadelfiya-v-kunzhuti.jpg.pagespeed.ce.OnHk5blNMI.jpg?alt=media&token=06228a10-ce4b-4d5a-98da-839c60408c6b",
-      "count": null,
+      "count": 1,
       "id": 3
     },
     {
@@ -125,7 +125,7 @@
       "weight": "250",
       "price": 164,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F3.1-kaliforniya-z-krabom-v-kunzhuti.jpg.pagespeed.ce.bvIx-bv6N4.jpg?alt=media&token=929fa410-bb44-46ef-9c94-b6bf5bf73746",
-      "count": null,
+      "count": 1,
       "id": 5
     },
     {
@@ -189,7 +189,7 @@
       "weight": "120",
       "price": 89,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F2.-maki-z-avokado.jpg.pagespeed.ce.JsevHGP1kI.jpg?alt=media&token=186d33ef-a5bb-4455-808d-b7d09aa95af9",
-      "count": null,
+      "count": 1,
       "id": 9
     },
     {
@@ -221,7 +221,7 @@
       "weight": "300",
       "price": 174,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F6.-vegetarianskyj-z-chukoyu.jpg.pagespeed.ce.wQ6uiG3c9e.jpg?alt=media&token=07f737ef-fbaa-48ca-b1d8-0068baecf5a1",
-      "count": null,
+      "count": 1,
       "id": 11
     }
   ]

@@ -178,6 +178,10 @@ a {
   font-size: 20px;
 }
 
+.product-title:hover {
+  color: $main;
+}
+
 .product-desc {
   overflow: hidden;
   text-overflow: ellipsis;
