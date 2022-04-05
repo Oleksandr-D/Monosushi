@@ -81,4 +81,5 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.orderService.changeBasket.next(true);
   }
 
+
 }

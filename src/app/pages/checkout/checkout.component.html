@@ -1,1 +1,41 @@
-<p>checkout works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-6 col-lg-10 col-12">
+      <div class="spacer-60"></div>
+      <div class="center-info">
+        <h2 class="title-center">Оформити замовлення</h2>
+      </div>
+      <form class="mt-4">
+
+        <div class="basket-products" *ngFor="let products of basket ">
+          <span class="basket-products-img">
+            <img class="img" [src]="products.imagePath"
+              [routerLink]="['/product/' + products.category.path, products.id ]">
+          </span>
+          <div class="basket-products-desc">
+            <span class="title-basket" [routerLink]="['/product/' + products.category.path, products.id ]">
+              {{products.name}}
+            </span>
+            <div class="basket-products-controls">
+              <div class="thumb-input-number">
+                <button (click)="productCount(products, false)" type="button">-</button>
+                <input class="product-qty" [value]="products.count" readonly="" max="999">
+                <button (click)="productCount(products, true)" type="button">+</button>
+              </div>
+              <div class="basket-products-price">
+                <b>{{products.price*products.count}}</b> грн
+              </div>
+              <button type="button" class="remove-product">
+                <div class="trash"></div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        
+      </form>
+      <button class="btns" (click)="clear()">Clear localStorage</button>
+      <div class="spacer-120"></div>
+    </div>
+  </div>
+</div>

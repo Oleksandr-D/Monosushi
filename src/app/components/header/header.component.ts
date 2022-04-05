@@ -2,12 +2,14 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   IProductResponse
 } from 'src/app/shared/interfaces/products/products.interface';
 import {
   OrderService
 } from 'src/app/shared/services/order/order.service';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-header',
@@ -20,14 +22,21 @@ export class HeaderComponent implements OnInit {
   public total = 0;
   public count = 0;
   public isOpen = false;
+  public currentProduct!: IProductResponse;
 
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductService,
   ) {}
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+    // this.activatedRoute.data.subscribe(response => {
+    //   this.currentProduct = response.productInfo;
+      
+    // })
   }
 
   loadBasket(): void {
@@ -35,8 +44,7 @@ export class HeaderComponent implements OnInit {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
     }
     this.getTotalPrice();
-    console.log('Works ==>',this.basket);
-    
+
   }
 
   getTotalPrice(): void {
@@ -51,8 +59,42 @@ export class HeaderComponent implements OnInit {
       this.loadBasket();
     })
   }
-  openModal():void{
-      this.isOpen = !this.isOpen;
+
+  openModal(): void {
+    this.isOpen = !this.isOpen;
   }
+
+  productCount(product: IProductResponse, value: boolean): void {
+    if (value) {
+      ++product.count;
+    } else if (!value && product.count > 1) {
+      --product.count;
+    }
+    this.getTotalPrice();
+  }
+
+  //check if there is something in the basket add to local storage
+  addToBasket(product: IProductResponse): void {
+    let basket!: Array < IProductResponse >;
+    if (localStorage.length > 0 && localStorage.getItem('basket')) {
+      basket = JSON.parse(localStorage.getItem('basket') as string);
+      if (basket.some(prod => prod.id === product.id)) {
+        const index = basket.findIndex(prod => prod.id === product.id);
+        basket[index].count += product.count;
+      } else {
+        basket.push(product);
+      }
+    } else {
+      basket.push(product);
+    }
+    localStorage.setItem('basket', JSON.stringify(basket));
+    product.count = 1;
+     this.orderService.changeBasket.next(true);
+     this.openModal();
+     console.log('Works ==>', basket);
+     
+  }
+
+
 
 }
