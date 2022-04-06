@@ -208,31 +208,31 @@ select {
 
 // ---btns----
 .btns {
-   width: 100%;
-   border-radius: 10px;
-   border: $border;
-   background-color: $main;
-   transition: 0.35s;
-   font-family: $main_font_Bold;
-   cursor: pointer;
-   text-transform: uppercase;
-   padding: 14px 16px;
-   font-size: 15px;
- }
- 
- .btns:hover {
-   background-color: initial;
-   color: rgb(0, 0, 0);
- }
- 
- .btns:focus {
-   outline: 0;
-   box-shadow: none;
- }
- 
- .btns:disabled {
-   cursor: not-allowed;
-   background-color: rgb(233, 233, 233);
-   color: rgb(150, 150, 150);
-   border: 2px solid rgb(233, 233, 233);
- }
+  width: 100%;
+  border-radius: 10px;
+  border: $border;
+  background-color: $main;
+  transition: 0.35s;
+  font-family: $main_font_Bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  font-size: 15px;
+}
+
+.btns:hover {
+  background-color: initial;
+  color: rgb(0, 0, 0);
+}
+
+.btns:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btns:disabled {
+  cursor: not-allowed;
+  background-color: rgb(233, 233, 233);
+  color: rgb(150, 150, 150);
+  border: 2px solid rgb(233, 233, 233);
+}

@@ -49,6 +49,7 @@ export class CheckoutComponent implements OnInit {
     }
     this.getTotalPrice();
   }
+//add products???
 
   clear(){
     localStorage.clear();
