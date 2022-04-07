@@ -82,9 +82,6 @@ header {
   border-radius: 5px;
 }
 
-// .navbar-collapse{
-
-// }
 
 .dropdown-menu {
   width: 250px;
@@ -92,11 +89,11 @@ header {
   padding: 0px;
   border-radius: 10px;
   border: $border;
+  font-family: $main_font_Bold;
 
   li {
     padding: 0px;
     margin: 20px;
-
   }
 }
 
@@ -420,7 +417,6 @@ a {
   transition: .35s;
 }
 
-
 .cart-popup-out {
   display: flex;
   flex-direction: column;
@@ -477,8 +473,12 @@ a {
 
 }
 
+.dropdown-toggle::after {
+  content: "";
+  display:none; 
+}
 
-
+// ---------------------------------------------------------------------------
 @media screen and (max-width:1380px) {
   .call-back .open-tel img {
     margin-right: 0px;
@@ -487,17 +487,13 @@ a {
   .we-coll {
     display: none;
   }
-
 }
-
 
 @media screen and (max-width:1200px) {
   .header-info {
     display: none;
   }
 }
-
-
 
 @media screen and (max-width:1000px) {
   .header-desktop {
@@ -553,7 +549,8 @@ a {
     font-weight: bolder;
     color: $main;
   }
-  .basket-modal-wraper{
+
+  .basket-modal-wraper {
     position: absolute;
     top: 0;
     height: 100vh;

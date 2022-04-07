@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   public total = 0;
   public count = 0;
   public isOpen = false;
+  public isShow = false;
  
   constructor(
     private orderService: OrderService,
@@ -32,6 +33,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+  }
+
+  togle(){
+    this.isShow = !this.isShow;
   }
 
   loadBasket(): void {
