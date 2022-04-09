@@ -20,7 +20,8 @@
             </a>
           </div>
           <div class="nav-item">
-            <a [routerLink]="[ '/product/роли' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+            <a [routerLink]="[ '/product/роли' ]" routerLinkActive="route-active"
+               class="nav-link" aria-current="page">
               <div class="nav-item-image">
                 <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg" alt="">
                 <span>Роли</span>
@@ -28,7 +29,8 @@
             </a>
           </div>
           <div class="nav-item">
-            <a [routerLink]="[ '/product/сети' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+            <a [routerLink]="[ '/product/сети' ]" routerLinkActive="route-active"
+               class="nav-link" aria-current="page">
               <div class="nav-item-image">
                 <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg" alt="">
                 <span>Сети</span>
@@ -36,7 +38,8 @@
             </a>
           </div>
           <div class="nav-item">
-            <a [routerLink]="[ '/product/напої' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+            <a [routerLink]="[ '/product/напої' ]" routerLinkActive="route-active"
+               class="nav-link" aria-current="page">
               <div class="nav-item-image">
                 <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg" alt="">
                 <span>Напої</span>
@@ -44,7 +47,8 @@
             </a>
           </div>
           <div class="nav-item">
-            <a [routerLink]="[ '/product/соуси' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+            <a [routerLink]="[ '/product/соуси' ]" routerLinkActive="route-active"
+               class="nav-link" aria-current="page">
               <div class="nav-item-image">
                 <img src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg" alt="">
                 <span>Соуси</span>
@@ -89,13 +93,15 @@
           <div class="header-work-time">Працюємо з <b>11:00</b> до <b>20:30</b></div>
         </div>
         <div class="nav-item">
-          <a [routerLink]="[ '/admin' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+          <a [routerLink]="[ '/admin' ]" routerLinkActive="route-active"
+              class="nav-link" aria-current="page">
             <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
           </a>
         </div>
       </div>
 
-      <div class="bascet-item" [style.background-color]=" isOpen ? 'white' : '#b5d8f7'" (click)="openModal()">
+      <div class="bascet-item" [style.background-color]=" isOpen ? 'white' : '#b5d8f7'"
+           (click)="openModal()">
         <div class="bascet-wrapper">
           <div class="nav-item header-basket">
             <a class="nav-link basket" aria-current="page">
@@ -131,11 +137,12 @@
               <ng-container *ngIf="basket.length > 0">
                 <div class="basket-products" *ngFor="let products of basket ">
                   <span class="basket-products-img">
-                    <img class="img" [src]="products.imagePath"
+                    <img class="img" [src]="products.imagePath" (click)="openModal()"
                       [routerLink]="['/product/' + products.category.path, products.id ]">
                   </span>
                   <div class="basket-products-desc">
-                    <span class="title-basket" [routerLink]="['/product/' + products.category.path, products.id ]">
+                    <span class="title-basket" (click)="openModal()"
+                          [routerLink]="['/product/' + products.category.path, products.id ]">
                       {{products.name}}
                     </span>
                     <div class="basket-products-controls">
@@ -158,8 +165,9 @@
             <div class="cart-bottom">
               <div class="cart-price-wrap">
                 Сума: <b class="card-total-price">{{total}}</b> грн</div>
-              <button class="btn-basket" type="button" (click)="openModal()" [routerLink]="[ '/checkout' ]">
-                ОФОРМИТИ ЗАМОВЛЕННЯ
+              <button class="btn-basket" type="button" (click)="openModal()"
+                      [routerLink]="[ '/checkout' ]">
+                      ОФОРМИТИ ЗАМОВЛЕННЯ
               </button>
             </div>
           </div>
@@ -179,7 +187,7 @@
 
       <div class="element-wraper">
         <div class="call-back">
-          <button class="btns open-tel">
+          <button class="open-tel">
             <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="">
             <span class="we-coll">МИ ЗАТЕЛЕФОНУЄМО</span>
           </button>
@@ -189,7 +197,8 @@
           <div class="header-work-time">Працюємо з <b>11:00</b> до <b>20:30</b></div>
         </div>
         <div class="nav-item">
-          <a [routerLink]="[ '/admin' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+          <a [routerLink]="[ '/admin' ]" routerLinkActive="route-active"
+             class="nav-link" aria-current="page">
             <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
           </a>
         </div>
@@ -218,7 +227,8 @@
         </div>
 
       </div>
-      <div class="bascet-item" [style.background-color]=" isOpen ? 'white' : '#b5d8f7'" (click)="openModal()">
+      <div class="bascet-item" [style.background-color]=" isOpen ? 'white' : '#b5d8f7'"
+           (click)="openModal()">
         <div class="bascet-wrapper">
           <div class="nav-item header-basket">
             <a class="nav-link basket" aria-current="page">
@@ -247,19 +257,20 @@
                   </div>
                   <div class="title-basket">Кошик порожній</div>
                   <button class="btns" [routerLink]="[ '/' ]" (click)="openModal()">
-                    Перейти до каталогу
+                    ПЕРЕЙТИ ДО КАТАЛОГУ
                   </button>
                 </div>
               </ng-container>
               <ng-container *ngIf="basket.length > 0">
                 <div class="basket-products" *ngFor="let products of basket ">
                   <span class="basket-products-img">
-                    <img class="img" [src]="products.imagePath"
-                      [routerLink]="['/product/' + products.category.path, products.id ]">
+                    <img class="img" [src]="products.imagePath" (click)="openModal()"
+                         [routerLink]="['/product/' + products.category.path, products.id ]">
                   </span>
                   <div class="basket-products-desc">
-                    <span class="title-basket" [routerLink]="['/product/' + products.category.path, products.id ]">
-                      {{products.name}}
+                    <span class="title-basket" (click)="openModal()"
+                          [routerLink]="['/product/' + products.category.path, products.id ]">
+                          {{products.name}}
                     </span>
                     <div class="basket-products-controls">
                       <div class="thumb-input-number">
@@ -281,8 +292,9 @@
             <div class="cart-bottom">
               <div class="cart-price-wrap">
                 Сума: <b class="card-total-price">{{total}}</b> грн</div>
-              <button class="btn-basket" type="button" (click)="openModal()" [routerLink]="[ '/checkout' ]">
-                ОФОРМИТИ ЗАМОВЛЕННЯ
+              <button class="btn-basket" type="button" (click)="openModal()"
+                      [routerLink]="[ '/checkout' ]" [disabled]="basket.length === 0">
+                      ОФОРМИТИ ЗАМОВЛЕННЯ
               </button>
             </div>
           </div>
@@ -296,9 +308,10 @@
 <nav class="modile-nav-bottom">
   <div class="wraper-navbar-nav-bottom" (click)="closeModal(true)">
     <div class="nav-item">
-      <a [routerLink]="[ '/discount' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+      <a [routerLink]="[ '/discount' ]" routerLinkActive="route-active"
+          class="nav-link" aria-current="page">
         <div class="nav-item-image">
-          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-gift.svg" alt="">
+          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-gift.svg" alt="Акції">
           <span>Акції</span>
         </div>
       </a>
@@ -306,7 +319,7 @@
     <div class="nav-item">
       <a [routerLink]="[ '/product/роли' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
         <div class="nav-item-image">
-          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg" alt="">
+          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg" alt="Роли">
           <span>Роли</span>
         </div>
       </a>
@@ -314,7 +327,7 @@
     <div class="nav-item">
       <a [routerLink]="[ '/product/сети' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
         <div class="nav-item-image">
-          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg" alt="">
+          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg" alt="Сети">
           <span>Сети</span>
         </div>
       </a>
@@ -322,7 +335,7 @@
     <div class="nav-item">
       <a [routerLink]="[ '/product/напої' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
         <div class="nav-item-image">
-          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg" alt="">
+          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg" alt="Напої">
           <span>Напої</span>
         </div>
       </a>
@@ -330,7 +343,7 @@
     <div class="nav-item">
       <a [routerLink]="[ '/product/соуси' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
         <div class="nav-item-image">
-          <img src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg" alt="">
+          <img src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg" alt="Соуси">
           <span>Соуси</span>
         </div>
       </a>

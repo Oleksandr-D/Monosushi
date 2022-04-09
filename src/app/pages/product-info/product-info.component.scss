@@ -101,3 +101,22 @@ a {
 .btn-order:hover {
   background: inherit
 }
+
+.breadcrumb-wraper {
+  margin-top: 25px;
+
+}
+
+.breadcrumb {
+  font-size: 15px;
+}
+
+.breadcrumb-divider {
+  --bs-breadcrumb-divider: url("https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2FIcons%2Fsushi.png?alt=media&token=d42aee5e-06cb-4d27-9b0d-831e604d4bb5");
+  ;
+}
+
+.breadcrumb li:nth-child(1),
+li:nth-child(2) {
+  cursor: pointer;
+}

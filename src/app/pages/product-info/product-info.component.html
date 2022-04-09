@@ -1,3 +1,15 @@
+<div class="container">
+  <div class="breadcrumb-wraper">
+    <nav class="breadcrumb-divider"  aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" [routerLink]="[ '/' ]"><a>Головна</a></li>
+        <li class="breadcrumb-item " [routerLink]="[ '/product/' + currentProduct.category.path ]" 
+            aria-current="page">{{currentProduct.category.name}}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{currentProduct.name}}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
 <div class="spacer-70"></div>
 <div class="container">
   <div class="row g-0 justify-content-evenly">

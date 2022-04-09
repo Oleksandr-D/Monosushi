@@ -23,7 +23,8 @@ export class DiscountInfoComponent implements OnInit {
     })
      // this.getOneDiscount();
   }
-
+ 
+ 
   // getOneDiscount(): void {
   //   const DISCOUNT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
   //   this.discountService.getOne(DISCOUNT_ID).subscribe(data => {
