@@ -484,6 +484,11 @@ a {
   display: none;
 }
 
+.brand-mobile {
+  display: none;
+}
+
+
 // ---------------------------------------------------------------------------
 @media screen and (max-width:1380px) {
   .call-back .open-tel img {
@@ -502,6 +507,7 @@ a {
 }
 
 @media screen and (max-width:1000px) {
+  // ---------header--------------------------------------
   .header-desktop {
     display: none;
   }
@@ -529,6 +535,10 @@ a {
     display: flex;
   }
 
+  header {
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 10%);
+  }
+
   .modile-nav-bottom {
     display: flex;
     position: fixed;
@@ -539,12 +549,19 @@ a {
     justify-content: space-evenly;
     background-color: #fff;
     width: 100%;
+    box-shadow: 0 -2px 8px 0 rgb(0 0 0 / 10%);
   }
 
   .wraper-navbar-nav-bottom {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
+    height: 60px;
+    align-items: center;
+  }
+
+  .nav-link {
+    padding: 0rem 1rem;
   }
 
   .nav-item-image span {
@@ -559,6 +576,74 @@ a {
   .basket-modal-wraper {
     position: absolute;
     top: 0;
-    height: 100vh;
   }
+
+  //-------------------------------------------------------------------------
+
+}
+
+@media screen and (max-width:760px) {
+  //----------header-------------------------------------------------------
+  .basket-price {
+    display: none;
+  }
+
+  header {
+    height: 60px;
+  }
+
+  .brand {
+    display: none;
+  }
+
+  .brand-mobile {
+    display: block;
+    height: 60px;
+    display: inline-flex;
+    border-color: $main;
+    background-color: $main;
+    padding: 0 15px;
+
+    img {
+      max-width: 40px;
+      height: 100%;
+    }
+  }
+
+  .bascet-item {
+    height: 60px;
+  }
+
+  .margin-header {
+    height: 60px;
+  }
+
+  .bascet-item {
+    padding: 0 10px;
+
+    img {
+      width: 30px;
+    }
+  }
+
+  #check-basket {
+    font-size: 12px;
+    padding: 4px 2px 0px 0px;
+    height: 20px;
+    min-width: 20px;
+  }
+
+.nav-item{
+  margin: 0px 0px;
+}
+
+
+.call-back .open-tel{
+  padding: 0px;
+}
+  //-------------------------------------------------------
+
+
+
+
 }

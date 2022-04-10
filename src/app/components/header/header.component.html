@@ -181,8 +181,15 @@
   <div *ngIf="isOpen" class="bg-layer" (click)="openModal()"></div>
   <nav class="modile-nav">
     <div class="modile-nav-up">
-      <a class="navbar-brand brand" [routerLink]="[ '/' ]">
-        <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="">
+
+      <a class="navbar-brand brand " [routerLink]="[ '/' ]">
+        <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg"
+             alt="monosushi.com.ua">
+      </a>
+
+      <a class="navbar-brand brand-mobile" [routerLink]="[ '/' ]">
+         <img src="https://monosushi.com.ua/wp-content/uploads/2021/08/logo-mobile.svg" 
+               alt="monosushi.com.ua">
       </a>
 
       <div class="element-wraper">
