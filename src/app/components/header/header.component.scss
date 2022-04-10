@@ -432,6 +432,7 @@ a {
 .cart-items {
   max-height: calc(100vh - 200px);
   padding: 0;
+  overflow: auto;
 }
 
 .cart-empty-message {
