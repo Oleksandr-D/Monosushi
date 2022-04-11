@@ -61,11 +61,13 @@ a {
   font-size: 14px;
   color: $secondary_text;
   text-align: center;
-  p{
-      margin-bottom: 5px;
+
+  p {
+    margin-bottom: 5px;
   }
-  ul{
-      margin-bottom: 0px;
+
+  ul {
+    margin-bottom: 0px;
   }
 }
 
@@ -151,17 +153,78 @@ a {
   margin-left: 5px;
 }
 
-.footer-dev-logo{
-    margin-right: 12px;
-    font-size: 12px;
-    transition: 0.35s;
-    color: $secondary_text;
+.footer-dev-logo {
+  margin-right: 12px;
+  font-size: 12px;
+  transition: 0.35s;
+  color: $secondary_text;
 }
-.footer-dev-logo:hover{
-    color: $main;
+
+.footer-dev-logo:hover {
+  color: $main;
 }
-.footer-dev-logo+span{
-    font-family:'Trebuchet MS', sans-serif;
-    font-weight: bold;
-    font-size: 16px;
+
+.footer-dev-logo+span {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+@media screen and (max-width:1200px) {
+  .menu-footer-list li+li {
+    margin-left: 25px;
+  }
+
+}
+
+@media screen and (max-width:1000px) {
+  footer {
+    margin-bottom: 70px;
+  }
+
+  .footer-top {
+    flex-wrap: wrap;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+  }
+
+}
+
+
+@media screen and (max-width:770px) {
+  .footer-top {
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 14px;
+  }
+
+  .menu-footer-list {
+    margin-top: 20px;
+    padding-left: 0rem;
+  }
+
+  .pay-cards {
+    margin-bottom: 20px;
+  }
+
+  .footer-info-item ul{
+    padding-left: 0rem;
+  }
+  .icon-btn{
+    width: 35px;
+    height: 35px;
+    img{
+      width: 14px;
+      height: 14px;
+    }
+  }
+
 }

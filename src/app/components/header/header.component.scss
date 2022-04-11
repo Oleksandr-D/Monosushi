@@ -1,7 +1,6 @@
 @import '../../shared/styles/variables';
 @import '../../shared/styles/fonts';
 
-
 header {
   position: fixed;
   top: 0;
@@ -189,7 +188,6 @@ header {
 
   a {
     padding: 0px;
-
   }
 }
 
@@ -262,7 +260,6 @@ header {
   display: flex;
   align-items: center;
 }
-
 
 .basket-products-img {
   width: 122px;
@@ -381,7 +378,6 @@ a {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -608,11 +604,9 @@ a {
     display: flex;
     align-items: center;
   }
-
-
 }
 
-@media screen and (max-width:760px) {
+@media screen and (max-width:770px) {
 
   //----------header-------------------------------------------------------
   .basket-price {
@@ -734,7 +728,6 @@ a {
     font-size: 12px;
     line-height: 16px;
   }
-
 }
 
 @media screen and (max-width:575px) {
@@ -757,20 +750,22 @@ a {
     width: 100%;
     justify-content: space-between;
   }
-
-
-
 }
-
-
-
 
 @media screen and (max-width:378px) {
 
-  //----------header bottom-------------------------------------------------------
+  //-----------------------------------header bottom-------------------------------------------------
   .nav-link {
     padding: 0rem 0.1rem;
   }
 
+  .cart-bottom {
+    padding: 10px 5px;
+  }
 
+  .btn-basket {
+    padding: 8px 5px;
+    font-size: 12px;
+    line-height: 12px;
+  }
 }
