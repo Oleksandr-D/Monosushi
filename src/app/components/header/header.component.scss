@@ -488,8 +488,6 @@ a {
   display: none;
 }
 
-
-// ---------------------------------------------------------------------------
 @media screen and (max-width:1380px) {
   .call-back .open-tel img {
     margin-right: 0px;
@@ -507,9 +505,20 @@ a {
 }
 
 @media screen and (max-width:1000px) {
+
   // ---------header--------------------------------------
   .header-desktop {
     display: none;
+  }
+
+  .header-info {
+    display: block;
+  }
+
+  .call-back-mob {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
   }
 
   .header-mobile-up {
@@ -525,6 +534,19 @@ a {
     border: none;
     background-color: inherit;
     transition: 0s;
+
+    img {
+      width: 15px;
+    }
+  }
+
+  .open-tel-mob {
+
+    padding: 10px;
+
+    img {
+      margin-right: 5px;
+    }
   }
 
   .container {
@@ -578,11 +600,20 @@ a {
     top: 0;
   }
 
-  //-------------------------------------------------------------------------
+  .offcanvas-body {
+    font-family: $main_font_Bold;
+  }
+
+  .prise-trash-wraper {
+    display: flex;
+    align-items: center;
+  }
+
 
 }
 
 @media screen and (max-width:760px) {
+
   //----------header-------------------------------------------------------
   .basket-price {
     display: none;
@@ -610,12 +641,39 @@ a {
     }
   }
 
+  .navbar-brand {
+    margin-right: 0rem;
+  }
+
   .bascet-item {
     height: 60px;
   }
 
   .margin-header {
     height: 60px;
+  }
+
+  .nav-item {
+    margin: 0px 0px;
+  }
+
+  .call-back .open-tel {
+    padding: 0px;
+  }
+
+  .burger-icon-menu {
+    background-position: center;
+    width: 25px;
+    height: 25px;
+  }
+
+  // ---------------------Basket-------------------------------
+  .basket-modal-wraper {
+    width: 90%;
+  }
+
+  .cart-items {
+    max-height: calc(100vh - 116px);
   }
 
   .bascet-item {
@@ -633,17 +691,86 @@ a {
     min-width: 20px;
   }
 
-.nav-item{
-  margin: 0px 0px;
+  .basket-products {
+    padding: 4px 10px;
+    min-height: 50px;
+  }
+
+  .basket-products-img {
+    width: 100px;
+    height: 60px;
+  }
+
+  .basket-products-desc {
+    padding: 0 5px 0 10px;
+    font-size: 16px;
+  }
+
+  .thumb-input-number {
+    width: 70px;
+    height: 35px;
+    font-size: 12px;
+    line-height: 5px;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .thumb-input-number button {
+    font-size: 20px;
+    margin: 0px;
+  }
+
+  .thumb-input-number input {
+    width: 12px;
+    height: 20px;
+  }
+
+  .cart-bottom {
+    padding: 10px 15px;
+  }
+
+  .btn-basket {
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+}
+
+@media screen and (max-width:575px) {
+
+  // --------------------------------------Basket-------------------------------
+  .basket-modal-wraper {
+    width: 100%;
+  }
+
+  .basket-products-desc {
+    flex-wrap: wrap;
+  }
+
+  .title-basket {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+  .basket-products-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+
+
 }
 
 
-.call-back .open-tel{
-  padding: 0px;
-}
-  //-------------------------------------------------------
 
 
+@media screen and (max-width:378px) {
+
+  //----------header bottom-------------------------------------------------------
+  .nav-link {
+    padding: 0rem 0.1rem;
+  }
 
 
 }
