@@ -1,8 +1,9 @@
 <div class="baner-wraper">
   <div class="background-image"></div>
+  <div class="background-image-mob"></div>
   <div class="baner-info">
     <div class="row justify-content-center">
-      <div class="col-xl-10 col-12">
+      <div class="col-xl-10 col-sm-10  col-12">
         <div class="left-info">
           <div class="baner-info-title">Ми - це доcтавка
             <b> щастя. Monosushi </b>- Ми любимо коли тобі
@@ -37,7 +38,8 @@
       <div class="col-md-4">
         <div class="after-banner-item">
           <div class="after-banner-img">
-            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mono-supermen.svg" alt="">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mono-supermen.svg"
+                 alt="" id="schedule">
           </div>
           <div class="after-banner-info">Середній час доставки в зеленій зоні
             <b>00:43:00</b>
@@ -91,9 +93,9 @@
             </ul>
           </div>
         </ng-container>
-        <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of userProducts">
+        <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of userProducts">
           <ng-container >
-            <div class="product mb-3">
+            <div class="product">
               <div class="product-image-wrap">
                 <a class="product-image">
                   <img class="img" [src]="product.imagePath" [alt]="product.name"
