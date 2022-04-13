@@ -58,3 +58,28 @@ a {
 li:nth-child(2) {
   cursor: pointer;
 }
+
+@media screen and (max-width:770px) {
+
+  .spacer-60,
+  .spacer-120 {
+    display: none;
+  }
+
+  .spacer-30 {
+    height: 30px;
+  }
+
+  .title {
+    margin: 10px 0px;
+  }
+
+  .discount-description {
+    font-size: 14px;
+  }
+
+  .breadcrumb-item {
+    font-size: 10px;
+  }
+
+}
