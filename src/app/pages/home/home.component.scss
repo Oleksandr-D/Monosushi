@@ -219,7 +219,7 @@ select {
 .categories-list-item {
   cursor: pointer;
   padding: 0;
-  font-size: 16px;
+  font-size: 20px;
   min-width: 168px;
   font-weight: bold;
   border: 1px solid #dcdcdc;
@@ -393,6 +393,16 @@ select {
   }
 }
 
+.categories-list {
+  padding-left: 0rem;
+}
+
+.categories-list-item {
+  min-width: 14%;
+}
+
+
+
 @media screen and (max-width:1200px) {
   .after-banner-item {
     flex-direction: column;
@@ -402,6 +412,10 @@ select {
   .after-banner-img {
     margin-right: 0px;
     margin-bottom: 10px;
+  }
+
+  .categories-list-item {
+    font-size: 14px;
   }
 
 }
@@ -478,6 +492,15 @@ select {
   .product {
     margin: 0px;
   }
+
+  .product-title-wrap {
+    margin: 0px;
+  }
+
+  .product-controls {
+    margin-top: 20px;
+  }
+
 }
 
 @media screen and (max-width:378px) {
@@ -492,5 +515,10 @@ select {
 
   .info-block-text-wraper {
     font-size: 12px;
+  }
+
+  .categories-menu {
+    display: none;
+    margin: 0px;
   }
 }

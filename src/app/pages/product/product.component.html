@@ -1,4 +1,5 @@
 <div class="spacer-60"></div>
+<div class="spacer-30"></div>
 <div class="center-info">
   <h2 class="title-center"> {{userProducts[0]?.category?.name}} </h2>
 </div>
@@ -33,8 +34,8 @@
   </ng-container>
   <div class="product-wraper">
     <div class="row justify-content-center">
-      <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of userProducts">
-        <div class="product mb-3">
+      <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let product of userProducts">
+        <div class="product">
           <div class="product-image-wrap">
             <a class="product-image">
               <img class="img" [src]="product.imagePath" [alt]="product.name"
@@ -52,7 +53,7 @@
             <p>{{product.description}}</p>
             <div class="product-size"><span>{{product.weight}}</span> г</div>
           </div>
-          <div class="product-controls mt-5">
+          <div class="product-controls">
             <div class="product-price">
               <b>{{product.price*product.count}}</b> грн
             </div>
@@ -70,3 +71,4 @@
     </div>
   </div>
   <div class="spacer-60"></div>
+  <div class="spacer-30"></div>
