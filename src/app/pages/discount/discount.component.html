@@ -1,4 +1,5 @@
 <div class="spacer-60"></div>
+<div class="spacer-30"></div>
 <div class="center-info">
    <h2 class="title-center">Акції</h2>
 </div>
@@ -6,8 +7,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <ng-container *ngIf="userDiscounts.length > 0">
-            <div class="col-xl-5 col-md-6 col-12" *ngFor="let discount of userDiscounts">
-                <div class="card w-100">
+            <div class="col-xl-5 col-md-6 col-sm-10 col-12" *ngFor="let discount of userDiscounts">
+                <div class="card">
                     <div class="image-wraper">
                         <img [src]="discount.imagePath" class="card-img-top"
                          alt="..." [routerLink]="[ '/discount', discount.id ]">
@@ -37,3 +38,4 @@
     </div>
 </div>
 <div class="spacer-120"></div>
+<div class="spacer-30"></div>
