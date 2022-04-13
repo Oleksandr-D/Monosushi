@@ -37,6 +37,7 @@ a {
   font-family: $main_font_Bold;
   color: $text_main;
   font-size: 42px;
+  margin-bottom: 50px;
 }
 
 .card-text-title {
@@ -49,7 +50,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 60px;
 }
 
 .product-price {
@@ -96,6 +97,7 @@ a {
   border: 2px solid $main;
   background: $main;
   font-family: "RotondaC_Bold";
+  margin-left: 10px;
 }
 
 .btn-order:hover {
@@ -119,4 +121,65 @@ a {
 .breadcrumb li:nth-child(1),
 li:nth-child(2) {
   cursor: pointer;
+}
+
+
+@media screen and (max-width:770px) {
+
+  .breadcrumb-item {
+    font-size: 10px;
+  }
+
+
+  .spacer-70,
+  .spacer-120 {
+    display: none;
+  }
+
+  .spacer-30 {
+    height: 30px;
+  }
+
+  .card-title {
+    font-size: 34px;
+    margin: 10px 0px;
+  }
+
+  .product-controls {
+    margin-top: 20px;
+  }
+
+  .container {
+    width: 70%;
+  }
+
+}
+
+@media screen and (max-width:575px) {
+
+  .container {
+    width: 100%;
+  }
+
+  .product-price {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  .thumb-input-number {
+    button {
+      font-size: 22px;
+      padding-bottom: 0px;
+      margin: 2px;
+    }
+    input {
+      height: 45px;
+    }
+  }
+
+.btn-order{
+  padding: 10px 15px;
+}
+
+
 }
