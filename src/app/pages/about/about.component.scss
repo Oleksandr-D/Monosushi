@@ -46,6 +46,7 @@
 .container {
   font-family: $main_font;
   color: $text_main;
+  width: 100%;
   max-width: 1750px;
 }
 
@@ -149,5 +150,63 @@ p {
 
   li {
     margin-top: 23px;
+  }
+}
+
+@media screen and (max-width:1000px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .block-left-info,
+  .block-right-info {
+    max-width: 100%;
+    margin: 0px;
+  }
+
+  .simple-page {
+
+    h3 {
+      margin: 20px 0 20px 0;
+    }
+  }
+}
+
+@media screen and (max-width:770px) {
+
+  .spacer-120,
+  .spacer-90,
+  .spacer-60,
+  .spacer-40 {
+    display: none;
+  }
+
+  .spacer-30 {
+    height: 30px;
+  }
+
+  .advantages-item:first-child {
+    display: none;
+  }
+}
+
+@media screen and (max-width:575px) {
+
+  .title-center {
+    font-size: 34px;
+  }
+
+  .simple-page {
+    h3 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .advantages-item:last-child {
+    display: none;
   }
 }
