@@ -14,7 +14,7 @@
   transition: 0.35s;
   font-family: $main_font_Bold;
   cursor: pointer;
-
+  margin-bottom: 20px;
   text-transform: uppercase;
   padding: 14px 16px;
   font-size: 15px;
@@ -64,4 +64,31 @@ table {
 
 th:last-child {
   width: 230px;
+}
+
+.category-image {
+  height: 50%;
+}
+
+@media screen and (max-width:430px) {
+  .table>:not(caption)>*>* {
+    padding: 0px 2px;
+    font-size: 10px;
+  }
+
+  .btn {
+    padding: 0px;
+    font-size: 100%;
+  }
+
+  .category-image {
+    height: 20px;
+    padding: 2px 0px;
+  }
+
+  .btns {
+    font-size: 14px;
+    padding: 10px 0px;
+  }
+
 }

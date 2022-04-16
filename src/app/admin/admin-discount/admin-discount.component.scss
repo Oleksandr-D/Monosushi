@@ -13,6 +13,7 @@
   text-transform: uppercase;
   padding: 14px 16px;
   font-size: 15px;
+  margin-bottom: 20px;
 }
 
 .btns:hover {
@@ -52,4 +53,37 @@
 
 .btn:hover {
   color: $text_main;
+}
+
+.discount-image {
+  height: 50px;
+}
+
+.load-discount-image {
+  height: 200px;
+}
+
+@media screen and (max-width:770px) {
+  .table>:not(caption)>*>* {
+    padding: 0px 2px;
+    font-size: 10px;
+  }
+
+  .btn {
+    padding: 0px;
+    font-size: 100%;
+  }
+
+  .btns {
+    font-size: 14px;
+    padding: 10px 0px;
+  }
+
+  .discount-image {
+    height: 30px;
+  }
+
+  .load-discount-image {
+    height: 150px;
+  }
 }

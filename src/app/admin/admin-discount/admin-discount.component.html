@@ -31,7 +31,7 @@
                  aria-valuemax="100">
           </div>
         </div>
-        <img [src]="valueByControl('imagePath')" alt="" height="200px">
+        <img [src]="valueByControl('imagePath')" alt="" class="load-discount-image">
       </div>
       <button type="submit" [disabled]="discountForm.invalid" class="btns">
                {{ editStatus?'ЗБЕРЕГТИ':'ДOДАТИ АКЦІЮ' }}
@@ -61,7 +61,7 @@
             <span *ngIf="discount.description.length > 101">...</span>
           </td>
           <td>
-            <img [src]="discount.imagePath" alt="" height="50px">
+            <img [src]="discount.imagePath" alt="" class="discount-image">
           </td>
           <td>
             <button (click)="editDiscount(discount)" type="button" 

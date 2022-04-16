@@ -34,7 +34,6 @@
 
 // -----btn----
 .btn {
-  // width: 100%;
   color: $main;
   transition: 0.35s;
   font-family: $main_font_Bold;
@@ -65,5 +64,58 @@ table {
 
   img {
     width: 200px;
+  }
+}
+
+.product-img {
+  height: 50px;
+}
+
+@media screen and (max-width:770px) {
+  .table>:not(caption)>*>* {
+    padding: 0px 2px;
+    font-size: 10px;
+  }
+
+  .btn {
+    padding: 2px;
+    font-size: 100%;
+  }
+
+  .discount-image {
+    height: 30px;
+  }
+
+  .load-discount-image {
+    height: 150px;
+  }
+
+  .product-img {
+    height: 20px;
+    margin-top: 5px;
+  }
+
+  form {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width:380px) {
+  .btn {
+    padding: 0.5rem 0 0 0;
+    font-size: 8px;
+  }
+
+  .product-img {
+    margin-top: 10px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .btns {
+    font-size: 14px;
+    padding: 10px 0px;
   }
 }
