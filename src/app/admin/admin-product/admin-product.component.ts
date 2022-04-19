@@ -21,7 +21,7 @@ export class AdminProductComponent implements OnInit {
   public editStatus = false;
   public uploadPercent =0;
   public isUploaded = false;
-  private currentCategoryId = 0;
+  // private currentCategoryId = 0;
   private currentProductId = 0;
   public isOpen = false;
 
@@ -90,12 +90,15 @@ export class AdminProductComponent implements OnInit {
 
   upload(event: any): void {
     const file = event.target.files[0];
+    this.uploadPercent = this.imageService.uploadPercent;
     this.imageService.uploadFile('images', file.name, file)
       .then(data => {
         this.productForm.patchValue({
           imagePath: data
         });
-        this.isUploaded = true;
+        if (this.uploadPercent === 100){
+          this.isUploaded = true;
+      }
       })
       .catch(err => {
         console.log(err);

@@ -14,7 +14,7 @@ import {
   providedIn: 'root'
 })
 export class ImageService {
-
+  //return % of file uploading
   public uploadPercent = 0;
 
 

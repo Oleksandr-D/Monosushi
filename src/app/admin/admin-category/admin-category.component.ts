@@ -15,7 +15,7 @@ export class AdminCategoryComponent implements OnInit {
   public adminCategories: Array<ICategoryResponse> = [];
   public categoryForm!: FormGroup;
   public editStatus = false;
-  public uploadPercent!: number;
+  public uploadPercent = 0;
   public isUploaded = false;
   private currentCategoryId = 0;
 
@@ -89,12 +89,16 @@ export class AdminCategoryComponent implements OnInit {
 
   upload(event: any): void {
     const file = event.target.files[0];
+    this.uploadPercent = this.imageService.uploadPercent;
     this.imageService.uploadFile('images', file.name, file)
       .then(data => {
         this.categoryForm.patchValue({
           imagePath: data
         });
-        this.isUploaded = true;
+        if (this.uploadPercent === 100){
+            this.isUploaded = true;
+        }
+        
       })
       .catch(err => {
         console.log(err);

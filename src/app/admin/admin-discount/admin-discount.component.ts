@@ -75,9 +75,9 @@ export class AdminDiscountComponent implements OnInit {
     }
     this.editStatus = false;
     this.discountForm.reset();
-    // this.isUploaded = false;
     this.uploadPercent = 0;
-    this.discountForm.reset;
+     // this.isUploaded = false;
+    // this.discountForm.reset;
     window.scroll({
       top:0,
       behavior:'smooth'
@@ -115,6 +115,7 @@ export class AdminDiscountComponent implements OnInit {
     const file = event.target.files[0];
     this.imageService.uploadFile('images', file.name, file)
       .then(data => {
+        this.uploadPercent = this.imageService.uploadPercent;
         this.discountForm.patchValue({
           imagePath: data
         });

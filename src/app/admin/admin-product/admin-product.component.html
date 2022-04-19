@@ -51,10 +51,12 @@
               <label for="formFile" class="form-label">Завантажити зображення</label>
               <input class="form-control" type="file" id="formFile"
                      (change)="upload($event)" required>
-            <!-- <div class="progress mb-3">
-              <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
-                aria-valuemin="0" aria-valuemax="100" id="formFile"></div>
-            </div> -->
+            <div class="progress mt-3">
+              <div class="progress-bar progress-bar-striped" role="progressbar"
+                   [style.width.%]="uploadPercent"
+                   aria-valuemin="0" aria-valuemax="100" id="formFile">
+              </div>
+            </div>
           </ng-container>
          </div>
         </div>
