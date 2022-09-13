@@ -1,0 +1,19 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-8 col-xl-4">
+    <form [formGroup]="authForm" class="was-validated" (ngSubmit)="login()">
+      <div class="mb-3">
+        <label for="name" class="form-label is-invalid">Email</label>
+        <input formControlName="email" name="name" type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="path" class="form-label is-invalid">Password</label>
+        <input formControlName="password" name="path" type="password" class="form-control" id="path" required>
+      </div>
+
+
+      <button [disabled]="authForm.invalid" type="submit" class="btns w-100">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,6 +1,5 @@
 {
-  "discounts": [
-    {
+  "discounts": [{
       "name": "Рол тижня",
       "title": "Щотижня діє знижка 50% на один з ролів у нашому меню.",
       "description": "“Рол тижня” ви можете знайти на головній сторінці нашого сайту.\nЗнижка діє при мінімальній сумі замовлення 200 грн.\nЦя акція не поєднується з іншими акціями.",
@@ -22,8 +21,7 @@
       "id": 3
     }
   ],
-  "categories": [
-    {
+  "categories": [{
       "name": "Акції",
       "path": "акції",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2Fnav-img-gift.svg?alt=media&token=2c0701cd-494b-401b-af62-d9682a6b5cf6",
@@ -54,8 +52,7 @@
       "id": 11
     }
   ],
-  "products": [
-    {
+  "products": [{
       "name": "Філадельфія з лососем",
       "category": {
         "name": "Роли",
@@ -84,7 +81,7 @@
       "weight": "270",
       "price": 224,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2F7.-filadelfiya-grin-z-krevetkoyu.jpg.pagespeed.ce.1HZXmXbE4G.jpg?alt=media&token=11ff7cf4-f165-4d60-8605-64ecf96bbe89",
-      "count": null,
+      "count": 1,
       "id": 2
     },
     {
@@ -231,5 +228,22 @@
       "count": 1,
       "id": 11
     }
+  ],
+  "auth": [{
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "qwerty123",
+      "fullName": "Petro Petriv",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "qwerty123",
+      "fullName": "Pavlo Pavliv",
+      "role": "USER"
+    }
   ]
+
+
 }

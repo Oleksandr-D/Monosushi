@@ -30,6 +30,7 @@ import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AdminCategoryComponent,
     AdminProductComponent,
     AdminDiscountComponent,
-    AdminOrderComponent
+    AdminOrderComponent,
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,
