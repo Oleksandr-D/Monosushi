@@ -2,14 +2,24 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {
+  ActivatedRoute
+} from '@angular/router';
+import {
+  ROLE
+} from 'src/app/shared/constants/role.constants';
 import {
   IProductResponse
 } from 'src/app/shared/interfaces/products/products.interface';
 import {
+  AccountService
+} from 'src/app/shared/services/account/account.service';
+import {
   OrderService
 } from 'src/app/shared/services/order/order.service';
-import { ProductService } from 'src/app/shared/services/product/product.service';
+import {
+  ProductService
+} from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-header',
@@ -23,9 +33,15 @@ export class HeaderComponent implements OnInit {
   public count = 0;
   public isOpen = false;
   public isShow = false;
- 
+  public isLogin = true;
+  public loginUrl = '';
+  public loginPage = '';
+
+
+
   constructor(
     private orderService: OrderService,
+    private accountService: AccountService
     // private activatedRoute: ActivatedRoute,
     // private productService: ProductService,
   ) {}
@@ -33,9 +49,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+    this.checkUserLogin();
+    this.checkUpdatesUserLogin()
   }
 
-  togle(){
+  togle() {
     this.isShow = !this.isShow;
   }
 
@@ -63,12 +81,13 @@ export class HeaderComponent implements OnInit {
   openModal(): void {
     this.isOpen = !this.isOpen;
   }
-  
+
   closeModal(value: boolean): void {
-    if (value){
+    if (value) {
       this.isOpen = false;
+    } else {
+      this.isOpen = !this.isOpen;
     }
-    else{this.isOpen = !this.isOpen; }
   }
 
   productCount(product: IProductResponse, value: boolean): void {
@@ -80,7 +99,7 @@ export class HeaderComponent implements OnInit {
     this.getTotalPrice();
   }
 
-   //by form add products? 
+  //by form add products? 
 
 
   //check if there is something in the basket add to local storage
@@ -98,11 +117,36 @@ export class HeaderComponent implements OnInit {
       basket.push(product);
     }
     localStorage.setItem('basket', JSON.stringify(basket));
-     product.count = 1;
-     this.orderService.changeBasket.next(true);
-     this.openModal();
+    product.count = 1;
+    this.orderService.changeBasket.next(true);
+    this.openModal();
   }
 
+  //show user ROLE in header
+  checkUserLogin(): void {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    if (currentUser && currentUser.role === ROLE.ADMIN) {
+      this.isLogin = true;
+      this.loginUrl = 'admin';
+      this.loginPage = 'Admin';
+
+    } else if (currentUser && currentUser.role === ROLE.USER) {
+      this.isLogin = true;
+      this.loginUrl = 'user-profile';
+      this.loginPage = 'User';
+    } else {
+      this.isLogin = false;
+      this.loginUrl = '';
+      this.loginPage = '';
+    }
+  }
+
+  //check login ROLE changes 
+  checkUpdatesUserLogin(): void {
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkUserLogin();
+    })
+  }
 
 
 }

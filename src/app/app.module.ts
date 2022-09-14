@@ -31,6 +31,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AuthorizationComponent } from './pages/authorization/authorization.comp
     AdminProductComponent,
     AdminDiscountComponent,
     AdminOrderComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

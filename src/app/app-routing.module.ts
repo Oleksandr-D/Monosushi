@@ -20,6 +20,7 @@ import { ProductInfoResolver } from './shared/services/product/product-info.reso
 import { DiscountInfoResolver } from './shared/services/discount/discount-info.resolver';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'offerta', component: OffertaComponent },
   { path: 'checkout', component: CheckoutComponent },
+  {path: 'user-profile', component: UserProfileComponent, canActivate:[AuthGuard]},
   { path:'auth',component:AuthorizationComponent},
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], children: [
     { path: 'category', component: AdminCategoryComponent },

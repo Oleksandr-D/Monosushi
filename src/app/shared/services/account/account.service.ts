@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ILogin } from '../../interfaces/account/account.interface';
 
@@ -10,6 +10,7 @@ import { ILogin } from '../../interfaces/account/account.interface';
 export class AccountService {
   private url=environment.BACKEND_URL;
   private api ={auth:`${this.url}/auth`};
+  public isUserLogin$ = new Subject<boolean>();
 
   constructor(private http:HttpClient) { }
 

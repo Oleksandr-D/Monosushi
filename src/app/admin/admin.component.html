@@ -23,7 +23,8 @@
                      Замовлення
            </button>
            <div class="spacer-200"></div>
-           <button class="btns" [routerLink]="[ '/' ]">
+           <button class="btns" (click)="logOut()"
+                   type="button">
                  ВИХІД
            </button>
         </div>
