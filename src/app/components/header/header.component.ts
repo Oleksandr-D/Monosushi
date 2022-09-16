@@ -37,8 +37,6 @@ export class HeaderComponent implements OnInit {
   public loginUrl = '';
   public loginPage = '';
 
-
-
   constructor(
     private orderService: OrderService,
     private accountService: AccountService
@@ -62,7 +60,6 @@ export class HeaderComponent implements OnInit {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
     }
     this.getTotalPrice();
-
   }
 
   getTotalPrice(): void {
@@ -100,7 +97,6 @@ export class HeaderComponent implements OnInit {
   }
 
   //by form add products? 
-
 
   //check if there is something in the basket add to local storage
   addToBasket(product: IProductResponse): void {
@@ -147,6 +143,4 @@ export class HeaderComponent implements OnInit {
       this.checkUserLogin();
     })
   }
-
-
 }

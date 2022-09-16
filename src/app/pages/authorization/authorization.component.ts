@@ -59,8 +59,4 @@ export class AuthorizationComponent implements OnInit {
       console.log(e);
     })
   }
-
-
-
-
 }

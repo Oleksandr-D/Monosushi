@@ -1,4 +1,4 @@
-<div class="container">
+<section class="container">
   <div class="row justify-content-center">
     <div class="col-xl-6 col-lg-10 col-12">
       <div class="spacer-60"></div>
@@ -31,11 +31,80 @@
             </div>
           </div>
         </div>
+        <div class="total-price">
+          До оплати
+          <b>{{total}}</b>
+        </div>
+        <div class="form-group">
+          <div class="row form-group-row">
+            <div class="col-md-6">
+              <div class="input-button">
+                <input type="text" class="input m-0" placeholder="Введіть промокод">
+                <button type="button" class="btns" id="apply-coupon">
+                  Застосувати
+                </button>
+              </div>
+              <!-- <div class="apply_coupon_error"></div>
+                                                      <div class="apply_coupon_success is_empty">
+                      Ваш промокод: <span class="name_coupon"></span><span class="remove_coupon"></span>
+                  </div> -->
+            </div>
+            <!-- <div class="col-sm-10 col-md-6 col-lg-10 col-xl-8">
+                              <div class="input-button">
+                                  <input type="text" class="input" placeholder="Бонуси">
+                                  <button type="button" class="btn btn-primary" id="apply-bonus">Застосувати</button>
+                              </div>
+                          </div> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-title title">
+            <i class="number-title"><b>1</b></i>
+            <h5>
+              Оберіть кількість приборів
+            </h5>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <select tabindex="-1" data-things-count="1" data-things-price="15" data-things-free="5">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6 +15 грн </option>
+                <option value="7">7 +30 грн </option>
+                <option value="8">8 +45 грн </option>
+                <option value="9">9 +60 грн </option>
+                <option value="10">10 +75 грн </option>
+                <option value="11">11 +90 грн </option>
+                <option value="12">12 +105 грн </option>
+                <option value="13">13 +120 грн </option>
+                <option value="14">14 +135 грн </option>
+                <option value="15">15 +150 грн </option>
+                <option value="16">16 +165 грн </option>
+                <option value="17">17 +180 грн </option>
+                <option value="18">18 +195 грн </option>
+                <option value="19">19 +210 грн </option>
+                <option value="20">20 +225 грн </option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <select tabindex="-1" data-things-study-count="0" data-placeholder="Навчальні тримачі">
+                <option selected="" disabled="" value="Навчальні тримачі">Навчальні тримачі</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-        
+
+
+
       </form>
-      <button class="btns" (click)="clear()">Clear localStorage</button>
+      <button class="btns w-50" (click)="clear()">Clear localStorage</button>
       <div class="spacer-120"></div>
     </div>
   </div>
-</div>
+</section>
