@@ -239,13 +239,13 @@ select {
   border: 2px solid rgb(233, 233, 233);
 }
 
-.total-price{
+.total-price {
   text-align: right;
   padding: 30px;
 }
 
-.form-group{
- margin-bottom: 50px; 
+.form-group {
+  margin-bottom: 50px;
 }
 
 .input {
@@ -258,17 +258,24 @@ select {
   transition: 0.35s;
   text-overflow: ellipsis;
 }
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 1px solid $main;
+}
+
 .input-button .btns {
   padding: 15px 10px 11px;
   width: 160px;
   border-radius: 0 10px 10px 0;
 }
 
-.input-button{
+.input-button {
   display: flex;
 }
 
- .input-button .input {
+.input-button .input {
   width: 100%;
   border-radius: 10px 0 0 10px;
 }
@@ -276,9 +283,10 @@ select {
 .form-group .form-title {
   display: flex;
   margin-bottom: 20px;
-  color:$text_main;
+  color: $text_main;
   font-weight: bold;
-  h5{
+
+  h5 {
     font-size: 20px;
     line-height: 28px;
     vertical-align: middle;
@@ -297,14 +305,15 @@ select {
   width: 28px;
   height: 28px;
   line-height: 28px;
-  b{
+
+  b {
     font-size: 16px;
     line-height: 16px;
     color: $text_main;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -316,4 +325,69 @@ select {
   border: 1px solid #dcdcdc;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.checkbox-entry-wrap {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.checkbox-entry {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  min-width: 30px;
+  min-height: 17px;
+
+  input {
+    display: none;
+  }
+
+  span {
+    position: relative;
+    font-size: 16px;
+    line-height: 18px;
+    padding-left: 30px;
+    display: block;
+    color: #5a5a5a;
+    transition: 0.35s;
+  }
+
+  span:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    border: 1px solid #dcdcdc;
+    transition: 0.35s;
+  }
+
+  span:after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: $main;
+    z-index: 1;
+    transform: scale(0);
+    backface-visibility: hidden;
+    transition: 0.35s;
+  }
+}
+
+.checkbox-entry input:checked+span:after {
+  transform: scale(1);
+}
+
+hr {
+  margin: 20px 0;
+  height: 3px;
+  background-color: $main;
 }
