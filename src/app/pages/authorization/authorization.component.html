@@ -1,7 +1,7 @@
 <div class="spacer"></div>
 <div class="row justify-content-center">
   <div class="col-12 col-lg-8 col-xl-4">
-    <form [formGroup]="authForm" class="was-validated" (ngSubmit)="login()">
+    <form [formGroup]="authForm" class="was-validated" (ngSubmit)="loginUser()">
       <div class="mb-3">
         <label for="name" class="form-label is-invalid">Email</label>
         <input formControlName="email" name="name" type="email" class="form-control" id="name" required>

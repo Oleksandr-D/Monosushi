@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import {
   FormBuilder,
   FormGroup,
@@ -29,7 +30,8 @@ export class AuthorizationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private auth:Auth
   ) {}
 
   ngOnInit(): void {
@@ -43,20 +45,32 @@ export class AuthorizationComponent implements OnInit {
     })
   }
 
-  login(): void {
-    this.accountService.login(this.authForm.value).subscribe(data => {
-      if (data && data.length > 0) {
-        const user = data[0];
-        localStorage.setItem('currentUser', JSON.stringify(user))
-        this.accountService.isUserLogin$.next(true);
-        if (user && user.role === ROLE.USER) {
-          this.router.navigate(['/user-profile']);
-        } else if (user && user.role === ROLE.ADMIN) {
-          this.router.navigate(['/admin'])
-        }
-      }
-    }, (e) => {
-      console.log(e);
+  loginUser(): void {
+    // this.accountService.login(this.authForm.value).subscribe(data => {
+    //   if (data && data.length > 0) {
+    //     const user = data[0];
+    //     localStorage.setItem('currentUser', JSON.stringify(user))
+    //     this.accountService.isUserLogin$.next(true);
+    //     if (user && user.role === ROLE.USER) {
+    //       this.router.navigate(['/user-profile']);
+    //     } else if (user && user.role === ROLE.ADMIN) {
+    //       this.router.navigate(['/admin'])
+    //     }
+    //   }
+    // }, (e) => {
+    //   console.log(e);
+    // })
+    const {email, password} = this.authForm.value;
+    this.login(email, password).then(() => {
+      console.log('LOgin Done');
+    }).catch(e => {
+      console.log ('login error', e);
     })
   }
+
+   async login(email:string, password:string):Promise <void>{
+    const credential = await signInWithEmailAndPassword(this.auth, email , password);
+   }
+
+
 }
