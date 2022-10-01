@@ -3,10 +3,11 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { setDoc } from 'firebase/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ROLE } from 'src/app/shared/constants/role.constants';
@@ -21,6 +22,7 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 export class AuthorizationComponent implements OnInit, OnDestroy {
   public authForm!: FormGroup;
   public loginSubscription!:Subscription;
+  public isLogin = false;
 
   constructor(
     private fb: FormBuilder,
@@ -64,27 +66,59 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
     this.login(email, password).then(() => {
       this.toastr.success('Користувач успішно увішов');
     }).catch(e => {
+      console.log('error', e)
      this.toastr.error(e.message);
+     
     })
   }
 
-   async login(email:string, password:string):Promise <void>{
+  async login(email:string, password:string):Promise <void>{
     const credential = await signInWithEmailAndPassword(this.auth, email , password);
     this.loginSubscription = docData(doc(this.afs, 'Users', credential.user.uid)).subscribe(user =>{
       console.log('user', user)
       const currentUser = {...user, uid:credential.user.uid};
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user.role === ROLE.USER){
-        this.router.navigate(['/userprofile'])
+        this.router.navigate(['/user-profile'])
       }else if (user && user.role === ROLE.ADMIN){
         this.router.navigate(['/admin']);
       }
-      this.accountService.isUserLogin$.next(true);
-   },(e)=>{
+        this.accountService.isUserLogin$.next(true);
+    },(e)=>{
        console.log('error', e)
       })
 
-   }
+  }
+
+  async emailSignUp(email:string, password:string):Promise<any>{
+    const credential = await createUserWithEmailAndPassword(this.auth, email, password);
+    const user = {
+      email:credential.user.email,
+      firstName: '',
+      lastName:'',
+      phoneNumber:'',
+      address:'',
+      orders:[],
+      role:'USER'
+    }
+    setDoc(doc(this.afs, 'users', credential.user.uid), user);
+  }
+
+
+  registerUser():void{
+    const{ email, password } = this.authForm.value;
+    this.emailSignUp(email,password).then(() => {
+      this.toastr.success('Користувача успішно створено');
+      this.isLogin = !this.isLogin;
+      this.authForm.reset();
+    }).catch (e => {
+      this.toastr.error(e.message);
+    })
+  }
+
+  changeLogin(){
+    this.isLogin = !this.isLogin;
+  }
 
 
 }

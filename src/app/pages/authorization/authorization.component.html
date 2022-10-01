@@ -1,7 +1,7 @@
 <div class="spacer"></div>
 <div class="row justify-content-center">
   <div class="col-12 col-lg-8 col-xl-4">
-    <form [formGroup]="authForm" class="was-validated" (ngSubmit)="loginUser()">
+    <form [formGroup]="authForm" class="was-validated" >
       <div class="mb-3">
         <label for="name" class="form-label is-invalid">Email</label>
         <input formControlName="email" name="name" type="email" class="form-control" id="name" required>
@@ -10,9 +10,18 @@
         <label for="path" class="form-label is-invalid">Password</label>
         <input formControlName="password" name="path" type="password" class="form-control" id="path" required>
       </div>
-      <button [disabled]="authForm.invalid" type="submit" class="btns w-100">
-        Login
+      <button *ngIf="!isLogin" [disabled]="authForm.invalid" type="submit" class="btns w-100"
+              (click)="loginUser()">
+              Увійти
       </button>
+      <button *ngIf="isLogin" [disabled]="authForm.invalid" type="submit" class="btns w-100"
+              (click)="registerUser()">
+               Зареєструватися
+      </button>
+      <div class="tip-wpap">
+        <a (click)="changeLogin()">{{ !isLogin ? 'Ще не зареєстровані ?' : 'Увійти в свій облікосий запис' }}</a>
+      </div>
+
     </form>
   </div>
 </div>
