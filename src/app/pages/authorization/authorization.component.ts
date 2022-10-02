@@ -90,6 +90,7 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
 
   }
 
+//create user
   async emailSignUp(email:string, password:string):Promise<any>{
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = {
@@ -101,9 +102,10 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
       orders:[],
       role:'USER'
     }
-    setDoc(doc(this.afs, 'users', credential.user.uid), user);
+    setDoc(doc(this.afs, 'Users', credential.user.uid), user);
+    console.log("mail sign up", credential);
+    
   }
-
 
   registerUser():void{
     const{ email, password } = this.authForm.value;
