@@ -37,6 +37,9 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +62,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     AdminDiscountComponent,
     AdminOrderComponent,
     AuthorizationComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     provideStorage(() => getStorage()),
     ToastrModule.forRoot(),
     provideFirestore (() => getFirestore()),
-    provideAuth(()=> getAuth())
+    provideAuth(()=> getAuth()),
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

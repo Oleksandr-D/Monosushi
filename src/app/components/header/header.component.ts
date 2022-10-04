@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import {
   ActivatedRoute
 } from '@angular/router';
@@ -20,6 +21,7 @@ import {
 import {
   ProductService
 } from 'src/app/shared/services/product/product.service';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -39,7 +41,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    public dialog: MatDialog
     // private activatedRoute: ActivatedRoute,
     // private productService: ProductService,
   ) {}
@@ -143,4 +146,16 @@ export class HeaderComponent implements OnInit {
       this.checkUserLogin();
     })
   }
+
+  openLoginDialog(){
+     this.dialog.open(AuthDialogComponent,{
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
+     }).afterClosed().subscribe( result => {
+      console.log(result);
+      
+     })
+  }
+
 }
