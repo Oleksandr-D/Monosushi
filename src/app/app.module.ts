@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +31,7 @@ import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.co
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -37,8 +40,9 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
-import { MatDialogModule } from '@angular/material/dialog';
-import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+
+
+
 
 
 @NgModule({
@@ -78,7 +82,7 @@ import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.compon
     ToastrModule.forRoot(),
     provideFirestore (() => getFirestore()),
     provideAuth(()=> getAuth()),
-    MatDialogModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
