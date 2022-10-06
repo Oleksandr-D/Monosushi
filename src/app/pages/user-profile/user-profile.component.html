@@ -26,15 +26,17 @@
 
           <div class="row">
             <div class="col-md-6">
-              <input type="text" class="input" name="first_name" placeholder="*Ваше ім'я" value="" required="">
+              <input type="text" class="input" name="first_name" placeholder="*Ваше ім'я"
+               value="{{user.firstName}}" required="">
             </div>
             <div class="col-md-6">
-              <input type="text" class="input" name="last_name" placeholder="*Ваше прізвище" value="" required="">
+              <input type="text" class="input" name="last_name" placeholder="*Ваше прізвище"
+               value="{{user.lastName}}" required="">
             </div>
           </div>
           <input class="input inputmask" name="phone" type="text" inputmode="numeric" placeholder="*Ваш номер телефону"
-            value="" required="">
-          <input type="email" name="email" class="input" placeholder="*Ваш емейл" value="" required="">
+               value="{{user.phoneNumber}}" required="">
+          <input type="email" name="email" class="input" placeholder="*Ваш емейл" value="{{user.email}}" required="">
         </div>
 
         <!-- <div class="form-group">

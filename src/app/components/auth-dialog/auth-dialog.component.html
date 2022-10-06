@@ -23,11 +23,11 @@
      <input formControlName="password" name="path" type="password" class="form-control" id="path" required>
    </div> -->
   <button mat-raised-button color="primary" *ngIf="!isLogin" [disabled]="authForm.invalid" type="submit"
-    class="btns w-100" (click)="loginUser()">
+    class="btns w-100" (click)="loginUser()" mat-dialog-close>
     Увійти в кабінет
   </button>
   <button mat-raised-button color="primary" *ngIf="isLogin" [disabled]="authForm.invalid" type="submit"
-    class="btns w-100" (click)="registerUser()">
+    class="btns w-100" (click)="registerUser()" mat-dialog-close>
     Зареєструватись
   </button>
   <div class="tip-wpap">

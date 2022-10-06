@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
     this.loadBasket();
     this.updateBasket();
     this.checkUserLogin();
-    this.checkUpdatesUserLogin()
+    this.checkUpdatesUserLogin()  
   }
 
   togle() {
@@ -130,9 +130,14 @@ export class HeaderComponent implements OnInit {
       this.loginPage = 'Admin';
 
     } else if (currentUser && currentUser.role === ROLE.USER) {
+      const user = JSON.parse(localStorage.getItem('currentUser') as string);
       this.isLogin = true;
       this.loginUrl = 'user-profile';
-      this.loginPage = 'User';
+         if(user.firstName === ''){
+          this.loginPage = 'User';
+        }if(user.firstName){
+          this.loginPage = user.firstName;}
+      
     } else {
       this.isLogin = false;
       this.loginUrl = '';
@@ -147,7 +152,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  openLoginDialog(){
+  openLoginDialog():void{
      this.dialog.open(AuthDialogComponent,{
       backdropClass: 'dialog-back',
       panelClass: 'auth-dialog',
