@@ -158,7 +158,7 @@ export class HeaderComponent implements OnInit {
       panelClass: 'auth-dialog',
       autoFocus: false
      }).afterClosed().subscribe( result => {
-      console.log(result);
+      // console.log(result);
       
      })
   }

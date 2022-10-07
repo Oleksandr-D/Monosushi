@@ -17,12 +17,14 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 })
 export class AuthDialogComponent implements OnInit {
   public authForm!: FormGroup; 
+  public registerForm!: FormGroup;
   public isLogin = false;
   public loginSubscription!:Subscription;
 
   constructor(
     private toastr :ToastrService,
     private fb: FormBuilder,
+    private fr: FormBuilder,
     private dialogRef:MatDialogRef<AuthDialogComponent>,
     private auth:Auth,
     private afs: Firestore,
@@ -32,10 +34,25 @@ export class AuthDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.initAuthForm();
+    this.initregisterForm();
+  }
+
+  closeDialog(){
+    this.dialogRef.close();
   }
 
   initAuthForm(): void {
     this.authForm = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]]
+    })
+  }
+
+  initregisterForm():void{
+    this.registerForm = this.fr.group({
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      phoneNumber: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]]
     })
@@ -52,7 +69,6 @@ export class AuthDialogComponent implements OnInit {
     }).catch(e => {
       console.log('error', e)
      this.toastr.error(e.message);
-     
     })
   }
 
@@ -76,30 +92,28 @@ export class AuthDialogComponent implements OnInit {
 
   //create user
   registerUser(){
-    const{ email, password } = this.authForm.value;
-    this.emailSignUp(email,password).then(() => {
+    const{ email, password, firstName, lastName, phoneNumber } = this.registerForm.value;
+    this.emailSignUp(email,password, firstName, lastName, phoneNumber).then(() => {
       this.toastr.success('Користувача успішно створено');
       this.isLogin = !this.isLogin;
-      this.authForm.reset();
+      this.registerForm.reset();
     }).catch (e => {
       this.toastr.error(e.message);
     })
   }
   
-  async emailSignUp(email:string, password:string):Promise<any>{
+  async emailSignUp(email:string, password:string, firstName:string, lastName:string, phoneNumber:number):Promise<any>{
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = {
       email:credential.user.email,
-      firstName: '',
-      lastName:'',
-      phoneNumber:'',
+      firstName: this.registerForm.value.firstName,
+      lastName:this.registerForm.value.lastName,
+      phoneNumber:this.registerForm.value.phoneNumber,
       address:'',
       orders:[],
       role:'USER'
     }
     setDoc(doc(this.afs, 'Users', credential.user.uid), user);
-    console.log("mail sign up", credential);
-    
   }
 
   changeLogin(){

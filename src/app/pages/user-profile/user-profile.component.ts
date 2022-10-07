@@ -15,21 +15,22 @@ export class UserProfileComponent implements OnInit {
     private router: Router,
     private accountService: AccountService
   ) {}
+    
 
   ngOnInit(): void {
-   
-    
     this.checkUpdatesUserLogin();
+    this.update();
   }
+
+  update():void{
+    this.user = JSON.parse(localStorage.getItem('currentUser') as string);
+   }
 
   checkUpdatesUserLogin(): void {
     this.accountService.isUserLogin$.subscribe(() => {
-      
+      this.update();
     })
-    this.user = JSON.parse(localStorage.getItem('currentUser') as string);
   }
-
-  ///update data?
 
   logOut(): void {
     this.router.navigate(['/']);
