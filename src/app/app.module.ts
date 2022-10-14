@@ -39,6 +39,7 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { OrdersHistoryComponent } from './pages/orders-history/orders-history.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     AdminOrderComponent,
     AuthorizationComponent,
     UserProfileComponent,
-    AuthDialogComponent
+    AuthDialogComponent,
+    OrdersHistoryComponent
   ],
   imports: [
     BrowserModule,

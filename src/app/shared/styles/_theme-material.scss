@@ -52,16 +52,17 @@ $custom-theme-warn: mat.define-palette($warn-default-value);
 $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
 @include mat.all-component-themes($custom-theme);
 
-.dialog-back{
+.dialog-back {
   background-color: #000000ad;
 }
 
-.auth-dialog{
+.auth-dialog {
   min-width: 40%;
   min-height: 400px;
 }
+
 @media screen and (max-width:770px) {
-  .auth-dialog{
+  .auth-dialog {
     width: 100%;
   }
 

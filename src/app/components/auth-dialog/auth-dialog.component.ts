@@ -120,8 +120,4 @@ export class AuthDialogComponent implements OnInit {
     this.isLogin = !this.isLogin;
   }
 
-
- 
-
-
 }
