@@ -32,6 +32,8 @@ import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { PersonalDataComponent } from './pages/user-profile/personal-data/personal-data.component';
+import { OrderHistoryComponent } from './pages/user-profile/order-history/order-history.component';
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -39,7 +41,10 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { OrdersHistoryComponent } from './pages/orders-history/orders-history.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -64,7 +69,8 @@ import { OrdersHistoryComponent } from './pages/orders-history/orders-history.co
     AuthorizationComponent,
     UserProfileComponent,
     AuthDialogComponent,
-    OrdersHistoryComponent
+    PersonalDataComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,

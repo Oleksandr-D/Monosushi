@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrdersHistoryComponent } from './orders-history.component';
+import { PersonalDataComponent } from './personal-data.component';
 
-describe('OrdersHistoryComponent', () => {
-  let component: OrdersHistoryComponent;
-  let fixture: ComponentFixture<OrdersHistoryComponent>;
+describe('PersonalDataComponent', () => {
+  let component: PersonalDataComponent;
+  let fixture: ComponentFixture<PersonalDataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrdersHistoryComponent ]
+      declarations: [ PersonalDataComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrdersHistoryComponent);
+    fixture = TestBed.createComponent(PersonalDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

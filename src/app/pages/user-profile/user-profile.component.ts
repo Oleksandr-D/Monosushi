@@ -9,28 +9,12 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 })
 export class UserProfileComponent implements OnInit {
 
-  public user!:any
-
   constructor(
     private router: Router,
     private accountService: AccountService
   ) {}
     
-
-  ngOnInit(): void {
-    this.checkUpdatesUserLogin();
-    this.update();
-  }
-
-  update():void{
-    this.user = JSON.parse(localStorage.getItem('currentUser') as string);
-   }
-
-  checkUpdatesUserLogin(): void {
-    this.accountService.isUserLogin$.subscribe(() => {
-      this.update();
-    })
-  }
+  ngOnInit(): void {}
 
   logOut(): void {
     this.router.navigate(['/']);
