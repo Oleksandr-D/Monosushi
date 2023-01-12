@@ -24,12 +24,7 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { AboutComponent } from './pages/about/about.component';
 import { OffertaComponent } from './pages/offerta/offerta.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { AdminComponent } from './admin/admin.component';
-import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
-import { AdminProductComponent } from './admin/admin-product/admin-product.component';
-import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
-import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
-import { AuthorizationComponent } from './pages/authorization/authorization.component';
+
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { PersonalDataComponent } from './pages/user-profile/personal-data/personal-data.component';
@@ -41,9 +36,6 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-
-
-
 
 
 @NgModule({
@@ -61,12 +53,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     AboutComponent,
     OffertaComponent,
     CheckoutComponent,
-    AdminComponent,
-    AdminCategoryComponent,
-    AdminProductComponent,
-    AdminDiscountComponent,
-    AdminOrderComponent,
-    AuthorizationComponent,
     UserProfileComponent,
     AuthDialogComponent,
     PersonalDataComponent,
