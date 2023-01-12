@@ -13,10 +13,6 @@ import { OffertaComponent } from './pages/offerta/offerta.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
 import { DiscountInfoResolver } from './shared/services/discount/discount-info.resolver';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { PersonalDataComponent } from './pages/user-profile/personal-data/personal-data.component';
-import { OrderHistoryComponent } from './pages/user-profile/order-history/order-history.component';
-
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 
 const routes: Routes = [
@@ -38,23 +34,20 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'offerta', component: OffertaComponent },
   { path: 'checkout', component: CheckoutComponent },
-
   {
     path: 'auth',
     loadChildren: () =>
       import('./pages/authorization/authorization.module').then(
-        (m) => m.AuthorizationModule),
+        (m) => m.AuthorizationModule
+      ),
   },
-
   {
     path: 'user-profile',
-    component: UserProfileComponent,
     canActivate: [AuthGuard],
-    children: [
-      { path: 'personal-data', component: PersonalDataComponent },
-      { path: 'order-history', component: OrderHistoryComponent },
-      { path: '', pathMatch: 'full', redirectTo: 'personal-data' },
-    ],
+    loadChildren: () =>
+      import('./pages/user-profile/user-profile.module').then(
+        (m) => m.UserProfileModule
+      ),
   },
   {
     path: 'admin',

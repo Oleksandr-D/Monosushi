@@ -4,9 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -24,8 +21,6 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { AboutComponent } from './pages/about/about.component';
 import { OffertaComponent } from './pages/offerta/offerta.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { PersonalDataComponent } from './pages/user-profile/personal-data/personal-data.component';
 import { OrderHistoryComponent } from './pages/user-profile/order-history/order-history.component';
@@ -53,7 +48,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     AboutComponent,
     OffertaComponent,
     CheckoutComponent,
-    UserProfileComponent,
     AuthDialogComponent,
     PersonalDataComponent,
     OrderHistoryComponent
@@ -61,9 +55,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
