@@ -17,7 +17,6 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { OffertaComponent } from './pages/offerta/offerta.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { PersonalDataComponent } from './pages/user-profile/personal-data/personal-data.component';
 import { OrderHistoryComponent } from './pages/user-profile/order-history/order-history.component';
@@ -41,7 +40,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     DeliveryComponent,
     PaymentComponent,
     OffertaComponent,
-    CheckoutComponent,
     AuthDialogComponent,
     PersonalDataComponent,
     OrderHistoryComponent

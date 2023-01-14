@@ -7,7 +7,6 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { OffertaComponent } from './pages/offerta/offerta.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 
@@ -28,7 +27,9 @@ const routes: Routes = [
     loadChildren:() => import('./pages/about/about.module').then(m => m.AboutModule),
   },
   { path: 'offerta', component: OffertaComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout',
+    loadChildren: () => import('./pages/checkout/checkout.module') .then(m => m.CheckoutModule),
+  },
   {
     path: 'auth',
     loadChildren: () =>
