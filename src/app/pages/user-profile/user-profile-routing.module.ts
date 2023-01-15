@@ -6,7 +6,9 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 
 const routes: Routes = [
   {
-    path: '', component: UserProfileComponent, children: [
+    path: '',
+    component: UserProfileComponent,
+    children: [
       { path: 'personal-data', component: PersonalDataComponent },
       { path: 'order-history', component: OrderHistoryComponent },
       { path: '', pathMatch: 'full', redirectTo: 'personal-data' },

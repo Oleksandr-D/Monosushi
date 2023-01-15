@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { ProductComponent } from './pages/product/product.component';
-import { ProductInfoComponent } from './pages/product-info/product-info.component';
-import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 
 const routes: Routes = [
@@ -17,11 +14,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/discount/discount.module').then((m) => m.DiscountModule),
   },
-  { path: 'product/:category', component: ProductComponent },
   {
-    path: 'product/:category/:id',
-    component: ProductInfoComponent,
-    resolve: { productInfo: ProductInfoResolver },
+    path: 'product/:category',
+    loadChildren: () =>
+      import('./pages/product/product.module').then((m) => m.ProductModule),
   },
   {
     path: 'delivery',
