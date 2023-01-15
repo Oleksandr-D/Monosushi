@@ -3,7 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { ProductComponent } from './pages/product/product.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
-import { PaymentComponent } from './pages/payment/payment.component';
 import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 
@@ -29,7 +28,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/delivery/delivery.module').then((m) => m.DeliveryModule),
   },
-  { path: 'payment', component: PaymentComponent },
+  {
+    path: 'payment',
+    loadChildren: () =>
+      import('./pages/payment/payment.module').then((m) => m.PaymentModule),
+  },
   {
     path: 'about',
     loadChildren: () =>
