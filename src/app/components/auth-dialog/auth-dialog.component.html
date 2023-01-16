@@ -5,13 +5,13 @@
     </div>
     <h2>Вхід в кабінет</h2>
     <div class="form-group">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" color="primary">
         <mat-label>*Ваш email</mat-label>
         <input matInput formControlName="email" name="name" type="email">
       </mat-form-field>
     </div>
     <div class="form-group">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" color="primary">
         <mat-label>*Пароль</mat-label>
         <input matInput formControlName="password" name="path" type="password">
       </mat-form-field>
@@ -20,16 +20,15 @@
       class="btns w-100" (click)="loginUser()" mat-dialog-close>
       Увійти в кабінет
     </button>
-    <button mat-raised-button color="primary" *ngIf="isLogin" [disabled]="authForm.invalid" type="submit"
-      class="btns w-100" (click)="registerUser()" mat-dialog-close>
-      Зареєструватись
-    </button>
+<!--    <button mat-raised-button color="primary" *ngIf="isLogin" [disabled]="authForm.invalid" type="submit"-->
+<!--      class="btns w-100" (click)="registerUser()" mat-dialog-close>-->
+<!--      Зареєструватись-->
+<!--    </button>-->
     <div class="tip-wpap">
       <a (click)="changeLogin()">Зареєструватись</a>
     </div>
   </form>
 </ng-container>
-
 
 <ng-container *ngIf="isLogin">
   <form [formGroup]="registerForm" class="was-validated">
@@ -62,12 +61,17 @@
     <div class="row">
       <mat-form-field class="col-6" appearance="outline">
         <mat-label>Пароль</mat-label>
-        <input matInput formControlName="password" name="password" type="password">
+        <input (input)="checkConfirmedPassword()" matInput formControlName="password" name="password" type="password">
       </mat-form-field>
       <mat-form-field class="col-6" appearance="outline">
         <mat-label>Повторіть пароль</mat-label>
-        <input matInput formControlName="password" name="password" type="password">
+        <input (input)="checkConfirmedPassword()" matInput formControlName="confirmPassword"  type="password">
       </mat-form-field>
+    </div>
+    <div class="password-Confirmation-error">
+      <mat-error *ngIf="checkVisibilityError('confirmPassword', 'matchError')">
+        Паролі не співпадають!
+      </mat-error>
     </div>
     <button mat-raised-button color="primary" *ngIf="isLogin" [disabled]="registerForm.invalid" type="submit"
       class="btns w-100" (click)="registerUser()" mat-dialog-close>
