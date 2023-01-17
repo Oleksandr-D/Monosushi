@@ -1,10 +1,9 @@
-@import '../../shared/styles/variables';
-@import '../../shared/styles/fonts';
+@import "../../shared/styles/variables";
+@import "../../shared/styles/fonts";
 
 form {
   width: 100%;
   font-family: $main_font_Bold;
-
   h2 {
     text-align: center;
   }
@@ -13,6 +12,7 @@ form {
 .close {
   width: 100%;
   text-align: end;
+  margin-top: -23px;
 
   span {
     font-size: 24px;
@@ -26,6 +26,14 @@ form {
   mat-form-field {
     width: 100%;
   }
+}
+
+mat-form-field {
+  height: 70px;
+}
+
+.mat-dialog-container {
+  padding: 4px;
 }
 
 .btns {
@@ -75,7 +83,7 @@ form {
   color: rgb(0, 0, 0);
 }
 
-.password-Confirmation-error{
+.password-Confirmation-error {
   padding: 10px;
   text-align: center;
   font-size: 20px;

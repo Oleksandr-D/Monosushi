@@ -93,7 +93,7 @@
            aria-current="page">{{loginPage}}
           </a>
         </div>
-          <div class="nav-item" *ngIf="!isLogin">
+        <div class="nav-item" *ngIf="!isLogin">
           <a routerLinkActive="route-active" class="nav-link"
              aria-current="page" (click)="openLoginDialog()" >
             <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
@@ -202,14 +202,15 @@
             <span class="we-coll">МИ ЗАТЕЛЕФОНУЄМО</span>
           </button>
         </div>
-        
+
           <div class="nav-item" *ngIf="isLogin">
             <a [routerLink]="[ '/'+ loginUrl]" routerLinkActive="route-active" class="nav-link"
              aria-current="page">{{loginPage}}
             </a>
           </div>
           <div class="nav-item" *ngIf="!isLogin">
-            <a [routerLink]="[ '/auth' ]" routerLinkActive="route-active" class="nav-link" aria-current="page">
+            <a routerLinkActive="route-active" class="nav-link"
+               aria-current="page" (click)="openLoginDialog()" >
               <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
             </a>
           </div>

@@ -57,7 +57,7 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
 }
 
 .auth-dialog {
-  min-width: 40%;
+  min-width: 50%;
   min-height: 400px;
 }
 
@@ -65,5 +65,4 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
   .auth-dialog {
     width: 100%;
   }
-
 }

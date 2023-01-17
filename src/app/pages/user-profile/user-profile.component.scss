@@ -1,6 +1,5 @@
-@import '../../shared/styles/variables';
-@import '../../shared/styles/fonts';
-
+@import "../../shared/styles/variables";
+@import "../../shared/styles/fonts";
 
 // ---btns----
 .btns {
@@ -76,4 +75,16 @@ ul {
   width: 100%;
   height: 4px;
   background: $main;
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    margin: 5px 0px 100px;
+  }
+  .categories-list-item {
+    a {
+      padding: 10px 10px;
+      font-size: 16px;
+    }
+  }
 }

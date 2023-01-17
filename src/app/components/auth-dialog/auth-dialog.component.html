@@ -37,11 +37,11 @@
     </div>
     <h2>Зареєструватись</h2>
     <div class="row">
-      <mat-form-field class="col-6" appearance="outline">
+      <mat-form-field class="col-md-6" appearance="outline">
         <mat-label>Ваше ім'я</mat-label>
         <input matInput formControlName="firstName" name="name" type="text">
       </mat-form-field>
-      <mat-form-field class="col-6" appearance="outline">
+      <mat-form-field class="col-md-6" appearance="outline">
         <mat-label>Baше призвище</mat-label>
         <input matInput formControlName="lastName" name="last-name" type="text">
       </mat-form-field>
@@ -59,11 +59,11 @@
       </mat-form-field>
     </div>
     <div class="row">
-      <mat-form-field class="col-6" appearance="outline">
+      <mat-form-field class="col-md-6" appearance="outline">
         <mat-label>Пароль</mat-label>
         <input (input)="checkConfirmedPassword()" matInput formControlName="password" name="password" type="password">
       </mat-form-field>
-      <mat-form-field class="col-6" appearance="outline">
+      <mat-form-field class="col-md-6" appearance="outline">
         <mat-label>Повторіть пароль</mat-label>
         <input (input)="checkConfirmedPassword()" matInput formControlName="confirmPassword"  type="password">
       </mat-form-field>
@@ -78,7 +78,7 @@
       Зареєструватись
     </button>
     <div class="tip-wpap">
-      <a (click)="changeLogin()">Вже зареєстровані? Увійти</a>
+      <a (click)="changeLogin()">Вже зареєстровані?   Увійти</a>
     </div>
   </form>
 </ng-container>
