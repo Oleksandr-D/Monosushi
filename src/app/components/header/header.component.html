@@ -160,7 +160,7 @@
                       <div class="basket-products-price">
                         <b>{{products.price*products.count}}</b> грн
                       </div>
-                      <button type="button" class="remove-product">
+                      <button (click)="deleteFromBasket(products)" type="button" class="remove-product">
                         <div class="trash"></div>
                       </button>
                     </div>
@@ -320,7 +320,7 @@
                         <div class="basket-products-price">
                           <b>{{products.price*products.count}}</b> грн
                         </div>
-                        <button type="button" class="remove-product">
+                        <button (click)="deleteFromBasket(products)" type="button" class="remove-product">
                           <div class="trash"></div>
                         </button>
                       </div>

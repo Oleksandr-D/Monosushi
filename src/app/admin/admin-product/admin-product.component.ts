@@ -53,7 +53,7 @@ export class AdminProductComponent implements OnInit {
       this.adminProducts = data;
     })
   }
-  
+
   initProductForm(): void {
     this.productForm = this.fb.group({
       name: [null, Validators.required],
