@@ -1,0 +1,19 @@
+@import "../../../shared/styles/variables";
+@import "../../../shared/styles/fonts";
+
+.example-container {
+  height: 450px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-position{
+ width: 13%;
+}
+
+.mat-column-dateAndtime{
+  width: 15%;
+}
