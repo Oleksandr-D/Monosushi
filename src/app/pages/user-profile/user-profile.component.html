@@ -7,7 +7,8 @@
             <a>Особисті дані</a></li>
           <li class="categories-list-item" [routerLink]="[ '/user-profile/order-history' ]" >
             <a>Історія замовлень</a></li>
-          <li class="categories-list-item"><a>Зміна паролю</a></li>
+          <li class="categories-list-item" [routerLink]="[ '/user-profile/password-change' ]" >
+            <a>Зміна паролю</a></li>
         </ul>
       </div>
       <button class="btns" (click)="logOut()" type="button">
