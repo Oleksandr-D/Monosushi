@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { CallBackDialogComponent } from './components/call-back-dialog/call-back-dialog.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AuthDialogComponent
+    AuthDialogComponent,
+    CallBackDialogComponent
   ],
   imports: [
     BrowserModule,

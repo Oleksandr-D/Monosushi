@@ -1,0 +1,23 @@
+<section>
+  <div class="close">
+    <span (click)="closeDialog()">X</span>
+  </div>
+  <header>
+    <h1>Ми зателефонуємо</h1>
+    <h6>Залиште номер телефону і наші менеджери зв'яжуться з вами</h6>
+  </header>
+  <form>
+    <mat-form-field appearance="outline">
+      <mat-label>Ваше ім'я</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ваш номер телефону</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <button mat-raised-button color="primary"  [disabled]="" type="submit"
+            class="btns"  mat-dialog-close>
+            Надіслати
+    </button>
+  </form>
+</section>

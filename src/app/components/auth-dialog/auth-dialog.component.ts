@@ -164,6 +164,7 @@ export class AuthDialogComponent implements OnInit {
     return this.registerForm.controls['confirmPassword'];
   }
 
+  //show errors
   checkVisibilityError(control: string, name: string): boolean | null {
     return this.registerForm.controls[control].errors?.[name];
   }

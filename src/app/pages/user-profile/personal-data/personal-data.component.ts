@@ -30,11 +30,11 @@ export class PersonalDataComponent implements OnInit {
     })
   }
 
-  logOut(): void {
-    this.router.navigate(['/']);
-    localStorage.removeItem('currentUser');
-    this.accountService.isUserLogin$.next(true);
-  }
+  // logOut(): void {
+  //   this.router.navigate(['/']);
+  //   localStorage.removeItem('currentUser');
+  //   this.accountService.isUserLogin$.next(true);
+  // }
 
 
 }
