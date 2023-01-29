@@ -7,7 +7,7 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
-import {CallBackDialogComponent} from "../call-back-dialog/call-back-dialog.component";
+import { CallBackDialogComponent } from '../call-back-dialog/call-back-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -28,8 +28,8 @@ export class HeaderComponent implements OnInit {
     private orderService: OrderService,
     private accountService: AccountService,
     public dialog: MatDialog
-    // private activatedRoute: ActivatedRoute, // private productService: ProductService,
-  ) {}
+  ) // private activatedRoute: ActivatedRoute, // private productService: ProductService,
+  {}
 
   ngOnInit(): void {
     this.loadBasket();
@@ -167,70 +167,14 @@ export class HeaderComponent implements OnInit {
   }
 
   //modal window "we'll call you"
-  openCallBackDialog(){
-    this.dialog.open(CallBackDialogComponent,{
+  openCallBackDialog() {
+    this.dialog
+      .open(CallBackDialogComponent, {
         backdropClass: 'dialog-back',
         panelClass: 'auth-dialog',
         autoFocus: false,
-      }).afterClosed().subscribe((result) => {
-         console.log('==>', result);
-      });
+      })
+      .afterClosed()
+      .subscribe((result) => {});
+  }
 }
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
