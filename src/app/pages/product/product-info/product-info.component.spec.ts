@@ -4,7 +4,7 @@ import { ProductInfoComponent } from './product-info.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-xdescribe('ProductInfoComponent', () => {
+describe('ProductInfoComponent', () => {
   let component: ProductInfoComponent;
   let fixture: ComponentFixture<ProductInfoComponent>;
 
