@@ -56,4 +56,12 @@ describe('HeaderComponent', () => {
     expect(component.getTotalPrice).toHaveBeenCalled();
     expect(component.total).toBe(0);
   });
+
+  it('should be open', () => {
+    spyOn(component, 'openModal').and.callThrough();
+    component.isOpen = false;
+    component.openModal();
+    expect(component.openModal).toHaveBeenCalled();
+    expect(component.isOpen).toBe(true);
+  });
 });
