@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { ROLE } from 'src/app/shared/constants/role.constants';
 import { IProductResponse } from 'src/app/shared/interfaces/products/products.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
-import { ProductService } from 'src/app/shared/services/product/product.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { CallBackDialogComponent } from '../call-back-dialog/call-back-dialog.component';
 

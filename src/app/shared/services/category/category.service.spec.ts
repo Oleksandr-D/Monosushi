@@ -9,8 +9,7 @@ describe('CategoryService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [CategoryService],
+      imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(CategoryService);
     httpTestingController = TestBed.inject(HttpTestingController);
