@@ -40,8 +40,13 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
+    //for json server
+    // this.categoryService.getAll().subscribe(data => {
+    //   this.adminCategories = data;
+    //})
+    //for firebase
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
     })
   }
 
@@ -52,7 +57,11 @@ export class AdminCategoryComponent implements OnInit {
         this.toastr.success('Категорію успішно оновлено!');
       })
     } else {
-      this.categoryService.create(this.categoryForm.value).subscribe(() => {
+      //this for json server
+      // this.categoryService.create(this.categoryForm.value).subscribe(() => {
+      //   this.loadCategories();
+      //for firebase
+      this.categoryService.createFirebase(this.categoryForm.value).then(() => {
         this.loadCategories();
         this.toastr.success('Категорію успішно додано!');
       })
@@ -98,14 +107,14 @@ export class AdminCategoryComponent implements OnInit {
         if (this.uploadPercent === 100){
             this.isUploaded = true;
         }
-        
+
       })
       .catch(err => {
         console.log(err);
       })
   }
 
-  
+
 
   deleteImage(): void {
     this.imageService.deleteUploadFile(this.valueByControl('imagePath')).then(() => {
