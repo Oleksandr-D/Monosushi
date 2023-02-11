@@ -8,23 +8,22 @@ import { ImageService } from 'src/app/shared/services/image/image.service';
 @Component({
   selector: 'app-admin-category',
   templateUrl: './admin-category.component.html',
-  styleUrls: ['./admin-category.component.scss']
+  styleUrls: ['./admin-category.component.scss'],
 })
 export class AdminCategoryComponent implements OnInit {
-
   public adminCategories: Array<ICategoryResponse> = [];
   public categoryForm!: FormGroup;
   public editStatus = false;
   public uploadPercent = 0;
   public isUploaded = false;
-  private currentCategoryId = 0;
+  private currentCategoryId!: number | string;
 
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private toastr:ToastrService,
-    private imageService:ImageService,
-  ) { }
+    private toastr: ToastrService,
+    private imageService: ImageService
+  ) {}
 
   ngOnInit(): void {
     this.initCategoryForm();
@@ -35,7 +34,7 @@ export class AdminCategoryComponent implements OnInit {
     this.categoryForm = this.fb.group({
       name: [null, Validators.required],
       path: [null, Validators.required],
-      imagePath: [null, Validators.required]
+      imagePath: [null, Validators.required],
     });
   }
 
@@ -45,17 +44,28 @@ export class AdminCategoryComponent implements OnInit {
     //   this.adminCategories = data;
     //})
     //for firebase
-    this.categoryService.getAllFirebase().subscribe(data => {
+    this.categoryService.getAllFirebase().subscribe((data) => {
       this.adminCategories = data as ICategoryResponse[];
-    })
+    });
   }
 
   addCategory(): void {
-    if(this.editStatus){
-      this.categoryService.update(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
-        this.loadCategories();
-        this.toastr.success('Категорію успішно оновлено!');
-      })
+    if (this.editStatus) {
+      //this for json server
+      // this.categoryService.update(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
+      //   this.loadCategories();
+      //   this.toastr.success('Категорію успішно оновлено!');
+      // })
+      //for firebase
+      this.categoryService
+        .updateFirebase(
+          this.categoryForm.value,
+          this.currentCategoryId as string
+        )
+        .then(() => {
+          this.loadCategories();
+          this.toastr.success('Категорію успішно оновлено!');
+        });
     } else {
       //this for json server
       // this.categoryService.create(this.categoryForm.value).subscribe(() => {
@@ -64,71 +74,76 @@ export class AdminCategoryComponent implements OnInit {
       this.categoryService.createFirebase(this.categoryForm.value).then(() => {
         this.loadCategories();
         this.toastr.success('Категорію успішно додано!');
-      })
+      });
     }
     this.editStatus = false;
     this.categoryForm.reset();
     this.isUploaded = false;
     this.uploadPercent = 0;
     window.scroll({
-      top:0,
-      behavior:'smooth'
-    })
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
   editCategory(category: ICategoryResponse): void {
     this.categoryForm.patchValue({
       name: category.name,
       path: category.path,
-      imagePath: category.imagePath
+      imagePath: category.imagePath,
     });
     this.editStatus = true;
-    this.currentCategoryId = category.id;
+    this.currentCategoryId = category.id as number;
     this.isUploaded = true;
   }
 
   deleteCategory(category: ICategoryResponse): void {
-     if (confirm('Видалити цю катигорію?')){
-      this.categoryService.delete(category.id).subscribe(() => {
+    if (confirm('Видалити цю катигорію?')) {
+      //this for json server
+      // this.categoryService.delete(category.id as number).subscribe(() => {
+      //   this.loadCategories();
+      //   this.toastr.success('Категорію успішно видалено!');
+      // })
+      //for firebase
+      this.categoryService.deleteFirebase(category.id as string).then(() => {
         this.loadCategories();
         this.toastr.success('Категорію успішно видалено!');
       })
-     }
+    }
   }
 
   upload(event: any): void {
     const file = event.target.files[0];
     this.uploadPercent = this.imageService.uploadPercent;
-    this.imageService.uploadFile('images', file.name, file)
-      .then(data => {
+    this.imageService
+      .uploadFile('images', file.name, file)
+      .then((data) => {
         this.categoryForm.patchValue({
-          imagePath: data
+          imagePath: data,
         });
-        if (this.uploadPercent === 100){
-            this.isUploaded = true;
+        if (this.uploadPercent === 100) {
+          this.isUploaded = true;
         }
-
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
-
-
   deleteImage(): void {
-    this.imageService.deleteUploadFile(this.valueByControl('imagePath')).then(() => {
-      console.log('File deleted');
-      this.isUploaded = false;
-      this.uploadPercent = 0;
-      this.categoryForm.patchValue({
-        imagePath: null
-      })
-    })
+    this.imageService
+      .deleteUploadFile(this.valueByControl('imagePath'))
+      .then(() => {
+        console.log('File deleted');
+        this.isUploaded = false;
+        this.uploadPercent = 0;
+        this.categoryForm.patchValue({
+          imagePath: null,
+        });
+      });
   }
 
   valueByControl(control: string): string {
     return this.categoryForm.get(control)?.value;
   }
-
 }

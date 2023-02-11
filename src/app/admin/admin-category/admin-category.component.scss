@@ -1,5 +1,5 @@
-@import '../../shared/styles/variables';
-@import '../../shared/styles/fonts';
+@import "../../shared/styles/variables";
+@import "../../shared/styles/fonts";
 
 .row {
   font-family: $main_font;
@@ -67,28 +67,37 @@ th:last-child {
 }
 
 .category-image {
-  height: 50%;
+  height: 50px;
 }
 
-@media screen and (max-width:430px) {
-  .table>:not(caption)>*>* {
+@media screen and (max-width: 575px) {
+  .table > :not(caption) > * > * {
     padding: 0px 2px;
     font-size: 10px;
   }
 
   .btn {
     padding: 0px;
+    font-size: 14px;
+  }
+
+  .category-image {
+    height: 30px;
+    padding: 2px 0px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .btn {
     font-size: 100%;
   }
 
   .category-image {
     height: 20px;
-    padding: 2px 0px;
   }
 
   .btns {
     font-size: 14px;
     padding: 10px 0px;
   }
-
 }

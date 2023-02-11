@@ -11,6 +11,9 @@ import {
   CollectionReference,
   addDoc,
   collectionData,
+  doc,
+  updateDoc,
+  deleteDoc
 } from '@angular/fire/firestore';
 import { DocumentData, collection } from '@firebase/firestore';
 
@@ -56,4 +59,13 @@ export class CategoryService {
   createFirebase(category: ICategoryRequest) {
     return addDoc(this.categoryCollection, category);
   }
+  updateFirebase(category:ICategoryRequest, id:string){
+    const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
+    return updateDoc(categoryDocumentReferense, {...category});
+  }
+  deleteFirebase(id:string){
+    const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
+    return deleteDoc(categoryDocumentReferense);
+  }
+
 }
