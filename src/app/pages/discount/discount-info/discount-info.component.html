@@ -4,7 +4,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item" [routerLink]="[ '/' ]"><a>Головна</a></li>
         <li class="breadcrumb-item " [routerLink]="[ '/discount' ]" aria-current="page">Акції</li>
-        <li class="breadcrumb-item active" aria-current="page">{{discount.name}}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{discount?.name}}</li>
       </ol>
     </nav>
   </div>
@@ -14,10 +14,10 @@
   <div class="row justify-content-center">
     <div class="col-xl-8 col-lg-10 col-12">
       <div class="card">
-        <img [src]="discount.imagePath" class="card-img-top" alt="discount image">
+        <img [src]="discount?.imagePath" class="card-img-top" alt="discount image">
         <div class="card-body">
-          <div class="title">{{discount.title}}</div>
-          <div class="discount-description">{{ discount.description }}</div>
+          <div class="title">{{discount?.title}}</div>
+          <div class="discount-description">{{ discount?.description }}</div>
         </div>
       </div>
     </div>

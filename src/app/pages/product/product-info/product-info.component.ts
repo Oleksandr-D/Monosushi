@@ -29,7 +29,7 @@ export class ProductInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response => {
-      this.currentProduct = response.productInfo; 
+      this.currentProduct = response.productInfo;
     })
   }
 

@@ -5,6 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Storage } from '@angular/fire/storage';
 import { ToastrService } from 'ngx-toastr';
+import { Firestore } from '@angular/fire/firestore';
 
 describe('AdminCategoryComponent', () => {
   let component: AdminCategoryComponent;
@@ -15,8 +16,9 @@ describe('AdminCategoryComponent', () => {
       declarations: [AdminCategoryComponent],
       imports: [HttpClientTestingModule, ReactiveFormsModule],
       providers: [
+        { provide: Firestore, useValue: {} },
         { provide: Storage, useValue: {} },
-        { provide: ToastrService, useValue: {}}
+        { provide: ToastrService, useValue: {} },
       ],
     }).compileComponents();
   });

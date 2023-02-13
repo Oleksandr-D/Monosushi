@@ -5,7 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Firestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
-import {ImageService} from "../../shared/services/image/image.service";
+import { ImageService } from '../../shared/services/image/image.service';
 
 describe('AdminProductComponent', () => {
   let component: AdminProductComponent;

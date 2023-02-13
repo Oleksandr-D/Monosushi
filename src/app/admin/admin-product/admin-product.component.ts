@@ -21,7 +21,6 @@ export class AdminProductComponent implements OnInit {
   public editStatus = false;
   public uploadPercent =0;
   public isUploaded = false;
-  // private currentCategoryId = 0;
   private currentProductId = 0;
   public isOpen = false;
 
@@ -40,15 +39,25 @@ export class AdminProductComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
-      this.productForm.patchValue({
-        ctegory:this.adminCategories[0].id
-      })
-    })
+    //for json server
+    // this.categoryService.getAll().subscribe(data => {
+    //   this.adminCategories = data;
+    //   this.productForm.patchValue({
+    //     ctegory:this.adminCategories[0].id
+    //   })
+    // })
+    //for firebase
+    // this.categoryService.getAllFirebase().subscribe(data => {
+    //   this.adminCategories = data as ICategoryResponse[];
+    // })
   }
 
   loadProducts(): void {
+    //for json server
+    // this.productService.getAll().subscribe(data => {
+    //   this.adminProducts = data;
+    // })
+    //for firebase
     this.productService.getAll().subscribe(data => {
       this.adminProducts = data;
     })
@@ -75,11 +84,18 @@ export class AdminProductComponent implements OnInit {
         this.toastr.success('Товар успішно оновлено!');
       })
     } else {
-      this.productService.create(this.productForm.value).subscribe(() => {
-        this.loadCategories();
-        this.loadProducts();
-        this.toastr.success('Товар успішно додано!');
-      })
+      //for json server
+      // this.productService.create(this.productForm.value).subscribe(() => {
+      //   this.loadCategories();
+      //   this.loadProducts();
+      //   this.toastr.success('Товар успішно додано!');
+      // })
+      //for firebase
+      // this.productService.createFirebase(this.productForm.value).then(() => {
+      //   this.loadCategories();
+      //   this.loadProducts();
+      //   this.toastr.success('Товар успішно додано!');
+      // })
     }
     this.editStatus = false;
     this.productForm.reset();

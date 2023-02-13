@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Firestore } from '@angular/fire/firestore';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -11,6 +12,7 @@ describe('HomeComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent],
       imports: [HttpClientTestingModule],
+      providers: [{ provide: Firestore, useValue: {} }],
     }).compileComponents();
   });
 

@@ -9,19 +9,19 @@
         <div class="col-md-6">
           <input
             type="text" class="input" name="first_name"
-            placeholder="*Ваше ім'я" value="{{ user.firstName }}" required=""/>
+            placeholder="*Ваше ім'я" value="{{ user?.firstName }}" required=""/>
         </div>
         <div class="col-md-6">
           <input type="text" class="input" name="last_name"
-            placeholder="*Ваше прізвище" value="{{ user.lastName }}" required=""
+            placeholder="*Ваше прізвище" value="{{ user?.lastName }}" required=""
           />
         </div>
       </div>
       <input class="input" name="phone" type="text" inputmode="numeric"
-        placeholder="*Ваш номер телефону" value="{{ user.phoneNumber }}" required=""
+        placeholder="*Ваш номер телефону" value="{{ user?.phoneNumber }}" required=""
       />
       <input type="email" name="email" class="input"
-        placeholder="*Ваш емейл" value="{{ user.email }}" required=""
+        placeholder="*Ваш емейл" value="{{ user?.email }}" required=""
       />
     </div>
     <div class="form-group">

@@ -1,7 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ProductService } from './product.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+import { Firestore } from '@angular/fire/firestore';
 
 describe('ProductService', () => {
   let service: ProductService;
@@ -9,7 +13,8 @@ describe('ProductService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
+      imports: [HttpClientTestingModule],
+      providers: [{ provide: Firestore, useValue: {} }],
     });
     service = TestBed.inject(ProductService);
     httpTestingController = TestBed.inject(HttpTestingController);
@@ -41,7 +46,9 @@ describe('ProductService', () => {
 
     service.getAll().subscribe((response) => expect(response).toBe(data));
 
-    const req = httpTestingController.expectOne('http://localhost:3000/products');
+    const req = httpTestingController.expectOne(
+      'http://localhost:3000/products'
+    );
 
     expect(req.request.method).toBe('GET');
 

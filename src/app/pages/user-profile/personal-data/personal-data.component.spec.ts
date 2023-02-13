@@ -5,7 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AccountService } from '../../../shared/services/account/account.service';
 
-xdescribe('PersonalDataComponent', () => {
+describe('PersonalDataComponent', () => {
   let component: PersonalDataComponent;
   let fixture: ComponentFixture<PersonalDataComponent>;
 
@@ -13,7 +13,9 @@ xdescribe('PersonalDataComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PersonalDataComponent],
       imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [{ provide: AccountService, useValue: {} }],
+      providers: [
+        { provide: AccountService, useClass: AccountService},
+      ],
     }).compileComponents();
   });
 

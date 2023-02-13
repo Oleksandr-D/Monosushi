@@ -2,20 +2,32 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IProductRequest, IProductResponse } from '../../interfaces/products/products.interface';
+import {
+  IProductRequest,
+  IProductResponse,
+} from '../../interfaces/products/products.interface';
+import {
+  addDoc,
+  CollectionReference,
+  Firestore,
+} from '@angular/fire/firestore';
+import { collection, DocumentData } from '@firebase/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
   private url = environment.BACKEND_URL;
   private api = { products: `${this.url}/products` };
+  private categoryCollection!: CollectionReference<DocumentData>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private afs: Firestore) {
+    // this.categoryCollection = collection(this.afs, 'products');
+  }
 
+  //for json server
   getAll(): Observable<IProductResponse[]> {
-  return this.http.get<IProductResponse[]>(this.api.products);
+    return this.http.get<IProductResponse[]>(this.api.products);
   }
 
   getOne(id: number): Observable<IProductResponse> {
@@ -27,17 +39,25 @@ export class ProductService {
   }
 
   update(product: IProductRequest, id: number): Observable<IProductResponse> {
-    return this.http.patch<IProductResponse>(`${this.api.products}/${id}`, product);
+    return this.http.patch<IProductResponse>(
+      `${this.api.products}/${id}`,
+      product
+    );
   }
 
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api.products}/${id}`);
   }
 
-  getAllByCategory(name:string):Observable <IProductResponse[]>{
-    return this.http.get<IProductResponse[]>
-    (`${this.api.products}?category.path=${name}`);
+  getAllByCategory(name: string): Observable<IProductResponse[]> {
+    return this.http.get<IProductResponse[]>(
+      `${this.api.products}?category.path=${name}`
+    );
   }
+  //------------------------------------------------------------------------------------
+  //for firebase
 
-
+  // createFirebase(product: IProductRequest) {
+  //   return addDoc(this.categoryCollection, product);
+  // }
 }

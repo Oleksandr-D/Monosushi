@@ -15,8 +15,8 @@ export class AccountService {
   constructor(private http:HttpClient) { }
 
   login(credential:ILogin):Observable<any>{
-    return this.http.get(`${this.api.auth}?email=${credential.email}&password = 
+    return this.http.get(`${this.api.auth}?email=${credential.email}&password =
     ${credential.password}`)
   }
-  
+
 }

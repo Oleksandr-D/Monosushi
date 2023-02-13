@@ -5,7 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DiscountService } from '../../../shared/services/discount/discount.service';
 
-xdescribe('DiscountInfoComponent', () => {
+describe('DiscountInfoComponent', () => {
   let component: DiscountInfoComponent;
   let fixture: ComponentFixture<DiscountInfoComponent>;
 
@@ -24,16 +24,6 @@ xdescribe('DiscountInfoComponent', () => {
   });
 
   it('should create', () => {
-    const FAKE_DISCOUNT = [
-      {
-        id: 2,
-        name: 'string',
-        title: 'string',
-        description: 'string',
-        imagePath: 'string',
-      },
-    ];
-     // component.discount = FAKE_DISCOUNT;
     expect(component).toBeTruthy();
   });
 });

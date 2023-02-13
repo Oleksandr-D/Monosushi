@@ -1,7 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CategoryService } from './category.service';
-import { HttpClientTestingModule,HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+import { Firestore } from '@angular/fire/firestore';
 
 describe('CategoryService', () => {
   let service: CategoryService;
@@ -9,7 +13,8 @@ describe('CategoryService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers: [{ provide: Firestore, useValue: {} }],
     });
     service = TestBed.inject(CategoryService);
     httpTestingController = TestBed.inject(HttpTestingController);
@@ -31,7 +36,9 @@ describe('CategoryService', () => {
 
     service.getAll().subscribe((response) => expect(response).toBe(data));
 
-    const req = httpTestingController.expectOne('http://localhost:3000/categories');
+    const req = httpTestingController.expectOne(
+      'http://localhost:3000/categories'
+    );
 
     expect(req.request.method).toBe('GET');
 

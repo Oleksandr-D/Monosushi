@@ -48,9 +48,4 @@ export class ImageService {
     const task = ref(this.storage, imagePath);
     return deleteObject(task);
   }
-
-
-
-
-  
 }

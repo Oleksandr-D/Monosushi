@@ -2,10 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import {
-  ICategoryRequest,
-  ICategoryResponse,
-} from '../../interfaces/category/category.interface';
+import { ICategoryRequest, ICategoryResponse } from '../../interfaces/category/category.interface';
 import {
   Firestore,
   CollectionReference,
@@ -13,7 +10,7 @@ import {
   collectionData,
   doc,
   updateDoc,
-  deleteDoc
+  deleteDoc,
 } from '@angular/fire/firestore';
 import { DocumentData, collection } from '@firebase/firestore';
 
@@ -22,13 +19,14 @@ import { DocumentData, collection } from '@firebase/firestore';
 })
 export class CategoryService {
   private url = environment.BACKEND_URL;
-  private api = { categories: `${this.url}/categories` };
+  private api = {categories: `${this.url}/categories`};
   private categoryCollection!: CollectionReference<DocumentData>;
 
   constructor(private http: HttpClient, private afs: Firestore) {
-    this.categoryCollection = collection(this.afs, 'categories');
+    // this.categoryCollection = collection(this.afs, 'categories');
   }
 
+  //for json server
   getAll(): Observable<ICategoryResponse[]> {
     return this.http.get<ICategoryResponse[]>(this.api.categories);
   }
@@ -52,20 +50,19 @@ export class CategoryService {
   }
 
   //--------------------------------------------------------------------------------------------
-
-  getAllFirebase() {
-    return collectionData(this.categoryCollection, {idField:'id'});
-  }
-  createFirebase(category: ICategoryRequest) {
-    return addDoc(this.categoryCollection, category);
-  }
-  updateFirebase(category:ICategoryRequest, id:string){
-    const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
-    return updateDoc(categoryDocumentReferense, {...category});
-  }
-  deleteFirebase(id:string){
-    const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
-    return deleteDoc(categoryDocumentReferense);
-  }
-
+  //for firebase
+  // getAllFirebase() {
+  //   return collectionData(this.categoryCollection, { idField: 'id' });
+  // }
+  // createFirebase(category: ICategoryRequest) {
+  //   return addDoc(this.categoryCollection, category);
+  // }
+  // updateFirebase(category: ICategoryRequest, id: string) {
+  //   const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
+  //   return updateDoc(categoryDocumentReferense, { ...category });
+  // }
+  // deleteFirebase(id: string) {
+  //   const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
+  //   return deleteDoc(categoryDocumentReferense);
+  // }
 }
