@@ -40,13 +40,13 @@ export class AdminCategoryComponent implements OnInit {
 
   loadCategories(): void {
     //for json server
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
-    })
+    // this.categoryService.getAll().subscribe(data => {
+    //   this.adminCategories = data;
+    // })
     //for firebase
-    // this.categoryService.getAllFirebase().subscribe((data) => {
-    //   this.adminCategories = data as ICategoryResponse[];
-    // });
+    this.categoryService.getAllFirebase().subscribe((data) => {
+      this.adminCategories = data as ICategoryResponse[];
+    });
   }
 
   addCategory(): void {
@@ -57,24 +57,23 @@ export class AdminCategoryComponent implements OnInit {
       //   this.toastr.success('Категорію успішно оновлено!');
       // })
       //for firebase
-      // this.categoryService
-      //   .updateFirebase(
-      //     this.categoryForm.value,
-      //     this.currentCategoryId as string
-      //   )
-      //   .then(() => {
-      //     this.loadCategories();
-      //     this.toastr.success('Категорію успішно оновлено!');
-      //   });
+      this.categoryService.updateFirebase(
+          this.categoryForm.value,
+          this.currentCategoryId as string
+        )
+        .then(() => {
+          this.loadCategories();
+          this.toastr.success('Категорію успішно оновлено!');
+        });
     } else {
       //this for json server
       // this.categoryService.create(this.categoryForm.value).subscribe(() => {
       //   this.loadCategories();
       //for firebase
-    //   this.categoryService.createFirebase(this.categoryForm.value).then(() => {
-    //     this.loadCategories();
-    //     this.toastr.success('Категорію успішно додано!');
-    //   });
+      this.categoryService.createFirebase(this.categoryForm.value).then(() => {
+        this.loadCategories();
+        this.toastr.success('Категорію успішно додано!');
+      });
        }
     this.editStatus = false;
     this.categoryForm.reset();
@@ -105,10 +104,10 @@ export class AdminCategoryComponent implements OnInit {
       //   this.toastr.success('Категорію успішно видалено!');
       // })
       //for firebase
-      // this.categoryService.deleteFirebase(category.id as string).then(() => {
-      //   this.loadCategories();
-      //   this.toastr.success('Категорію успішно видалено!');
-      // })
+      this.categoryService.deleteFirebase(category.id as string).then(() => {
+        this.loadCategories();
+        this.toastr.success('Категорію успішно видалено!');
+      })
     }
   }
 

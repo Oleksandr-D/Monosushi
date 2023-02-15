@@ -21,7 +21,7 @@ export class AdminProductComponent implements OnInit {
   public editStatus = false;
   public uploadPercent =0;
   public isUploaded = false;
-  private currentProductId = 0;
+  private currentProductId!: number | string;
   public isOpen = false;
 
   constructor(
@@ -47,9 +47,9 @@ export class AdminProductComponent implements OnInit {
     //   })
     // })
     //for firebase
-    // this.categoryService.getAllFirebase().subscribe(data => {
-    //   this.adminCategories = data as ICategoryResponse[];
-    // })
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
+    })
   }
 
   loadProducts(): void {
@@ -58,8 +58,8 @@ export class AdminProductComponent implements OnInit {
     //   this.adminProducts = data;
     // })
     //for firebase
-    this.productService.getAll().subscribe(data => {
-      this.adminProducts = data;
+    this.productService.getAllFirebase().subscribe(data => {
+      this.adminProducts = data as IProductResponse[];
     })
   }
 
@@ -78,10 +78,17 @@ export class AdminProductComponent implements OnInit {
 
   addProduct():void{
     if(this.editStatus){
-      this.productService.update(this.productForm.value, this.currentProductId).subscribe(() => {
-        this.loadCategories();
-        this.loadProducts();
-        this.toastr.success('Товар успішно оновлено!');
+      //for json server
+      // this.productService.update(this.productForm.value, this.currentProductId).subscribe(() => {
+      //   this.loadCategories();
+      //   this.loadProducts();
+      //   this.toastr.success('Товар успішно оновлено!');
+      // })
+      //for firebase
+      this.productService.updateFirebase(this.productForm.value, this.currentProductId as string).then(()=>{
+          this.loadCategories();
+          this.loadProducts();
+          this.toastr.success('Товар успішно оновлено!');
       })
     } else {
       //for json server
@@ -91,11 +98,11 @@ export class AdminProductComponent implements OnInit {
       //   this.toastr.success('Товар успішно додано!');
       // })
       //for firebase
-      // this.productService.createFirebase(this.productForm.value).then(() => {
-      //   this.loadCategories();
-      //   this.loadProducts();
-      //   this.toastr.success('Товар успішно додано!');
-      // })
+      this.productService.createFirebase(this.productForm.value).then(() => {
+        this.loadCategories();
+        this.loadProducts();
+        this.toastr.success('Товар успішно додано!');
+      })
     }
     this.editStatus = false;
     this.productForm.reset();
@@ -146,8 +153,15 @@ export class AdminProductComponent implements OnInit {
   }
 
   deleteProduct(product: IProductResponse):void{
+    //for json server
+    // if (confirm('Видалити цей продукт?')){
+    // this.productService.delete(product.id).subscribe(()=>{
+    //   this.loadProducts();
+    //   this.toastr.success('Товар успішно видалено!');
+    // })}
+    //for firebase
     if (confirm('Видалити цей продукт?')){
-    this.productService.delete(product.id).subscribe(()=>{
+    this.productService.deleteFirebase(product.id as string).then(()=>{
       this.loadProducts();
       this.toastr.success('Товар успішно видалено!');
     })}

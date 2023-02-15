@@ -9,9 +9,7 @@ import {
   IProductResponse
 } from 'src/app/shared/interfaces/products/products.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
-import {
-  ProductService
-} from 'src/app/shared/services/product/product.service';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-product-info',
@@ -31,7 +29,12 @@ export class ProductInfoComponent implements OnInit {
     this.activatedRoute.data.subscribe(response => {
       this.currentProduct = response.productInfo;
     })
+    // this.productService.getOneFirebase().subscribe(data => {
+    //   this.currentProduct = data as IProductResponse;
+    // })
   }
+
+
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {

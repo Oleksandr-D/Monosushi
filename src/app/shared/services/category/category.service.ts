@@ -23,46 +23,46 @@ export class CategoryService {
   private categoryCollection!: CollectionReference<DocumentData>;
 
   constructor(private http: HttpClient, private afs: Firestore) {
-    // this.categoryCollection = collection(this.afs, 'categories');
+    this.categoryCollection = collection(this.afs, 'categories');
   }
 
   //for json server
-  getAll(): Observable<ICategoryResponse[]> {
-    return this.http.get<ICategoryResponse[]>(this.api.categories);
-  }
-
-  create(category: ICategoryRequest): Observable<ICategoryResponse> {
-    return this.http.post<ICategoryResponse>(this.api.categories, category);
-  }
-
-  update(
-    category: ICategoryRequest,
-    id: number
-  ): Observable<ICategoryResponse> {
-    return this.http.patch<ICategoryResponse>(
-      `${this.api.categories}/${id}`,
-      category
-    );
-  }
-
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.api.categories}/${id}`);
-  }
+  // getAll(): Observable<ICategoryResponse[]> {
+  //   return this.http.get<ICategoryResponse[]>(this.api.categories);
+  // }
+  //
+  // create(category: ICategoryRequest): Observable<ICategoryResponse> {
+  //   return this.http.post<ICategoryResponse>(this.api.categories, category);
+  // }
+  //
+  // update(
+  //   category: ICategoryRequest,
+  //   id: number
+  // ): Observable<ICategoryResponse> {
+  //   return this.http.patch<ICategoryResponse>(
+  //     `${this.api.categories}/${id}`,
+  //     category
+  //   );
+  // }
+  //
+  // delete(id: number): Observable<void> {
+  //   return this.http.delete<void>(`${this.api.categories}/${id}`);
+  // }
 
   //--------------------------------------------------------------------------------------------
   //for firebase
-  // getAllFirebase() {
-  //   return collectionData(this.categoryCollection, { idField: 'id' });
-  // }
-  // createFirebase(category: ICategoryRequest) {
-  //   return addDoc(this.categoryCollection, category);
-  // }
-  // updateFirebase(category: ICategoryRequest, id: string) {
-  //   const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
-  //   return updateDoc(categoryDocumentReferense, { ...category });
-  // }
-  // deleteFirebase(id: string) {
-  //   const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
-  //   return deleteDoc(categoryDocumentReferense);
-  // }
+  getAllFirebase() {
+    return collectionData(this.categoryCollection, { idField: 'id' });
+  }
+  createFirebase(category: ICategoryRequest) {
+    return addDoc(this.categoryCollection, category);
+  }
+  updateFirebase(category: ICategoryRequest, id: string) {
+    const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
+    return updateDoc(categoryDocumentReferense, { ...category });
+  }
+  deleteFirebase(id: string) {
+    const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
+    return deleteDoc(categoryDocumentReferense);
+  }
 }

@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -9,7 +14,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ROLE } from 'src/app/shared/constants/role.constants';
 import { AccountService } from 'src/app/shared/services/account/account.service';
-
 
 @Component({
   selector: 'app-auth-dialog',
@@ -66,15 +70,17 @@ export class AuthDialogComponent implements OnInit {
     //   formData:this.authForm.value
     // })
     const { email, password } = this.authForm.value;
-    this.login(email, password)
-      .then(() => {
-        this.toastr.success('Ви ввійшли в свій кабінет!');
-        // this.dialogRef.close();
-      })
-      .catch((e) => {
-        console.log('error', e);
-        this.toastr.error(e.message);
-      });
+    if (email !== 'admin@gmail.com') {
+      this.login(email, password)
+        .then(() => {
+          this.toastr.success('Ви ввійшли в свій кабінет!');
+          // this.dialogRef.close();
+        })
+        .catch((e) => {
+          console.log('error', e);
+          this.toastr.error(e.message);
+        });
+    }
   }
 
   async login(email: string, password: string): Promise<void> {
@@ -93,7 +99,7 @@ export class AuthDialogComponent implements OnInit {
         if (user && user.role === ROLE.USER) {
           this.router.navigate(['/user-profile']);
         } else if (user && user.role === ROLE.ADMIN) {
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/auth']);
         }
         this.accountService.isUserLogin$.next(true);
       },

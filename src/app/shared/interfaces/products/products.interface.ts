@@ -11,5 +11,5 @@ export interface IProductRequest {
    count:number;
 }
 export interface IProductResponse extends IProductRequest {
-   id:number;
+   id:number | string;
 }
