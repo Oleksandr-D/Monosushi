@@ -1,3 +1,4 @@
+//dont work with firebase
 import { Injectable } from '@angular/core';
 import {
   Router, Resolve,

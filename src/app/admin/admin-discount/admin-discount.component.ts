@@ -25,7 +25,7 @@ export class AdminDiscountComponent implements OnInit {
 
   public adminDiscounts: Array < IDiscountResponse > = [];
   public discountForm!: FormGroup;
-  public currentDiscountId = 0;
+  public currentDiscountId!:number | string;
   public uploadPercent = 0;
   public editStatus = false;
   public editID!: number;
@@ -54,21 +54,40 @@ export class AdminDiscountComponent implements OnInit {
 
   //loading data
   loadDiscounts(): void {
-    this.discountService.getAll().subscribe(data => {
-      this.adminDiscounts = data;
+    //for json server
+    // this.discountService.getAll().subscribe(data => {
+    //   this.adminDiscounts = data;
+    // })
+    //for firebase
+    this.discountService.getAllFirebase().subscribe(data => {
+      this.adminDiscounts = data as IDiscountResponse[];
     })
+
   }
 
   //button "add" "save"
   addDiscount(): void {
     if (this.editStatus) {
-      this.discountService.update(this.discountForm.value,
-        this.currentDiscountId).subscribe(() => {
+      //for json-server
+      // this.discountService.update(this.discountForm.value,
+      //   this.currentDiscountId).subscribe(() => {
+      //   this.loadDiscounts();
+      //   this.toastr.success('Акцію успішно оновлено!');
+      // })
+      //for firebase
+      this.discountService.updateFirebase(this.discountForm.value,
+        this.currentDiscountId as string).then(() => {
         this.loadDiscounts();
         this.toastr.success('Акцію успішно оновлено!');
       })
     } else {
-      this.discountService.create(this.discountForm.value).subscribe(() => {
+      //for json-server
+      // this.discountService.create(this.discountForm.value).subscribe(() => {
+      //   this.loadDiscounts();
+      //   this.toastr.success('Акцію успішно додано!');
+      // })
+      // for firebase
+      this.discountService.createFirebase(this.discountForm.value).then(() => {
         this.loadDiscounts();
         this.toastr.success('Акцію успішно додано!');
       })
@@ -93,17 +112,23 @@ export class AdminDiscountComponent implements OnInit {
       imagePath: discount.imagePath
     });
     this.editStatus = true;
-    this.currentDiscountId = discount.id;
+    this.currentDiscountId = discount.id as number;
     window.scroll({
       top:0,
       behavior:'smooth'
     })
   }
- 
+
   //button delete
   deleteDiscount(discount: IDiscountResponse): void {
     if(confirm('Відновити акцію буде неможливо. Видалити акцію?')){
-      this.discountService.delete(discount.id).subscribe(() => {
+      //for json service
+      // this.discountService.delete(discount.id as number).subscribe(() => {
+      //   this.loadDiscounts();
+      //   this.toastr.success('Акцію успішно видалено!');
+      // })
+      //for firebase
+      this.discountService.deleteFirebase(discount.id as string).then(() => {
         this.loadDiscounts();
         this.toastr.success('Акцію успішно видалено!');
       })
