@@ -12,6 +12,7 @@ import {
   Subscription
 } from 'rxjs';
 import {
+  IProductRequest,
   IProductResponse
 } from 'src/app/shared/interfaces/products/products.interface';
 import {
@@ -48,10 +49,18 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.eventSubscription.unsubscribe();
   }
 
-  loadProducts(): void {
-    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategory(categoryName).subscribe(data => {
-      this.userProducts = data;
+  loadProducts():void {
+    // const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+    // this.productService.getAllByCategory(categoryName).subscribe(data => {
+    //   this.userProducts = data;
+    // })
+     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+
+    console.log('categoryName==>',categoryName)
+    this.productService.getAllByCategoryFirebase(categoryName).then(data => {
+      console.log('userProducts==>', this.userProducts)
+      // this.userProducts = data as IProductResponse[];
+
     })
   }
   productCount(product: IProductResponse, value: boolean): void {

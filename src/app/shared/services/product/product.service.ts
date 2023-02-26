@@ -9,7 +9,7 @@ import {
 import {
   addDoc, collectionData,
   CollectionReference, deleteDoc, doc, docData,
-  Firestore, updateDoc,
+  Firestore, getDocs, query, updateDoc, where,
 } from '@angular/fire/firestore';
 import { collection, DocumentData } from '@firebase/firestore';
 
@@ -19,10 +19,10 @@ import { collection, DocumentData } from '@firebase/firestore';
 export class ProductService {
   private url = environment.BACKEND_URL;
   private api = { products: `${this.url}/products` };
-  private categoryCollection!: CollectionReference<DocumentData>;
+  private productCollection!: CollectionReference<DocumentData>;
 
   constructor(private http: HttpClient, private afs: Firestore) {
-    this.categoryCollection = collection(this.afs, 'products');
+    this.productCollection = collection(this.afs, 'products');
   }
 
   //for json server
@@ -55,23 +55,33 @@ export class ProductService {
   //------------------------------------------------------------------------------------
   //for firebase
   getAllFirebase(){
-    return collectionData(this.categoryCollection, {idField:'id'})
+    return collectionData(this.productCollection, {idField:'id'})
   }
   createFirebase(product: IProductRequest) {
-    return addDoc(this.categoryCollection, product);
+    return addDoc(this.productCollection, product);
   }
   updateFirebase(product: IProductRequest, id: string) {
-    const categoryDocumentReferense = doc(this.afs, `products/${id}`);
-    return updateDoc(categoryDocumentReferense, { ...product });
+    const productDocumentReferense = doc(this.afs, `products/${id}`);
+    return updateDoc(productDocumentReferense, { ...product });
   }
   deleteFirebase(id: string) {
-    const categoryDocumentReferense = doc(this.afs, `products/${id}`);
-    return deleteDoc(categoryDocumentReferense);
+    const productDocumentReferense = doc(this.afs, `products/${id}`);
+    return deleteDoc(productDocumentReferense);
   }
 
   getOneFirebase(id: string) {
-    const categoryDocumentReferense = doc(this.afs, `products/${id}`);
-    return docData(categoryDocumentReferense, {idField:'id'});
+    const productDocumentReferense = doc(this.afs, `products/${id}`);
+    return docData(productDocumentReferense, {idField:'id'});
+
+  }
+
+  getAllByCategoryFirebase(name: string) {
+    return getDocs(query(collection(this.afs, 'products'), where('category', '==',`${name}`)))
+    //return docData(productDocumentReferense, {idField:'name'});
+    // return this.http.get<IProductResponse[]>(
+    //   `${this.api.products}?category.path=${name}`
+    // );
+
   }
 
 

@@ -25,7 +25,7 @@
               <div class="basket-products-price">
                 <b>{{products.price*products.count}}</b> грн
               </div>
-              <button type="button" class="remove-product">
+              <button (click)="deleteFromOrder(products)" type="button" class="remove-product">
                 <div class="trash"></div>
               </button>
             </div>
@@ -215,15 +215,14 @@
 
                 <div class="main-order-wrapp">
                 </div>
-                <button type="submit" class="btns">
-                  ОФОРМИТИ ЗАМОВЛЕННЯ </button>
+                <button (click)="toOrder()" type="submit" class="btns">
+                    ОФОРМИТИ ЗАМОВЛЕННЯ
+                </button>
               </div>
             </div>
           </div>
         </div>
-
       </form>
-      <button class="btns w-50" (click)="clear()">Clear localStorage</button>
       <div class="spacer-120"></div>
     </div>
   </div>

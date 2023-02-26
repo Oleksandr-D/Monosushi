@@ -42,7 +42,7 @@ export class AdminDiscountComponent implements OnInit {
     this.initCategoryForm();
     this.loadDiscounts();
   }
-  //form controller initaalization
+  //form controller initialization
   initCategoryForm(): void {
     this.discountForm = this.fb.group({
       name: [null, Validators.required],

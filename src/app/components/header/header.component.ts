@@ -6,6 +6,7 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { CallBackDialogComponent } from '../call-back-dialog/call-back-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -25,9 +26,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private accountService: AccountService,
-    public dialog: MatDialog
-  ) // private activatedRoute: ActivatedRoute, // private productService: ProductService,
-  {}
+    private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog // private activatedRoute: ActivatedRoute, // private productService: ProductService,
+  ) {}
 
   ngOnInit(): void {
     this.loadBasket();
@@ -36,8 +37,11 @@ export class HeaderComponent implements OnInit {
     this.checkUpdatesUserLogin();
   }
 
-  togle() {
-    this.isShow = !this.isShow;
+  orderScroll() {
+      window.scroll({
+        top: 0,
+        behavior: 'smooth',
+      });
   }
 
   loadBasket(): void {
@@ -67,6 +71,7 @@ export class HeaderComponent implements OnInit {
 
   openModal(): void {
     this.isOpen = !this.isOpen;
+    this.orderService.changeBasket.next(true);
   }
 
   closeModal(value: boolean): void {
@@ -77,33 +82,23 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  //check if there is something in the basket add to local storage count
   productCount(product: IProductResponse, value: boolean): void {
-    if (value) {
-      ++product.count;
-    } else if (!value && product.count > 1) {
-      --product.count;
-    }
-    this.getTotalPrice();
-  }
-
-  //check if there is something in the basket add to local storage
-  addToBasket(product: IProductResponse): void {
     let basket: Array<IProductResponse> = [];
-    if (localStorage.length > 0 && localStorage.getItem('basket')) {
-      basket = JSON.parse(localStorage.getItem('basket') as string);
-      if (basket.some((prod) => prod.id === product.id)) {
-        const index = basket.findIndex((prod) => prod.id === product.id);
-        basket[index].count += product.count;
-      } else {
-        basket.push(product);
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    if (basket.some((prod) => prod.id === product.id)) {
+      const index = basket.findIndex((prod) => prod.id === product.id);
+      if (value) {
+        ++product.count;
+        basket[index].count += 1;
+      } else if (!value && product.count > 1) {
+        --product.count;
+        basket[index].count -= 1;
       }
-    } else {
-      basket.push(product);
     }
     localStorage.setItem('basket', JSON.stringify(basket));
-    product.count = 1;
+    this.getTotalPrice();
     this.orderService.changeBasket.next(true);
-    this.openModal();
   }
 
   //delete products from basket
@@ -160,7 +155,6 @@ export class HeaderComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((result) => {
-        // console.log(result);
       });
   }
 

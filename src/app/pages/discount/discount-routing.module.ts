@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: ':id',
     component: DiscountInfoComponent,
-    //dont work with firebase
+    //don't work with firebase
     // resolve: { discountInfo: DiscountInfoResolver },
   },
 ];

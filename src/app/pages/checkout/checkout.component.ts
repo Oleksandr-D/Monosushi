@@ -38,24 +38,42 @@ export class CheckoutComponent implements OnInit {
   updateBasket(): void {
     this.orderService.changeBasket.subscribe(() => {
       this.loadBasket();
-    })
+    });
   }
 
   productCount(product: IProductResponse, value: boolean): void {
-    if (value) {
-      ++product.count;
-    } else if (!value && product.count > 1) {
-      --product.count;
+    let basket: Array<IProductResponse> = [];
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    if (basket.some((prod) => prod.id === product.id)) {
+      const index = basket.findIndex((prod) => prod.id === product.id);
+      if (value) {
+        ++product.count;
+        basket[index].count += 1;
+      } else if (!value && product.count > 1) {
+        --product.count;
+        basket[index].count -= 1;
+      }
     }
+    localStorage.setItem('basket', JSON.stringify(basket));
     this.getTotalPrice();
-  }
-  
-//add products???
-
-  clear(){
-    localStorage.clear();
-    this.updateBasket();
-    this.loadBasket();
+    this.orderService.changeBasket.next(true);
   }
 
+
+  //delete products from order
+  deleteFromOrder(product: IProductResponse): void {
+    let basket: Array<IProductResponse> = [];
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    const index = basket.findIndex((prod) => prod.id === product.id);
+    this.basket.splice(index, 1);
+    basket.splice(index, 1);
+    localStorage.setItem('basket', JSON.stringify(basket));
+    this.orderService.changeBasket.next(true);
+  }
+
+  toOrder(){
+    let basket: Array<IProductResponse> = [];
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    console.log('BASKET==>',basket )
+  }
 }
