@@ -30,9 +30,9 @@ export class ProductService {
   //   return this.http.get<IProductResponse[]>(this.api.products);
   // }
   //
-  getOne(id: number): Observable<IProductResponse> {
-    return this.http.get<IProductResponse>(`${this.api.products}/${id}`);
-  }
+  // getOne(id: number): Observable<IProductResponse> {
+  //   return this.http.get<IProductResponse>(`${this.api.products}/${id}`);
+  // }
   //
   // create(product: IProductRequest): Observable<IProductResponse> {
   //   return this.http.post<IProductResponse>(this.api.products, product);
@@ -47,11 +47,11 @@ export class ProductService {
   //   return this.http.delete<void>(`${this.api.products}/${id}`);
   // }
 
-  getAllByCategory(name: string): Observable<IProductResponse[]> {
-    return this.http.get<IProductResponse[]>(
-      `${this.api.products}?category.path=${name}`
-    );
-  }
+  // getAllByCategory(name: string): Observable<IProductResponse[]> {
+  //   return this.http.get<IProductResponse[]>(
+  //     `${this.api.products}?category.path=${name}`
+  //   );
+  // }
   //------------------------------------------------------------------------------------
   //for firebase
   getAllFirebase(){
@@ -72,7 +72,6 @@ export class ProductService {
   getOneFirebase(id: string) {
     const productDocumentReferense = doc(this.afs, `products/${id}`);
     return docData(productDocumentReferense, {idField:'id'});
-
   }
 
   getAllByCategoryFirebase(name: string) {

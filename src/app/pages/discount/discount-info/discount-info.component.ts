@@ -33,9 +33,7 @@ export class DiscountInfoComponent implements OnInit {
   //for firebase
   getOneDiscount(): void {
     const DISCOUNT_ID = this.activatedRoute.snapshot.paramMap.get('id');
-    this.discountService
-      .getOneFirebase(DISCOUNT_ID as string)
-      .subscribe((data) => {
+    this.discountService.getOneFirebase(DISCOUNT_ID as string).subscribe((data) => {
         this.discount = data as IDiscountResponse;
       });
   }

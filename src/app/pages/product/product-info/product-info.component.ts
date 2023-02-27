@@ -1,13 +1,6 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  ActivatedRoute
-} from '@angular/router';
-import {
-  IProductResponse
-} from 'src/app/shared/interfaces/products/products.interface';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IProductResponse } from 'src/app/shared/interfaces/products/products.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
@@ -26,15 +19,21 @@ export class ProductInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(response => {
-      this.currentProduct = response.productInfo;
-    })
-    // this.productService.getOneFirebase().subscribe(data => {
-    //   this.currentProduct = data as IProductResponse;
+    //for json server
+    // this.activatedRoute.data.subscribe(response => {
+    //   this.currentProduct = response.productInfo;
     // })
+    //for firebase
+    this.getOneProduct();
   }
 
+  getOneProduct():void{
+    const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
+    this.productService.getOneFirebase(PRODUCT_ID as string).subscribe((data)=>{
+      this.currentProduct = data as IProductResponse;
+    })
 
+  }
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {
