@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/products/products.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
+import {ICategoryResponse} from "../../../shared/interfaces/category/category.interface";
 
 @Component({
   selector: 'app-product-info',
@@ -23,17 +24,30 @@ export class ProductInfoComponent implements OnInit {
     // this.activatedRoute.data.subscribe(response => {
     //   this.currentProduct = response.productInfo;
     // })
+
     //for firebase
     this.getOneProduct();
   }
 
+  // getOneProduct():void{
+  //   const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('category.id');
+  //   this.productService.getOneFirebase(PRODUCT_ID as string).subscribe((data)=>{
+  //     this.currentProduct = data as IProductResponse;
+  //   })
+  // }
+
   getOneProduct():void{
     const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
-    this.productService.getOneFirebase(PRODUCT_ID as string).subscribe((data)=>{
+
+    console.log('PRODUCT_ID==>', PRODUCT_ID)
+
+    this.productService.getOneFirebase(PRODUCT_ID as string).subscribe(data =>{
       this.currentProduct = data as IProductResponse;
+      console.log('currentProduct==>', this.currentProduct)
     })
 
-  }
+
+    }
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {

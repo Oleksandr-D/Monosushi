@@ -70,16 +70,18 @@ export class ProductService {
   }
 
   getOneFirebase(id: string) {
+    console.log('SERVICE getOneFirebase ==>',id)
     const productDocumentReferense = doc(this.afs, `products/${id}`);
-    return docData(productDocumentReferense, {idField:'id'});
+    return docData(productDocumentReferense, { idField:'id'});
   }
 
   getAllByCategoryFirebase(name: string) {
-    return getDocs(query(collection(this.afs, 'products'), where('category', '==',`${name}`)))
+    return collectionData(query(collection(this.afs, 'products'), where('path', '==',`${name}`)))
     //return docData(productDocumentReferense, {idField:'name'});
     // return this.http.get<IProductResponse[]>(
     //   `${this.api.products}?category.path=${name}`
     // );
+
 
   }
 

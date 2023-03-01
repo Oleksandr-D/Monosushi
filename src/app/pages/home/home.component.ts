@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
     // })
     //there must use get by category 'rolu'
     this.productService.getAllFirebase().subscribe((data) => {
-      this.userProducts = data as unknown as IProductResponse[];
+      this.userProducts = data as IProductResponse[];
+      console.log('HOME getAllFirebase==>', this.userProducts)
     });
   }
 
