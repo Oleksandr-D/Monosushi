@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/products/products.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import {ICategoryResponse} from "../../../shared/interfaces/category/category.interface";
 
 @Component({
   selector: 'app-product-info',
@@ -20,34 +19,31 @@ export class ProductInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //for json server
+    //for json server with resolver
     // this.activatedRoute.data.subscribe(response => {
     //   this.currentProduct = response.productInfo;
     // })
+    //for firebase with resolver
+    // this.activatedRoute.data.subscribe(resp => {
+    //   this.currentProduct = resp.productInfo;
+    // })
 
-    //for firebase
     this.getOneProduct();
   }
-
+  //for json server
   // getOneProduct():void{
   //   const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('category.id');
   //   this.productService.getOneFirebase(PRODUCT_ID as string).subscribe((data)=>{
   //     this.currentProduct = data as IProductResponse;
   //   })
   // }
-
+  //for firebase
   getOneProduct():void{
     const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
-
-    console.log('PRODUCT_ID==>', PRODUCT_ID)
-
     this.productService.getOneFirebase(PRODUCT_ID as string).subscribe(data =>{
       this.currentProduct = data as IProductResponse;
-      console.log('currentProduct==>', this.currentProduct)
     })
-
-
-    }
+  }
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {
@@ -75,6 +71,5 @@ export class ProductInfoComponent implements OnInit {
     product.count = 1;
     this.orderService.changeBasket.next(true);
   }
-
 
 }

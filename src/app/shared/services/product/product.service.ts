@@ -1,16 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import {
-  IProductRequest,
-  IProductResponse,
-} from '../../interfaces/products/products.interface';
-import {
-  addDoc, collectionData,
-  CollectionReference, deleteDoc, doc, docData,
-  Firestore, getDocs, query, updateDoc, where,
-} from '@angular/fire/firestore';
+import { IProductRequest } from '../../interfaces/products/products.interface';
+import { addDoc, collectionData, CollectionReference, deleteDoc, doc,
+         docData, Firestore, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { collection, DocumentData } from '@firebase/firestore';
 
 @Injectable({
@@ -54,8 +47,8 @@ export class ProductService {
   // }
   //------------------------------------------------------------------------------------
   //for firebase
-  getAllFirebase(){
-    return collectionData(this.productCollection, {idField:'id'})
+  getAllFirebase() {
+    return collectionData(this.productCollection, { idField: 'id' });
   }
   createFirebase(product: IProductRequest) {
     return addDoc(this.productCollection, product);
@@ -70,20 +63,18 @@ export class ProductService {
   }
 
   getOneFirebase(id: string) {
-    console.log('SERVICE getOneFirebase ==>',id)
     const productDocumentReferense = doc(this.afs, `products/${id}`);
-    return docData(productDocumentReferense, { idField:'id'});
+    return docData(productDocumentReferense, { idField: 'id' });
   }
 
-  getAllByCategoryFirebase(name: string) {
-    return collectionData(query(collection(this.afs, 'products'), where('path', '==',`${name}`)))
-    //return docData(productDocumentReferense, {idField:'name'});
-    // return this.http.get<IProductResponse[]>(
-    //   `${this.api.products}?category.path=${name}`
-    // );
-
-
+  async getAllByCategoryFirebase(name: string) {
+    const arr: DocumentData[] = [];
+    const category = query(
+      collection(this.afs, 'products'), where('category.path', '==', `${name}`));
+    const querySnapshot = await getDocs(category);
+    querySnapshot.forEach((doc) => {
+      arr.push({ ...doc.data(), id: doc.id });
+    });
+    return arr;
   }
-
-
 }

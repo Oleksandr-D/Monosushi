@@ -30,6 +30,7 @@ import {
 export class ProductComponent implements OnInit, OnDestroy {
   public userProducts: Array < IProductResponse >= [];
   private eventSubscription!: Subscription;
+  public currentCategoryName:any;
 
   constructor(
     private productService: ProductService,
@@ -50,14 +51,17 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   loadProducts():void {
+    //for json server
     // const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     // this.productService.getAllByCategory(categoryName).subscribe(data => {
     //   this.userProducts = data;
     // })
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategoryFirebase(categoryName).subscribe(data => {
+    this.productService.getAllByCategoryFirebase(categoryName).then(data => {
       this.userProducts = data as IProductResponse[];
+      this.currentCategoryName = this.userProducts[0].category.name;
       console.log('getAllByCategoryFirebase==> userProducts', data)
+      console.log('getAllByCategoryFirebase==> currentCategoryName', this.currentCategoryName)
     })
   }
   productCount(product: IProductResponse, value: boolean): void {
