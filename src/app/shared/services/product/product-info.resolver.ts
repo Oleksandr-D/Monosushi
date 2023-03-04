@@ -1,30 +1,42 @@
-// import {
-//   Injectable
-// } from '@angular/core';
-// import {
-//   Router,
-//   Resolve,
-//   RouterStateSnapshot,
-//   ActivatedRouteSnapshot
-// } from '@angular/router';
-// import {
-//   Observable,
-//   of
-// } from 'rxjs';
-// import {
-//   IProductResponse
-// } from '../../interfaces/products/products.interface';
-// import {
-//   ProductService
-// } from './product.service';
-//
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ProductInfoResolver implements Resolve < IProductResponse > {
-//   constructor(private productServise: ProductService) {}
-//   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
-//    Observable < IProductResponse > {
-//     return this.productServise.getOne(Number(route.paramMap.get('id')));
-//   }
-// }
+import {
+  Injectable
+} from '@angular/core';
+import {
+  Router,
+  Resolve,
+  RouterStateSnapshot,
+  ActivatedRouteSnapshot
+} from '@angular/router';
+import {
+  Observable,
+  of
+} from 'rxjs';
+import {
+  IProductResponse
+} from '../../interfaces/products/products.interface';
+import {
+  ProductService
+} from './product.service';
+import {map} from "rxjs/operators";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductInfoResolver implements Resolve < IProductResponse > {
+  constructor(private productServise: ProductService) {}
+  // resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+  //  Observable < IProductResponse > {
+  //   return this.productServise.getOne(Number(route.paramMap.get('id')));
+  // }
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): IProductResponse | Observable < IProductResponse >  {
+    const PODUCT_ID = route.paramMap.get('id');
+    return this.productServise.getOneFirebase(PODUCT_ID as string).pipe(
+      map((data) => {
+        console.log('from RESOLVER', data)
+        return data as IProductResponse;
+
+      })
+    )
+  }
+
+}
