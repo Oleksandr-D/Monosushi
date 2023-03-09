@@ -1,22 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { IProductRequest } from '../../interfaces/products/products.interface';
+import {IProductRequest, IProductResponse} from '../../interfaces/products/products.interface';
 import { addDoc, collectionData, CollectionReference, deleteDoc, doc,
          docData, Firestore, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { collection, DocumentData } from '@firebase/firestore';
+import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
+
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class ProductService{
   private url = environment.BACKEND_URL;
-  private api = { products: `${this.url}/products` };
+  private api = { products: `${this.url}/products`};
   private productCollection!: CollectionReference<DocumentData>;
 
   constructor(private http: HttpClient, private afs: Firestore) {
     this.productCollection = collection(this.afs, 'products');
   }
+
+  //use resolve at service
+  // resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):IProductResponse | Observable<IProductResponse> | Promise<IProductResponse>  {
+  //   const PRODUCT_ID = route.paramMap.get('id');
+  //   return this.getOneFirebase(PRODUCT_ID as string).pipe(
+  //     map((data) => {
+  //       console.log('data', data)
+  //       return data as IProductResponse;
+  //     })
+  //   )
+  // }
 
   //for json server
   // getAll(): Observable<IProductResponse[]> {
@@ -77,4 +92,6 @@ export class ProductService {
     });
     return arr;
   }
+
+
 }

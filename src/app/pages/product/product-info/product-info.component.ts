@@ -21,15 +21,15 @@ export class ProductInfoComponent implements OnInit {
   ngOnInit(): void {
     //for json server with resolver
     // this.activatedRoute.data.subscribe(response => {
-    //   this.currentProduct = response.productInfo;
+    //   this.currentProduct = response['productInfo'];
     // })
-    //for firebase with resolver
-    this.activatedRoute.data.subscribe(response => {
-      this.currentProduct = response['productInfo'];
-      console.log('from ProductInfoComponent', this.currentProduct)
-    })
+    //for firebase with resolver????????
+    // this.activatedRoute.data.subscribe(response => {
+    //   this.currentProduct = response['productInfo'];
+    //   console.log('from ProductInfoComponent', this.currentProduct)
+    // })
 
-    // this.getOneProduct();
+    this.getOneProduct();
 
   }
   //for json server
@@ -40,12 +40,13 @@ export class ProductInfoComponent implements OnInit {
   //   })
   // }
   //for firebase
-  // getOneProduct():void{
-  //   const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
-  //   this.productService.getOneFirebase(PRODUCT_ID as string).subscribe(data =>{
-  //     this.currentProduct = data as IProductResponse;
-  //   })
-  // }
+  getOneProduct():void{
+    const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
+    this.productService.getOneFirebase(PRODUCT_ID as string).subscribe(data =>{
+      this.currentProduct = data as IProductResponse;
+      console.log('=>', this.currentProduct)
+    })
+  }
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {

@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     //
     // })
     //there must use get by category 'rolu'
-    this.productService.getAllFirebase().subscribe((data) => {
+    this.productService.getAllByCategoryFirebase('роли').then((data) => {
       this.userProducts = data as IProductResponse[];
     });
   }
