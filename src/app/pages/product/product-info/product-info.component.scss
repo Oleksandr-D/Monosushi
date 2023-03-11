@@ -1,5 +1,5 @@
-@import '../../../shared/styles/variables';
-@import '../../../shared/styles/fonts';
+@import "../../../shared/styles/variables";
+@import "../../../shared/styles/fonts";
 
 input,
 textarea,
@@ -20,7 +20,7 @@ ol {
 a {
   color: inherit;
   text-decoration: none;
-  transition: .35s;
+  transition: 0.35s;
 }
 
 .spacer-70 {
@@ -96,12 +96,12 @@ a {
   font-size: 15px;
   border: 2px solid $main;
   background: $main;
-  font-family: "RotondaC_Bold";
+  font-family: $main_font_Bold;
   margin-left: 10px;
 }
 
 .btn-order:hover {
-  background: inherit
+  background: inherit;
 }
 
 .breadcrumb-wraper {
@@ -114,7 +114,6 @@ a {
 
 .breadcrumb-divider {
   --bs-breadcrumb-divider: url("https://firebasestorage.googleapis.com/v0/b/monosushi-c5ebc.appspot.com/o/images%2FIcons%2Fsushi.png?alt=media&token=d42aee5e-06cb-4d27-9b0d-831e604d4bb5");
-  ;
 }
 
 .breadcrumb li:nth-child(1),
@@ -122,8 +121,7 @@ li:nth-child(2) {
   cursor: pointer;
 }
 
-@media screen and (max-width:770px) {
-
+@media screen and (max-width: 770px) {
   .breadcrumb-item {
     font-size: 10px;
   }
@@ -149,21 +147,29 @@ li:nth-child(2) {
   .container {
     width: 70%;
   }
-
 }
 
-@media screen and (max-width:575px) {
-
+@media screen and (max-width: 575px) {
   .container {
     width: 100%;
   }
 
+  .card-body {
+    padding: 5px;
+  }
+
   .product-price {
+    min-width: 50px;
     font-size: 16px;
     margin-right: 10px;
+    b {
+      font-size: 21px;
+    }
   }
 
   .thumb-input-number {
+    width: 120px;
+    justify-content: space-evenly;
     button {
       font-size: 22px;
       padding-bottom: 0px;
@@ -172,12 +178,11 @@ li:nth-child(2) {
 
     input {
       height: 45px;
+      font-size: 18px;
     }
   }
 
   .btn-order {
     padding: 10px 15px;
   }
-
-
 }
