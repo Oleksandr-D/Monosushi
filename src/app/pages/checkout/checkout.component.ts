@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProductResponse } from 'src/app/shared/interfaces/products/products.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-checkout',
@@ -11,14 +12,29 @@ export class CheckoutComponent implements OnInit {
   public basket: Array < IProductResponse > = [];
   public total = 0;
   public count = 0;
+  public orderForm!:FormGroup;
 
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private fb:FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+    this.initOrderForm();
+  }
+
+  initOrderForm(): void {
+    this.orderForm = this.fb.group({
+      cutlery: [null, Validators.required],
+      holders: [null, Validators.required],
+      payment_method: [null, Validators.required],
+      delivery_method: [null, Validators.required],
+
+
+
+    })
   }
 
   loadBasket(): void {
@@ -76,4 +92,10 @@ export class CheckoutComponent implements OnInit {
     basket = JSON.parse(localStorage.getItem('basket') as string);
     console.log('BASKET==>',basket )
   }
+  //create orders on firebase and get it to admin orders
+
+
+
+
+
 }

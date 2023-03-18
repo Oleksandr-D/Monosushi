@@ -5,8 +5,8 @@
       <div class="center-info">
         <h2 class="title-center">Оформити замовлення</h2>
       </div>
-      <form class="mt-4">
 
+      <form class="mt-4" [formGroup]="orderForm" (ngSubmit)="toOrder()">
         <div class="basket-products" *ngFor="let products of basket ">
           <span class="basket-products-img">
             <img class="img" [src]="products.imagePath"
@@ -45,12 +45,6 @@
                 </button>
               </div>
             </div>
-            <!-- <div class="col-sm-10 col-md-6 col-lg-10 col-xl-8">
-                              <div class="input-button">
-                                  <input type="text" class="input" placeholder="Бонуси">
-                                  <button type="button" class="btn btn-primary" id="apply-bonus">Застосувати</button>
-                              </div>
-             </div> -->
           </div>
         </div>
         <div class="form-group">
@@ -62,7 +56,7 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <select tabindex="-1" data-things-count="1" data-things-price="15" data-things-free="5">
+              <select formControlName="cutlery" tabindex="-1" data-things-count="1" data-things-price="15" data-things-free="5">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -86,7 +80,7 @@
               </select>
             </div>
             <div class="col-sm-6">
-              <select tabindex="-1" data-things-study-count="0" data-placeholder="Навчальні тримачі">
+              <select formControlName="holders" tabindex="-1" data-things-study-count="0" data-placeholder="Навчальні тримачі">
                 <option selected="" disabled="" value="Навчальні тримачі">Навчальні тримачі</option>
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -97,7 +91,7 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="form-title ">
+          <div class="form-title">
             <i class="number-title">
               <b>2</b>
             </i>
@@ -107,13 +101,13 @@
           </div>
           <div class="checkbox-entry-wrap">
             <label class="checkbox-entry">
-              <input type="radio" id="payment_method_cod" name="payment_method" checked="" value="cod">
+              <input formControlName="payment_method" type="radio"  name="payment_method" value="cash" checked>
               <span>Оплата готівкою</span>
             </label>
           </div>
           <div class="checkbox-entry-wrap">
             <label class="checkbox-entry">
-              <input type="radio" id="payment_method_liqpay" name="payment_method" value="liqpay">
+              <input formControlName="payment_method" type="radio"  name="payment_method" value="non_cash">
               <span>Безготівкова оплата</span>
             </label>
           </div>
@@ -129,7 +123,7 @@
           </div>
           <div class="checkbox-entry-wrap">
             <label class="checkbox-entry">
-              <input type="radio" name="delivery_method" checked="" value="courier">
+              <input formControlName="delivery_method" type="radio" name="delivery_method" checked="" value="courier">
               <span>
                 Доставка
               </span>
@@ -137,7 +131,7 @@
           </div>
           <div class="checkbox-entry-wrap">
             <label class="checkbox-entry">
-              <input type="radio" name="delivery_method" value="local_pickup">
+              <input formControlName="delivery_method" type="radio" name="delivery_method" value="local_pickup">
               <span>
                 Самовивіз
                 ("Запечені моно макі з лососем" в подарунок)
@@ -146,7 +140,7 @@
           </div>
           <div class="checkbox-entry-wrap">
             <label class="checkbox-entry">
-              <input type="checkbox" name="at_time" value="at_time">
+              <input formControlName="delivery_method" type="radio" name="delivery_method" value="at_time">
               <span>
                 Заздалегідь
               </span>
@@ -215,7 +209,7 @@
 
                 <div class="main-order-wrapp">
                 </div>
-                <button (click)="toOrder()" type="submit" class="btns">
+                <button  type="submit" class="btns">
                     ОФОРМИТИ ЗАМОВЛЕННЯ
                 </button>
               </div>
