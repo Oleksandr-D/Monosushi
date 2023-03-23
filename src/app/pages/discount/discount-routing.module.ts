@@ -6,10 +6,8 @@ import { DiscountInfoComponent } from './discount-info/discount-info.component';
 
 const routes: Routes = [
   { path: '', component: DiscountComponent },
-  {
-    path: ':id',
-    component: DiscountInfoComponent,
-    //don't work with firebase
+  { path: ':id', component: DiscountInfoComponent,
+    //don't work with firebase?
     // resolve: { discountInfo: DiscountInfoResolver },
   },
 ];
