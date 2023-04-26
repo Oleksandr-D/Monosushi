@@ -1,26 +1,9 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router
-} from '@angular/router';
-import {
-  Subscription
-} from 'rxjs';
-import {
-  IProductRequest,
-  IProductResponse
-} from 'src/app/shared/interfaces/products/products.interface';
-import {
-  OrderService
-} from 'src/app/shared/services/order/order.service';
-import {
-  ProductService
-} from 'src/app/shared/services/product/product.service';
+import { Component, OnDestroy,OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { IProductRequest, IProductResponse } from 'src/app/shared/interfaces/products/products.interface';
+import { OrderService } from 'src/app/shared/services/order/order.service';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-product',
