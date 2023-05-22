@@ -31,9 +31,6 @@ export class CheckoutComponent implements OnInit {
       holders: [null, Validators.required],
       payment_method: [null, Validators.required],
       delivery_method: [null, Validators.required],
-
-
-
     })
   }
 

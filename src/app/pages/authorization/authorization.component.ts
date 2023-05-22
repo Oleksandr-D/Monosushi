@@ -1,9 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  Auth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from '@angular/fire/auth';
+import { Auth,createUserWithEmailAndPassword,signInWithEmailAndPassword,} from '@angular/fire/auth';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
