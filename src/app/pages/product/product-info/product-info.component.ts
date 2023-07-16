@@ -44,7 +44,6 @@ export class ProductInfoComponent implements OnInit {
     const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
     this.productService.getOneFirebase(PRODUCT_ID as string).subscribe(data =>{
       this.currentProduct = data as IProductResponse;
-      console.log('=>', this.currentProduct)
     })
   }
 
