@@ -56,7 +56,7 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <select formControlName="cutlery" tabindex="-1" data-things-count="1" data-things-price="15" data-things-free="5">
+              <select formControlName="cutlery">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -80,7 +80,8 @@
               </select>
             </div>
             <div class="col-sm-6">
-              <select formControlName="holders" tabindex="-1" data-things-study-count="0" data-placeholder="Навчальні тримачі">
+              <select formControlName="holders" tabindex="-1" data-things-study-count="0"
+                data-placeholder="Навчальні тримачі">
                 <option selected="" disabled="" value="Навчальні тримачі">Навчальні тримачі</option>
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -101,13 +102,13 @@
           </div>
           <div class="checkbox-entry-wrap">
             <label class="checkbox-entry">
-              <input formControlName="payment_method" type="radio"  name="payment_method" value="cash" checked>
+              <input formControlName="payment_method" type="radio" name="payment_method" value="cash" checked>
               <span>Оплата готівкою</span>
             </label>
           </div>
           <div class="checkbox-entry-wrap">
             <label class="checkbox-entry">
-              <input formControlName="payment_method" type="radio"  name="payment_method" value="non_cash">
+              <input formControlName="payment_method" type="radio" name="payment_method" value="non_cash">
               <span>Безготівкова оплата</span>
             </label>
           </div>
@@ -146,11 +147,11 @@
               </span>
             </label>
           </div>
-          <div class="row mt-5 mb-5">
-            <div class="col-12 col-md-6">
+          <div class="row mt-5">
+            <div class="col-12 col-md-6 mb-4">
               <input type="text" name="first_name" class="input" placeholder="Вашe ім’я*" value="" required="">
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mb-4">
               <input class="input" name="phone" type="tel" value="" placeholder="Телефон*" inputmode="numeric"
                 required="">
             </div>
@@ -209,9 +210,36 @@
 
                 <div class="main-order-wrapp">
                 </div>
-                <button  type="submit" class="btns">
-                    ОФОРМИТИ ЗАМОВЛЕННЯ
+                <button type="submit" class="btns" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  ОФОРМИТИ ЗАМОВЛЕННЯ
                 </button>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Дякуємо за замовлення!</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body basket-products check-order" *ngFor="let products of basket ">
+                        <span class="basket-products-img">
+                          <img class="img" [src]="products.imagePath">
+                        </span>
+                        <div class="basket-products-desc">
+                          <span class="title-basket">{{products.name}}</span>
+                          <div class="basket-products-price"><b>{{products.count}}</b> шт.</div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <div class="total-price">
+                          До оплати
+                          <b>{{total}}</b>
+                        </div>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK!</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

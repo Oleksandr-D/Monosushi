@@ -191,16 +191,14 @@ select {
   left: 50%;
   top: 0;
   transform: translate(-50%, 0);
-  clip-path: polygon(
-    35% 0,
-    65% 0,
-    75% 50%,
-    100% 50%,
-    100% 100%,
-    0 100%,
-    0 50%,
-    25% 50%
-  );
+  clip-path: polygon(35% 0,
+      65% 0,
+      75% 50%,
+      100% 50%,
+      100% 100%,
+      0 100%,
+      0 50%,
+      25% 50%);
   background: #5a5a5a;
   transition: 0.35s;
 }
@@ -213,16 +211,14 @@ select {
   left: 50%;
   top: -8px;
   transform: translate(-50%, 0);
-  clip-path: polygon(
-    35% 0,
-    65% 0,
-    75% 50%,
-    100% 50%,
-    100% 100%,
-    0 100%,
-    0 50%,
-    25% 50%
-  );
+  clip-path: polygon(35% 0,
+      65% 0,
+      75% 50%,
+      100% 50%,
+      100% 100%,
+      0 100%,
+      0 50%,
+      25% 50%);
   background: #5a5a5a;
   transition: 0.35s;
 }
@@ -401,7 +397,7 @@ select {
   }
 }
 
-.checkbox-entry input:checked + span:after {
+.checkbox-entry input:checked+span:after {
   transform: scale(1);
 }
 
@@ -471,8 +467,13 @@ hr {
     padding: 9px 0px 9px 0px;
   }
 
+  .check-order {
+    padding-left: 10px;
+  }
+
   .basket-products-desc {
     padding: 0 0 0 15px;
+
     .title-basket {
       font-size: 12px;
       margin-right: 10px;
@@ -482,25 +483,34 @@ hr {
 
   .thumb-input-number {
     width: 95px;
+
     input {
       width: 30px;
       height: 50px;
       font-weight: bold;
     }
   }
+
   .basket-products-price {
     width: 60px;
   }
+
+  select {
+    margin-bottom: 20px;
+  }
+
 }
 
 @media screen and (max-width: 360px) {
   .col-12 {
     padding: 0px 9px;
   }
+
   .basket-products-controls {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
+
   .thumb-input-number {
     margin-bottom: 14px;
   }
